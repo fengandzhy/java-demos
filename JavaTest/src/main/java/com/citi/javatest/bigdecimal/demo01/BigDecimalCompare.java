@@ -7,7 +7,7 @@ public class BigDecimalCompare {
 	public static void main(String args[]) {
 		BigDecimal d = new BigDecimal("10.0022");  
         BigDecimal e = new BigDecimal("10.002200000000000000000000");
-        BigDecimal f = new BigDecimal(10.002200000000000000000000);
+        BigDecimal f = new BigDecimal(new Integer(10));
         BigDecimal g = new BigDecimal(String.valueOf(10.002200000000000000000000));
         
         System.out.println(String.valueOf(e.doubleValue()));
