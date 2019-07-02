@@ -1,4 +1,4 @@
-package com.citi.javatest.random.demo01;
+package com.citi.javatest.random;
 
 import java.util.HashSet;
 import java.util.Iterator;
@@ -22,10 +22,8 @@ public class RandomTest {
 		for(int i=0;i<n;i++) {
 			int num = (int)(Math.random()*(100000-10000)+10000);
 			set.add(num);
-		}
-		
-		int setSize = set.size();
-		
+		}		
+		int setSize = set.size();		
 		if(setSize<n) {
 			random1(n-setSize,set);
 		}

@@ -1,4 +1,4 @@
-package com.citi.javatest.doubletest.demo01;
+package com.citi.javatest.doubletest;
 
 public class DoubleTest {
 

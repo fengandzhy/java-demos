@@ -1,4 +1,4 @@
-package com.citi.javatest.map.demo01;
+package com.citi.javatest.map;
 
 import java.util.HashMap;
 import java.util.Iterator;
