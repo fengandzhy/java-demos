@@ -60,11 +60,14 @@ public class ComparatorTest {
 				return 1;
 			}			
 			return -1;
-		});
-		
+		});		
 		dList.stream().forEach(e->System.out.println(e.getName()+","+e.getSalary()+","+e.getAge()));
 		System.out.println(dList.get(0).getName());
 		
-		
+		System.out.println("==============================================================");	
+		Comparator<Developer> multiComparator1 =new MultiComparator().comparator1(dList);
+		dList.sort(multiComparator1);
+		dList.stream().forEach(e->System.out.println(e.getName()+","+e.getSalary()+","+e.getAge()));
+		System.out.println(dList.get(0).getName());
 	}
 }
