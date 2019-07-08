@@ -21,5 +21,6 @@ public class FilterTest {
         System.out.println("---得到交集 intersection---");
         interestion.stream().forEach(System.out::println);
         
+        
 	}
 }
