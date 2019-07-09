@@ -16,6 +16,8 @@ public class BigDecimalDemo03 {
 //		BigDecimal a3 = a1.divide(a2).setScale(2, BigDecimal.ROUND_HALF_UP);
 		BigDecimal a3 = a1.divide(a2, 4, BigDecimal.ROUND_HALF_UP);
 		System.out.println(a3);
+		
+		
 	}
 
 }
