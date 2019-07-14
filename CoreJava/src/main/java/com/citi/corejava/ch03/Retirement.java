@@ -17,9 +17,13 @@ public class Retirement {
 		
 		double balance = 0;
 		int years = 0;
-		
-		
-		
+		while (balance < goal) {
+			balance += payment;
+			double interest = balance * interestRate / 100;
+			balance += interest;
+			years++;
+		}
+		System.out.println("You can retire in " + years + " years.") ;		
 		in.close();
 	}
 }
