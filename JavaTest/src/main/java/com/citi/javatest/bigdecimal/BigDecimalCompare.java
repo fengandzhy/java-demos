@@ -12,7 +12,11 @@ public class BigDecimalCompare {
         
         System.out.println(String.valueOf(e.doubleValue()));
         
-        System.out.println(e.equals(d)); //false  
+        System.out.println(e.equals(d)); //false
+        System.out.println(e.compareTo(d));//0
+        
+        System.out.println(e.doubleValue());
+        
         System.out.println(e.toPlainString().equals(d.toPlainString())); //false  
         System.out.println(e.longValue() == d.longValue()); //true  
         System.out.println(e.doubleValue() == d.doubleValue()); //true  
