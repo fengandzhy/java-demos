@@ -2,7 +2,7 @@ package com.citi.javatest.bigdecimal;
 
 import java.math.BigDecimal;
 
-public class BigDecimalDemo4 {
+public class BigDecimalDemo04 {
 
 	public static void main(String[] args) {
 		Integer totalweight = 300;
