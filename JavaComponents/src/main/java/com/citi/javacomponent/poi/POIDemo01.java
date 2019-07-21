@@ -35,13 +35,18 @@ public class POIDemo01 {
 		}
 		List<String[]> items = readFile();
 		Iterator<String[]> iterator = items.iterator();
-		String sql = "insert into t_separate_rules(warehouse_id,prod_sku,limit_type,max_value,description)"
-				+" values(1,?,'specialquantity',?,'mianmo')";
+		String sql = "insert into t_separate_rules(warehouse_id,prod_sku,limit_type,max_value,description,is_mix)"
+				+" values(1,?,'specialquantity',?,'mianmo',?)";
 		PreparedStatement pStatement = connection.prepareStatement(sql);		
 		while(iterator.hasNext()) {
 			String[] str = iterator.next();
 			pStatement.setString(1, str[0]);
 			pStatement.setDouble(2, Double.parseDouble(str[1]));
+			if(str[2].equals("²»ÄÜºÏÏä")) {
+				pStatement.setInt(3, 0);
+			}else {
+				pStatement.setInt(3, 1);
+			}
 			pStatement.executeUpdate();
 		}
 		System.out.println("Success");
@@ -59,11 +64,14 @@ public class POIDemo01 {
 				count++;
 				continue;
 			}
-			String[] str = new String[2];
+			String[] str = new String[3];
 			Cell cell1 = row.getCell(0);			
 			str[0] = cell1.getStringCellValue();
 			Cell cell2  = row.getCell(4);
 			str[1] = cell2.getNumericCellValue()+"";
+			Cell cell3  = row.getCell(5);
+			cell3.setCellType(Cell.CELL_TYPE_STRING);
+			str[2]=cell3.getStringCellValue();
 			list.add(str);
 			count++;
 		}
