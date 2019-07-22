@@ -9,6 +9,8 @@ public class DoubleTest {
 //		Integer weight = 2132;
 //		System.out.println(weight/1000.00);
 		test01();
+		Double a = 16.0;
+		System.out.println((int)a.doubleValue());
 	}
 	
 	public static void test01() {
