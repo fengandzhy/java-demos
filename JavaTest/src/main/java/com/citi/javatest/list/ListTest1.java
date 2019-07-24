@@ -19,12 +19,12 @@ public class ListTest1 {
 //			}
 //		}
 		
-		Iterator<Integer> iterator = arrayList.iterator();
-		while(iterator.hasNext()) {
-			if(iterator.next() == 0) {
-				iterator.remove();
-			}
-		}
+//		Iterator<Integer> iterator = arrayList.iterator();
+//		while(iterator.hasNext()) {
+//			if(iterator.next() == 0) {
+//				iterator.remove();
+//			}
+//		}
 		
 		arrayList.stream().forEach(arg0->System.out.println(arg0));
 	}
