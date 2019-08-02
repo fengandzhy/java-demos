@@ -5,8 +5,11 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
 
+/**
+ * parallelStream，意思就是不止一个线程读取这个list，有可能一个，有可能三个
+ * */
 public class parallelStreamTest1 {
-
+	
 	public static void main(String[] args) {
 		List<Integer> list = new ArrayList<>();
 		Set<Thread> threadSet = new CopyOnWriteArraySet<>();
