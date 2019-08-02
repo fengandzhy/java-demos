@@ -6,7 +6,7 @@ import java.util.List;
 public class AgeComparator {
 	
 	public Comparator<Developer> comparator(List<Developer> list) {
-		Comparator<Developer> ageComparator = Comparator.comparing(Developer::getAge);
+		Comparator<Developer> ageComparator = Comparator.comparing(Developer::getAge).reversed();
 		return ageComparator;
 	}
 }
