@@ -4,7 +4,8 @@ import java.util.Scanner;
 
 /**
  * 验证next()与nextLine()的区别
- * next只是读取到结束符前的内容，而nextLine()读取的是
+ * next只是读取到结束符前的内容，而nextLine()读取的是回车键前所有的没有被赋值的内容
+ * 例如本例，输入wew 12 12.3 werwe,那么nextLine()读取的就是werwe,因为前三个已经被赋值了
  * */
 public class ScannerTest1 {
 

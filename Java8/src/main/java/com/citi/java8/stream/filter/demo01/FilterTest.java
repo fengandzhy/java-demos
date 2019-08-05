@@ -2,6 +2,8 @@ package com.citi.java8.stream.filter.demo01;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
 
 public class FilterTest {
 
@@ -14,7 +16,13 @@ public class FilterTest {
 		pList.add(p2);
 		pList.add(p3);
 		
-		Person p = pList.stream().filter(person->person.getName().equals("aax")).findFirst().orElse(null);
+		Person p = pList.stream().filter(person->person.getName().equals("aa")).findFirst().orElse(null);
+		Stream<Person> stream = pList.stream();
+
+        Stream<Person> stream1 = stream.filter(rule->rule.getName().equals("aa"));
+
+        Optional<Person> option = stream1.findFirst();
+		
 		System.out.println(p);
 	}
 
