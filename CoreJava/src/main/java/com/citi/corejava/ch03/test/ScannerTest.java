@@ -1,5 +1,7 @@
 package com.citi.corejava.ch03.test;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -8,23 +10,17 @@ import java.util.Scanner;
 public class ScannerTest {
 
 	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
-		boolean flag = false;
+		Scanner scanner = new Scanner(System.in);		
+		List<String> strList = new ArrayList<>();
 		while(true) {			
-			String str = scanner.nextLine();
-			System.out.println(str);			
-						
-			if(str.length()==0) {
-				if(flag) {
-					break;
-				}else {
-					flag=true;
-				}
-			}else {
-				flag = false;
+			String str = scanner.nextLine();									
+			if(null==str || str.length()==0) {
+				break;
 			}
+			strList.add(str);
 		}		
 		scanner.close();
+		System.out.println(strList.size());
 	}
 
 }
