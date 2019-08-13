@@ -1,9 +1,12 @@
-package com.citi.java7.chap04.demos;
+package com.citi.java7.volume1.chap04.demos;
 
 import java.text.NumberFormat;
 import java.util.Locale;
 import java.util.Scanner;
 
+/**
+ * 把数字转换为货币
+ * */
 public class FormatNumberToCurrency {
 
 	public static void main(String[] args) {

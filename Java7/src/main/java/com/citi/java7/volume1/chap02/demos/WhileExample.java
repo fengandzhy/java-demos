@@ -1,4 +1,4 @@
-package com.citi.java7.chap02.demos;
+package com.citi.java7.volume1.chap02.demos;
 
 import java.math.BigDecimal;
 
