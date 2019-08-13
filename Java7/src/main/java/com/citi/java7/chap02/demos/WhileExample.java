@@ -1,4 +1,4 @@
-package com.citi.java7.controlstatement;
+package com.citi.java7.chap02.demos;
 
 import java.math.BigDecimal;
 

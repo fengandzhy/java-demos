@@ -1,6 +1,9 @@
-package com.citi.java7.controlstatement;
+package com.citi.java7.chap02.demos;
 
-public class ForExample {
+/**
+ * Êä³öÁâĞÎ
+ * */
+public class OutputDiamondExample {
 
 	public static void main(String[] args) {
 		printDiamond(11);
