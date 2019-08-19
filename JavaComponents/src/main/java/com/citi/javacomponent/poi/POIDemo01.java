@@ -36,16 +36,11 @@ public class POIDemo01 {
 		List<String[]> items = readFile();
 		Iterator<String[]> iterator = items.iterator();
 		String sql = "insert into t_separate_rules(warehouse_id,prod_sku,limit_type,max_value,description)"
-				+" values(1,?,'forbidden',0,'mianmo')";
+				+" values(1,?,'categoryquantity',0,'mianmo')";
 		PreparedStatement pStatement = connection.prepareStatement(sql);		
 		while(iterator.hasNext()) {
 			String[] str = iterator.next();
-			pStatement.setString(1, str[0]);			
-//			if(str[2].equals("²»ÄÜºÏÏä")) {
-//				pStatement.setInt(3, 0);
-//			}else {
-//				pStatement.setInt(3, 1);
-//			}
+			pStatement.setString(1, str[0]);
 			pStatement.executeUpdate();
 		}
 		System.out.println("Success");
@@ -63,14 +58,14 @@ public class POIDemo01 {
 			if(count==0) {
 				count++;
 				continue;
-			}
-			if(count==54) {
-				break;
-			}
+			}			
 			String[] str = new String[3];
 			Cell cell1 = row.getCell(0);
 			System.out.println(cell1);
 			str[0] = cell1.getStringCellValue();
+			if(str[0]==null || str[0].length()==0) {
+				break;
+			}
 //			str[0] = cell1.getNumericCellValue()+"";
 //			Cell cell2  = row.getCell(4);
 //			str[1] = cell2.getNumericCellValue()+"";
@@ -97,7 +92,7 @@ public class POIDemo01 {
 	
 	private static void initConnection() throws SQLException {
 		
-		String urlString = "jdbc:mysql://localhost:3306/nzh2";
+		String urlString = "jdbc:mysql://localhost:3306/nzh1";
 		BasicDataSource dataSouce = new BasicDataSource();
 		dataSouce.setDriverClassName("com.mysql.jdbc.Driver");
 		dataSouce.setUrl(urlString);
