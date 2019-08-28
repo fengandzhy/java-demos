@@ -36,11 +36,12 @@ public class POIDemo01 {
 		List<String[]> items = readFile();
 		Iterator<String[]> iterator = items.iterator();
 		String sql = "insert into t_separate_rules(warehouse_id,prod_sku,limit_type,max_value,description)"
-				+" values(1,?,'categoryquantity',0,'mianmo')";
+				+" values(1,?,'toothbrush',2,'mianmo')";
 		PreparedStatement pStatement = connection.prepareStatement(sql);		
 		while(iterator.hasNext()) {
 			String[] str = iterator.next();
 			pStatement.setString(1, str[0]);
+			//pStatement.setString(2, str[1]);
 			pStatement.executeUpdate();
 		}
 		System.out.println("Success");
@@ -61,8 +62,9 @@ public class POIDemo01 {
 			}			
 			String[] str = new String[3];
 			Cell cell1 = row.getCell(0);
-			System.out.println(cell1);
+//			Cell cell2 = row.getCell(1);			
 			str[0] = cell1.getStringCellValue();
+//			str[1] = cell2.getStringCellValue();
 			if(str[0]==null || str[0].length()==0) {
 				break;
 			}
