@@ -13,5 +13,6 @@
 	</properties>
 	<modules>
 		<module>Java-thread-demos</module>
+		<module>Java-Basic-demos</module>
 	</modules>
 </project>

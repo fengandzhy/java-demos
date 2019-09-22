@@ -29,7 +29,7 @@ public class PopulateRules {
 		//populateCloth();
 		//populateEoaron();
 		//populateQuilt();
-		//populateGift();
+		populateGift();
 		//populateMask();
 		//populateVolumn();
 		//populateCourier();
@@ -126,6 +126,7 @@ public class PopulateRules {
 		Workbook workbook = getWorkbok();			
 		Sheet sheet = workbook.getSheet("quilt");		
 		List<String[]> list = readFile(sheet,0);
+		System.out.println("quilt size is "+list.size());
 		Iterator<String[]> iterator = list.iterator();
 		String sql = "insert into t_separate_rules(warehouse_id,prod_sku,limit_type,max_value,description)"
 				+" values(1,?,'quilt',1,'mianmo')";
@@ -249,6 +250,7 @@ public class PopulateRules {
 			String[] str = new String[3];
 			Cell cell0 = row.getCell(0);
 			str[0] = cell0.getStringCellValue();
+			System.out.println(str[0]);
 			if(sign==1) {
 				Cell cell1 = row.getCell(1);
 				str[1] = cell1.getStringCellValue();
@@ -274,7 +276,7 @@ public class PopulateRules {
 	
 	@SuppressWarnings("unused")
 	private static void initConnection() throws SQLException {		
-		String urlString = "jdbc:mysql://localhost:3306/nzh1";
+		String urlString = "jdbc:mysql://localhost:3306/nzh2";
 		BasicDataSource dataSouce = new BasicDataSource();
 		dataSouce.setDriverClassName("com.mysql.jdbc.Driver");
 		dataSouce.setUrl(urlString);
