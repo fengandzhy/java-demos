@@ -14,5 +14,6 @@
 	<modules>
 		<module>Java-thread-demos</module>
 		<module>Java-Basic-demos</module>
+		<module>Java8-demos</module>
 	</modules>
 </project>
