@@ -33,7 +33,7 @@ public class MapRemoveItem {
 //				map.remove(key);
 //			}
 //		}
-		
+		System.out.println(map.size());
 		Iterator<Map.Entry<Integer,String>> iter = map.entrySet().iterator();
 		while(iter.hasNext()) {
 			Map.Entry<Integer, String> entry = iter.next();
@@ -42,6 +42,7 @@ public class MapRemoveItem {
 			}
 			System.out.println(map.get(entry.getKey()));
 		}
+		System.out.println(map.size());
 	}
 
 }
