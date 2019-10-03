@@ -10,6 +10,9 @@ public class IntegerTest {
 		
 		Integer d = a/b+1;
 		System.out.println(d);
+		
+		Integer e = (int) (10*0.3);
+		System.out.println(e);
 	}
 
 }
