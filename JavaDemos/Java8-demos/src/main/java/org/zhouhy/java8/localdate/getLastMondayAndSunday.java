@@ -2,6 +2,7 @@ package org.zhouhy.java8.localdate;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.temporal.TemporalAdjusters;
 
 
 public class getLastMondayAndSunday {
@@ -16,8 +17,7 @@ public class getLastMondayAndSunday {
 		DayOfWeek dayOfWeek = now.getDayOfWeek();
 		LocalDate lastMonday = now.minusDays(7+dayOfWeek.getValue()-1);
 		System.out.println(lastMonday);
-	}
-	
+	}	
 	
 	public static void getLastSunday(LocalDate now) {		
 		DayOfWeek dayOfWeek = now.getDayOfWeek();
