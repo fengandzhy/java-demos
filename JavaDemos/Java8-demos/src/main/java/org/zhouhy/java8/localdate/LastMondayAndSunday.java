@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import java.time.temporal.TemporalAdjusters;
 
 
-public class getLastMondayAndSunday {
+public class LastMondayAndSunday {
 
 	public static void main(String[] args) {
 		LocalDate now =LocalDate.now();

@@ -3,7 +3,7 @@ package org.zhouhy.java8.localdate;
 import java.time.LocalDate;
 import java.time.temporal.TemporalAdjusters;
 
-public class getLastDayAndFirstOfLastMonth {
+public class LastDayAndFirstOfLastMonth {
 
 	public static void main(String[] args) {
 		LocalDate today = LocalDate.now();

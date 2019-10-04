@@ -2,7 +2,7 @@ package org.zhouhy.java8.localdate;
 
 import java.time.LocalDate;
 
-public class getSpecificDate {
+public class SpecificDate {
 
 	public static void main(String[] args) {
 		LocalDate dateOfBirth = LocalDate.of(2010, 01, 14);
