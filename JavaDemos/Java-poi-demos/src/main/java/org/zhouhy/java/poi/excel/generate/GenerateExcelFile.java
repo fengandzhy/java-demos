@@ -15,6 +15,8 @@ import org.apache.poi.ss.usermodel.Workbook;
 
 public class GenerateExcelFile {
 	
+	private static final String FILE_NAME = "\\sales.xls";
+	
 	public void sample1() throws Exception {
 		
 		//创建一个工作簿workbook
@@ -48,7 +50,9 @@ public class GenerateExcelFile {
 	
 	@SuppressWarnings("resource")
 	public void sample2() throws Exception {
-		File excelFile = new File("D:\\excel测试.xls");
+		String filePath = System.getProperty("user.dir");
+		String path = filePath+FILE_NAME;
+		File excelFile = new File(path);
 		HSSFWorkbook workbook;
 		if(excelFile.exists()) {
 			workbook = new HSSFWorkbook(new FileInputStream(excelFile));
@@ -56,7 +60,7 @@ public class GenerateExcelFile {
 			workbook = new HSSFWorkbook();
 		}
 		
-		Sheet sheet = workbook.createSheet("bbbb");
+		Sheet sheet = workbook.createSheet("bbbbdddd");
 		
 		Row row = sheet.createRow(3);
 		
@@ -72,9 +76,14 @@ public class GenerateExcelFile {
 		cellStyle.setFont(font);
 		cell.setCellStyle(cellStyle);
 		
-		OutputStream os = new FileOutputStream("D:\\excel测试.xls");
+		OutputStream os = new FileOutputStream(filePath+FILE_NAME);
 		workbook.write(os);
 		os.close();
 		workbook.close();		
+	}
+	
+	public void sample3() throws Exception {
+		String filePath = System.getProperty("user.dir");
+		System.out.println(filePath);
 	}
 }

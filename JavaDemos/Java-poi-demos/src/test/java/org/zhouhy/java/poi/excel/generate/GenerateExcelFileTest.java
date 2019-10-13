@@ -25,6 +25,12 @@ class GenerateExcelFileTest {
 		generateExcelFile.sample2();
 	}
 	
+	@Test
+	void testSample3() throws Exception {
+		GenerateExcelFile generateExcelFile = new GenerateExcelFile();
+		generateExcelFile.sample3();
+	}
+	
 	@AfterAll
     public static void after() {
         System.out.println("≤‚ ‘Ω· ¯-----------------");

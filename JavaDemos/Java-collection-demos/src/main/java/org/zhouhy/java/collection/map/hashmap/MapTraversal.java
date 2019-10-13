@@ -1,4 +1,4 @@
-package org.zhouhy.java.collection.map.demo01;
+package org.zhouhy.java.collection.map.hashmap;
 
 import java.util.HashMap;
 import java.util.Iterator;
