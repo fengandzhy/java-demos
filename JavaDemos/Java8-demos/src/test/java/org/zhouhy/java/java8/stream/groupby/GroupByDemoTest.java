@@ -26,6 +26,14 @@ class GroupByDemoTest {
 		groupByDemos.groupBy1(list1);
 	}
 	
+	@Test
+	void test2() {
+		groupByDemos = new GroupByDemos();
+		List<Student> list1= Arrays.asList(
+                new Student(1,"one","zhao"),new Student(2,"one","qian"),new Student(3,"two","sun"));
+		groupByDemos.groupBy2(list1);
+	}
+	
 	@After
 	public void destory() {
 		System.out.println("¿ªÊ¼²âÊÔ");

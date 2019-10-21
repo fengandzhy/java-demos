@@ -12,4 +12,13 @@ public class GroupByDemos {
 			System.out.println(entry.getKey()+entry.getValue());
 		}
 	}
+	
+	public void groupBy2(List<Student> list1) {
+		list1.stream().collect(Collectors.groupingBy(t->t.getName()))
+		.forEach((name,students)->{
+			System.out.println(name+" "+students);
+		});
+		
+		
+	}
 }
