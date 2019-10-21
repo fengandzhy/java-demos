@@ -1,4 +1,4 @@
-package org.zhouhy.java8.localtime;
+package org.zhouhy.java.java8.localtime;
 
 import java.time.LocalTime;
 
