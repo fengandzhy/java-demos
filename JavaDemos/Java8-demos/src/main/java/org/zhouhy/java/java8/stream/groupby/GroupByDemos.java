@@ -14,11 +14,16 @@ public class GroupByDemos {
 	}
 	
 	public void groupBy2(List<Student> list1) {
-		list1.stream().collect(Collectors.groupingBy(t->t.getName()))
+		list1.stream().collect(Collectors.groupingBy(Student::getName))
 		.forEach((name,students)->{
 			System.out.println(name+" "+students);
-		});
-		
-		
+		});		
+	}
+	
+	public void groupBy3(List<Student> list1) {
+		Map<String,Long> result2=list1.stream().collect(Collectors.groupingBy(Student::getName,Collectors.counting()));
+		for(Map.Entry<String,Long> entry:result2.entrySet()) {
+			System.out.println(entry.getKey()+":"+entry.getValue());
+		}		
 	}
 }
