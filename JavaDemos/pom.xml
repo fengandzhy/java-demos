@@ -18,6 +18,7 @@
 		<module>Java-Java8-demos</module>
 		<module>Java-collection-demos</module>
 		<module>Java-poi-demos</module>
+		<module>Java-inheritance-demos</module>
 	</modules>
 	<dependencies>
 		<dependency>
