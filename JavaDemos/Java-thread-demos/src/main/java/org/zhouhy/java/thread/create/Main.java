@@ -1,4 +1,4 @@
-package org.zhouhy.java.thread.md01;
+package org.zhouhy.java.thread.create;
 
 import java.util.ArrayList;
 import java.util.List;

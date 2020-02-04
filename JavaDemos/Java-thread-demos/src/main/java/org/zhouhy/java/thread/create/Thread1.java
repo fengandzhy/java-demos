@@ -1,4 +1,4 @@
-package org.zhouhy.java.thread.md01;
+package org.zhouhy.java.thread.create;
 
 public class Thread1 extends Thread {
 	private String name;
