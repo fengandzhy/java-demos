@@ -15,10 +15,13 @@
 	<modules>
 		<module>Java-thread-demos</module>
 		<module>Java-basic-demos</module>
-		<module>Java-Java8-demos</module>
+		
 		<module>Java-collection-demos</module>
 		<module>Java-poi-demos</module>
 		<module>Java-inheritance-demos</module>
+		
+		
+		<module>Java8-demos</module>
 	</modules>
 	<dependencies>
 		<dependency>

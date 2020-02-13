@@ -44,7 +44,7 @@ class GroupByDemoTest {
 	
 	@After
 	public void destory() {
-		System.out.println("¿ªÊ¼²âÊÔ");
+		System.out.println("½áÊø²âÊÔ");
 	}
 
 }

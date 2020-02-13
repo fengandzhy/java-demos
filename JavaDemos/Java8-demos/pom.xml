@@ -6,6 +6,7 @@
 		<groupId>org.zhouhy</groupId>
 		<artifactId>Java-demos</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>..</relativePath>
 	</parent>
 	<artifactId>Java-Java8-demos</artifactId>	
 	<dependencies>
