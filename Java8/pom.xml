@@ -30,5 +30,6 @@
 	</build>
 	<modules>
 		<module>Java8-time</module>
+		<module>Java8-stream</module>
 	</modules>
 </project>
