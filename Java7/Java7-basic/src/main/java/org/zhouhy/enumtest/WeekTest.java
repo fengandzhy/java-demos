@@ -17,6 +17,8 @@ public class WeekTest {
 		System.out.println(Week.FRIDAY.ordinal());
 		
 		System.out.println(Week.getWeekByDay().getDesc());
+		
+		
 	}
 
 }

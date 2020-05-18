@@ -2,8 +2,8 @@ package org.zhouhy.stream.entity;
 
 public class Transaction {
 	private final Trader trader;
-    private final int year;
-    private final int value;
+    private final Integer year;
+    private final Integer value;
     
     public Transaction(Trader trader, int year, int value) {
         this.trader = trader;
@@ -15,11 +15,11 @@ public class Transaction {
         return this.trader;
     }
 
-    public int getYear() {
+    public Integer getYear() {
         return this.year;
     }
 
-    public int getValue() {
+    public Integer getValue() {
         return this.value;
     }
 
