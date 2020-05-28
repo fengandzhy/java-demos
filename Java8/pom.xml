@@ -31,5 +31,6 @@
 	<modules>
 		<module>Java8-time</module>
 		<module>Java8-stream</module>
+		<module>Java8-lambda</module>
 	</modules>
 </project>

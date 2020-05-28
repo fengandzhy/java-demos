@@ -35,9 +35,12 @@ public class StreamReduceTest {
 
 	}
 
+	/**
+	 * 从2起开始累加
+	 * */
 	@Test
 	public void test1() {
-		Integer result = stream.reduce(0,Integer::sum);
+		Integer result = stream.reduce(2,Integer::sum);
 		System.out.println(result);
 	}
 	
@@ -64,6 +67,9 @@ public class StreamReduceTest {
 		stream.reduce((i,j)->i<j?j:i).ifPresent(System.out::println);
 	}
 	
+	/**
+	 * reduce可以作为一种累加器也可以让它成为一种转换器
+	 * */
 	@Test
 	public void test6() {
 		String str = strStream.reduce("",(a,b)->{
