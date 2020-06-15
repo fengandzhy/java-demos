@@ -32,5 +32,6 @@
 		<module>Java8-time</module>
 		<module>Java8-stream</module>
 		<module>Java8-lambda</module>
+		<module>Java8-httpclient</module>
 	</modules>
 </project>
