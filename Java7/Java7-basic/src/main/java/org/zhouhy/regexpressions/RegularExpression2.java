@@ -7,9 +7,15 @@ public class RegularExpression2 {
 
 
     /**
-     *
-     *
-     * */
+     * .	Any character (may or may not match line terminators), 任意字符
+     * X?	X, once or not at all       零个或一个
+     * X*	X, zero or more times       零个或多个
+     * X+	X, one or more times        一个或多个
+     * X{n}	X, exactly n times          x出现n次
+     * X{n,}	X, at least n times     x出现至少n次
+     * X{n,m}	X, at least n but not more than m times 出现n~m次
+     * @param args
+     */
     public static void main(String[] args) {
         Pattern pattern1 = Pattern.compile("(a.*?b)");
         Matcher matcher1=pattern1.matcher("aacbacb");
