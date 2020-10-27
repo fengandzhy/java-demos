@@ -3,6 +3,9 @@ package org.zhouhy.regularexpression;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 /**
  * .	Any character (may or may not match line terminators), 任意字符
@@ -89,5 +92,25 @@ public class RegularExpressionTest {
         String reg7 = "ab(?=[A-Z]).{1,}";
         String str7 = "abZW863";
         System.out.println(str7.matches(reg7));
+    }
+
+    /**
+     * 在abc前面必须至少要有一个字符.{1,}而且这个字符必须是数字(?<=\d)
+     * */
+    @Test
+    public void test8(){
+        String reg8 = ".{1,}(?<=\\d)abc";
+        String str8 = "122abc";
+        System.out.println(str8.matches(reg8));
+    }
+
+    @Test
+    public void test9(){
+        String reg9 = ".{1,}(?<=\\d)abc";
+        String str9 = "122abc";
+        System.out.println(str9.matches(reg9));
+        Pattern b = Pattern.compile(".{1,}(?<=\\d)abc");
+        Matcher m = b.matcher(str9);
+        System.out.println(m.matches());
     }
 }
