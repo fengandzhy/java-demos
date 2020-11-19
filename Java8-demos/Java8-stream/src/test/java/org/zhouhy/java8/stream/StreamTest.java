@@ -7,6 +7,7 @@ import org.zhouhy.java8.entities.Order;
 import org.zhouhy.java8.entities.Person;
 
 import java.util.*;
+import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -220,6 +221,96 @@ public class StreamTest {
 
     @Test
     public void toMapTest(){
-        Map<String,Person> map = 
+        Map<String,Integer> map = personList.stream()
+                .filter(person -> person.getAge()>24)
+                .collect(Collectors.toMap(Person::getName,person -> person.getSalary()));
+        System.out.println("toMap:" + map);
+    }
+
+    @Test
+    public void countingTest(){
+        long count = personList.stream().collect(Collectors.counting());
+        System.out.println("员工总数：" + count);
+    }
+
+    @Test
+    public void averageTest(){
+        double average = personList.stream().collect(Collectors.averagingDouble(Person::getAge));
+        System.out.println("平均年龄：" + average);
+    }
+
+    @Test
+    public void maxByTest(){
+        Optional<Integer> max = personList.stream().map(Person::getSalary)
+                .collect(Collectors.maxBy(Integer::compareTo));
+        Optional<Integer> min = personList.stream().map(Person::getSalary)
+                .collect(Collectors.minBy(Integer::compareTo));
+        System.out.println("最高工资：" + max.get());
+        System.out.println("最低工资：" + min.get());
+    }
+
+    @Test
+    public void sumTest(){
+        Integer sum = personList.stream().collect(Collectors.summingInt(Person::getSalary));
+        System.out.println("工资总和：" + sum);
+
+        DoubleSummaryStatistics collect = personList.stream().collect(Collectors.summarizingDouble(Person::getSalary));
+        System.out.println("员工工资所有统计：" + collect);
+    }
+
+    @Test
+    public void doubleSummaryStaticsTest(){
+        DoubleSummaryStatistics collect = personList.stream().collect(Collectors.summarizingDouble(Person::getSalary));
+        System.out.println("员工工资所有统计：" + collect);
+        System.out.println("样本总数：" + collect.getCount());
+        System.out.println("最高工资：" + collect.getMax());
+        System.out.println("最低工资：" + collect.getMin());
+        System.out.println("平均工资：" + collect.getAverage());
+    }
+
+    @Test
+    public void partitioningByTest(){
+        Map<Boolean,List<Person>> part = personList.stream()
+                .collect(Collectors.partitioningBy(x->x.getSalary()>8000));
+        System.out.println("员工按薪资是否大于8000分组情况：" + part);
+    }
+
+    @Test
+    public void groupingByTest(){
+        Map<String,List<Person>> group1 = personList.stream()
+                .collect(Collectors.groupingBy(Person::getSex));
+        System.out.println("按性别分组情况：" + group1);
+
+        Map<String, Map<String, List<Person>>> group2 = personList.stream()
+                .collect(Collectors.groupingBy(Person::getSex, Collectors.groupingBy(Person::getArea)));
+        System.out.println("员工按性别、地区：" + group2);
+    }
+    
+    /**
+     * joining可以将stream中的元素用特定的连接符（没有的话，则直接连接）连接成一个字符串。
+     * */
+    @Test
+    public void joiningTest(){
+        List<String> list = Arrays.asList("A","B","C","D");
+        String s1 = list.stream().collect(Collectors.joining("-"));
+        System.out.println("拼接后的字符串：" + s1);
+        
+        String s2 = personList.stream().map(Person::getName).collect(Collectors.joining(","));
+        System.out.println("所有员工的姓名：" + s2);
+    }
+
+    @Test
+    public void parallelStreamTest(){
+        List<Integer> list = new ArrayList<>();
+        Set<Thread> threadSet = new CopyOnWriteArraySet<>();
+        for(int i=0;i<1000000;i++){
+            list.add(i);
+        }
+        list.parallelStream().forEach((a1)->{
+            Thread thread = Thread.currentThread();
+            threadSet.add(thread);
+        });
+        System.out.println("threadSet一共有" + threadSet.size() + "个线程");
+        System.out.println("系统一个有"+Runtime.getRuntime().availableProcessors()+"个cpu");
     }
 }
