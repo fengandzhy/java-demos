@@ -28,6 +28,8 @@ public class StreamTest {
         personList.add(new Person("Anni", 8200, 24, "female", "New York"));
         personList.add(new Person("Owen", 9500, 25, "male", "New York"));
         personList.add(new Person("Alisa", 7900, 26, "female", "New York"));
+        personList.add(new Person("Lucy", 7900, 22, "female", "New York"));
+        personList.add(new Person("Jim", 7900, 23, "female", "New York"));
         strList = Arrays.asList("adnm", "admmt", "pot", "xbangd", "weoujgsd");
 
         
@@ -313,4 +315,33 @@ public class StreamTest {
         System.out.println("threadSet一共有" + threadSet.size() + "个线程");
         System.out.println("系统一个有"+Runtime.getRuntime().availableProcessors()+"个cpu");
     }
+
+    @Test
+    public void sortTest1(){
+        List<String> names1 = personList.stream()
+                .sorted(Comparator.comparing(Person::getSalary))
+                .map(Person::getName).collect(Collectors.toList());
+        
+        List<String> names2 = personList.stream()
+                .sorted(Comparator.comparing(Person::getSalary).reversed())
+                .map(Person::getName).collect(Collectors.toList());
+        List<String> names3= personList.stream()
+                .sorted(Comparator.comparing(Person::getSalary).reversed().thenComparing(Person::getAge))
+                .map(Person::getName).collect(Collectors.toList());
+        
+        List<String> name4 = personList.stream()
+                .sorted((a1,a2)->{
+                    if(a1.getSalary() == a2.getSalary()){
+                        return a2.getAge()-a1.getAge();
+                    }
+                    return a1.getSalary()-a2.getSalary();
+                }).map(Person::getName).collect(Collectors.toList());
+        
+        System.out.println("按工资自然排序：" + names1);
+        System.out.println("按工资降序排序：" + names2);
+        System.out.println("先按工资再按年龄自然排序：" + names3);
+        System.out.println("先按工资升序再按年龄降序排序：" + name4);
+    }
+    
+    
 }
