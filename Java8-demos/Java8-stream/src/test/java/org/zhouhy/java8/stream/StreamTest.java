@@ -341,7 +341,5 @@ public class StreamTest {
         System.out.println("按工资降序排序：" + names2);
         System.out.println("先按工资再按年龄自然排序：" + names3);
         System.out.println("先按工资升序再按年龄降序排序：" + name4);
-    }
-    
-    
+    }    
 }

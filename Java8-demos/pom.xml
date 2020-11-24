@@ -10,6 +10,7 @@
     <modules>
         <module>Java8-lambdaexpression</module>
         <module>Java8-stream</module>
+        <module>Java8-time</module>
     </modules>
     <packaging>pom</packaging>
 
