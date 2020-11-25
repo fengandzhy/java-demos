@@ -2,8 +2,13 @@ package org.zhouhy.java8.time;
 
 import org.junit.Test;
 
+import java.text.SimpleDateFormat;
 import java.time.*;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
+import java.util.Date;
+import java.util.Set;
 
 import static java.time.temporal.ChronoUnit.YEARS;
 
@@ -180,5 +185,99 @@ public class TimeTest {
         LocalDate nextRelease = LocalDate.of(2020,Month.DECEMBER,18);
         Period toNextRelease = Period.between(today,nextRelease);
         System.out.println( " to next release "+toNextRelease.getDays());
+    }
+
+    /**
+     * 示例16 带时区偏移量的日期与时间
+     * */
+    @Test
+    public void test16(){
+        LocalDateTime dateTime = LocalDateTime.of(2018,Month.JANUARY,13,12,10);
+        ZoneOffset zoneOffset = ZoneOffset.of("+05:30");
+        OffsetDateTime offsetDateTime = OffsetDateTime.of(dateTime,zoneOffset);
+        System.out.println("Date and Time with timezone offset in Java : " + offsetDateTime);
+    }
+
+
+    /**
+     * 示例17 在Java 8中如何获取当前时间戳
+     * */
+    @Test
+    public void test17(){
+        Instant timestamp = Instant.now();
+        System.out.println("What is value of this instant " + timestamp);
+    }
+
+
+    /**
+     * 示例18 如何在Java 8中使用预定义的格式器来对日期进行解析/格式化
+     * */
+    @Test
+    public void test18(){
+        String dayAfterTomorrow = "20201127";
+        LocalDate localDateTime = LocalDate.parse(dayAfterTomorrow,DateTimeFormatter.BASIC_ISO_DATE);
+        System.out.printf("Date generated from String %s is %s %n", dayAfterTomorrow, localDateTime);
+    }
+
+    /**
+     * 示例19 如何在Java中使用自定义的格式器来解析日期
+     * */
+    @Test
+    public void test19(){
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        System.out.println(simpleDateFormat.format(new Date()));
+
+        String goodFriday = "Apr 18 2014";
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM dd yyyy");
+            LocalDate holiday = LocalDate.parse(goodFriday, formatter);
+            System.out.printf("Successfully parsed String %s, date is %s%n", goodFriday, holiday);
+        } catch (DateTimeParseException ex) {
+            System.out.printf("%s is not parsable!%n", goodFriday);
+            ex.printStackTrace();
+        }
+    }
+
+    /**
+     * 示例20 如何在Java 8中对日期进行格式化，转换成字符串
+     * */
+    @Test
+    public void test20(){
+        LocalDateTime arrivalDate = LocalDateTime.now();
+        try {
+            DateTimeFormatter format = DateTimeFormatter.ofPattern("MMM dd yyyy hh:mm a");
+            String landing = arrivalDate.format(format);
+            System.out.printf("Arriving at : %s %n", landing);
+        } catch (DateTimeException ex) {
+            System.out.printf("%s can't be formatted!%n", arrivalDate);
+            ex.printStackTrace();
+        }
+    }
+
+    @Test
+    public void test21(){
+        DateTimeFormatter dtf = DateTimeFormatter.ISO_DATE_TIME;
+        LocalDateTime ldt = LocalDateTime.now();
+
+        String strDate = ldt.format(dtf);
+        System.out.println(strDate);
+
+        DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("yyyy年MM月dd日 HH:mm:ss");
+        String strDate2 = dtf2.format(ldt);
+        System.out.println(strDate2);
+
+        LocalDateTime newDate = ldt.parse(strDate2, dtf2);
+        System.out.println(newDate);
+
+        //对时区的操作ZonedDate/ZonedTime/ZonedDateTime
+        Set<String> set = ZoneId.getAvailableZoneIds();
+        //set.forEach(System.out::println);
+
+        LocalDateTime ldt3 = LocalDateTime.now(ZoneId.of("Europe/Tallinn"));
+        System.out.println(ldt3);
+
+        LocalDateTime ldt4 = LocalDateTime.now(ZoneId.of("Asia/Shanghai"));
+        ZonedDateTime zdt = ldt4.atZone(ZoneId.of("Asia/Shanghai"));
+        System.out.println(zdt);
     }
 }
