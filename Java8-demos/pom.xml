@@ -11,6 +11,7 @@
         <module>Java8-lambdaexpression</module>
         <module>Java8-stream</module>
         <module>Java8-time</module>
+        <module>java8-collection</module>
     </modules>
     <packaging>pom</packaging>
 
