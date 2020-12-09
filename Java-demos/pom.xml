@@ -11,6 +11,7 @@
         <module>Java-demos-regularexpression</module>
         <module>Java-demos-collection</module>
         <module>Java-demos-mail</module>
+        <module>Java-demos-sms</module>
     </modules>
     <packaging>pom</packaging>
 

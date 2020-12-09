@@ -72,6 +72,10 @@ public class JavaMailTest {
         transport.close();
     }
 
+    
+    /**
+     * 这里不能用多线程,因为junit中如果主线程运行完毕,它会直接结束所有的线程
+     * */
     @Test
     public void test2(){
         executorService.submit(() -> EmailServiceFactory.getEmailService()
@@ -81,12 +85,7 @@ public class JavaMailTest {
 //                .sendEmail(receiveMailAccount, "BSS系统工单", "<body><p>工单工号GGGGDADA</p></body>");    
     }
 
-    @Test
-    public void test3(){
-        //for (int i = 0; i < 5; i++)
-        executorService.execute(new MyThread());
-        executorService.shutdown();
-    }
+
 
     @Test
     public void test4(){
