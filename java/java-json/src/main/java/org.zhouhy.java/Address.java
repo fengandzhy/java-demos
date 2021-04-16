@@ -1,9 +1,13 @@
 package org.zhouhy.java;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Address {
-    
+
+    @JsonProperty("prov")
     private String province;
-    
+
+    @JsonProperty("cty")
     private String city;
 
     public String getProvince() {
