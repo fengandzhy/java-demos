@@ -8,7 +8,8 @@
     <artifactId>java</artifactId>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>java-json</module>        
+        <module>java-json</module>
+        <module>java-serializable</module>
     </modules>
     <packaging>pom</packaging>
 
