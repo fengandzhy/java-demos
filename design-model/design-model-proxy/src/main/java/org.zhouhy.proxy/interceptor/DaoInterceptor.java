@@ -21,6 +21,7 @@ public class DaoInterceptor implements MethodInterceptor {
         Enhancer enhancer = new Enhancer();
         enhancer.setSuperclass(targeet.getClass());
         enhancer.setCallback(this);
+        
         return enhancer.create();
     }
     
