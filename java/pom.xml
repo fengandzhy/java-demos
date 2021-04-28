@@ -10,6 +10,7 @@
     <modules>
         <module>java-json</module>
         <module>java-serializable</module>
+        <module>java-stream</module>
     </modules>
     <packaging>pom</packaging>
 

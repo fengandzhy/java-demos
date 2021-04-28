@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="java-json" />
         <module name="java-serializable" />
+        <module name="java-stream" />
       </profile>
     </annotationProcessing>
   </component>
