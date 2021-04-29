@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="java-json" />
+        <module name="java-mock" />
         <module name="java-serializable" />
         <module name="java-stream" />
       </profile>

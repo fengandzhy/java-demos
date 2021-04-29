@@ -11,6 +11,7 @@
         <module>java-json</module>
         <module>java-serializable</module>
         <module>java-stream</module>
+        <module>java-mock</module>
     </modules>
     <packaging>pom</packaging>
 
