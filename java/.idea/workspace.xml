@@ -18,7 +18,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/java-mock/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="180">
@@ -48,11 +48,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StreamApp.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="StreamApp.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/java-stream/src/main/java/org/zhouhy/java/StreamApp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+            <state relative-caret-position="54">
+              <caret line="3" column="3" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -172,8 +172,8 @@
         <option value="$PROJECT_DIR$/java-mock/src/main/java/org/zhouhy/java/service/DummyService.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/java-mock/src/test/java/org/zhouhy/java/MockTest.java" />
-        <option value="$PROJECT_DIR$/java-stream/src/main/java/org/zhouhy/java/StreamApp.java" />
         <option value="$PROJECT_DIR$/java-mock/pom.xml" />
+        <option value="$PROJECT_DIR$/java-stream/src/main/java/org/zhouhy/java/StreamApp.java" />
       </list>
     </option>
   </component>
@@ -211,67 +211,6 @@
           <expand>
             <path>
               <item name="java" type="b2602c69:ProjectViewProjectNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="java" type="b2602c69:ProjectViewProjectNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="java-mock" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="java" type="b2602c69:ProjectViewProjectNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="java-mock" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="java" type="b2602c69:ProjectViewProjectNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="java-stream" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="java" type="b2602c69:ProjectViewProjectNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="java-stream" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="java" type="b2602c69:ProjectViewProjectNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="java-stream" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="java" type="b2602c69:ProjectViewProjectNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="java-stream" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="java" type="b2602c69:ProjectViewProjectNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="java-stream" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="java" type="b2602c69:ProjectViewProjectNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="java-stream" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="java" type="b2602c69:ProjectViewProjectNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="java-stream" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -441,7 +380,7 @@
       <workItem from="1619257272572" duration="1252000" />
       <workItem from="1619329045441" duration="14000" />
       <workItem from="1619973009067" duration="1616000" />
-      <workItem from="1619976479779" duration="3435000" />
+      <workItem from="1619976479779" duration="4064000" />
     </task>
     <servers />
   </component>
@@ -478,7 +417,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13935000" />
+    <option name="totallyTimeSpent" value="14564000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -829,17 +768,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/java-stream/src/main/java/org/zhouhy/java/StreamApp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/java-mock/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="16" column="27" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/java-stream/src/main/java/org/zhouhy/java/StreamApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="3" column="3" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="3" />
         </state>
       </provider>
     </entry>
