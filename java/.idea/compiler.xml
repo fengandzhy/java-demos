@@ -7,10 +7,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="java-stream" />
         <module name="java-json" />
         <module name="java-mock" />
         <module name="java-serializable" />
-        <module name="java-stream" />
       </profile>
     </annotationProcessing>
   </component>
