@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c5b254cc-81c8-4695-8980-be85932a6799" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/../data-structure/structure-dfs/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../data-structure/structure-sparese-array/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../data-structure/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../data-structure/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
@@ -157,7 +157,7 @@
       <workItem from="1622012032697" duration="2918000" />
       <workItem from="1622335848794" duration="2394000" />
       <workItem from="1622338789194" duration="1466000" />
-      <workItem from="1622361215970" duration="1538000" />
+      <workItem from="1622361215970" duration="2187000" />
     </task>
     <servers />
   </component>

@@ -10,6 +10,7 @@
     <modules>
 
         <module>structure-dfs</module>
+        <module>structure-sparese-array</module>
     </modules>
     <packaging>pom</packaging>
     <dependencies>
