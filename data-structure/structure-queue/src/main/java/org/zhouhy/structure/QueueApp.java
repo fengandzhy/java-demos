@@ -2,6 +2,9 @@ package org.zhouhy.structure;
 
 import java.util.Random;
 
+/**
+ * 
+ * */
 public class QueueApp {
     public static void main(String[] args) {
         SimpleQueue simpleQueue = new SimpleQueue(10);
