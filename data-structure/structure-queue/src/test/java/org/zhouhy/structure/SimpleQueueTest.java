@@ -85,4 +85,16 @@ public class SimpleQueueTest {
             assertTrue(ex.getMessage().contains("The queue is empty!"));
         }
     }
+
+    @Test
+    public void test7(){
+        simpleQueue.push(1);
+        simpleQueue.push(2);
+        simpleQueue.push(3);
+        simpleQueue.showQueue();
+        simpleQueue.pop();
+        simpleQueue.pop();
+        simpleQueue.push(4);
+        simpleQueue.showQueue();        
+    }
 }

@@ -45,4 +45,17 @@ public class SimpleQueue {
         amount--;
         return arr[begin];        
     }
+    
+    public void showQueue(){
+        int index = begin+1;
+        int size = this.amount;
+        while(size>0){            
+            if(index == arr.length){
+                index =0;
+            }
+            System.out.println(arr[index]);
+            index ++;
+            size --;
+        }
+    }
 }
