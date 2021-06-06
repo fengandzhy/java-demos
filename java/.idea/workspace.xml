@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c5b254cc-81c8-4695-8980-be85932a6799" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/../data-structure/structure-queue/src/main/java/org/zhouhy/structure/SimpleQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/../data-structure/structure-queue/src/main/java/org/zhouhy/structure/SimpleQueue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../data-structure/structure-queue/src/test/java/org/zhouhy/structure/SimpleQueueTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../data-structure/structure-queue/src/test/java/org/zhouhy/structure/SimpleQueueTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../data-structure/structure-queue/queue.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
