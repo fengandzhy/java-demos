@@ -88,7 +88,7 @@ public class SimpleLinkedList {
     
     //根据index来查到
     public HeroNode get(int index){
-        if(this.size()>index){
+        if(this.size()>index && index >=0){
             int i = -1;
             HeroNode temp = head;
             while(true){
@@ -118,6 +118,23 @@ public class SimpleLinkedList {
             }
         }
         return size;
+    }
+    
+    public void reverse(){
+        int size = this.size();
+        HeroNode[] tempNodes = new HeroNode[size];
+        for(int i=0;i<size;i++){
+            tempNodes[i] = this.get(size-1-i);
+        }
+        head.setNext(null);
+        for(int i=0;i<size;i++){
+            tempNodes[i].setNext(null);
+            this.add(tempNodes[i]);
+        }
+    }
+
+    public boolean isEmpty(){
+        return head.getNext() == null;
     }
     
     //根据ID来查找
@@ -151,7 +168,5 @@ public class SimpleLinkedList {
         return  temp;
     }
     
-    public boolean isEmpty(){
-        return head.getNext() == null;
-    }
+    
 }

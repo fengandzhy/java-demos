@@ -68,10 +68,12 @@ public class SimpleLinkedListTest {
         linkedList.addByOrder(node2);
         linkedList.addByOrder(node1);
         linkedList.delById(5);
-        linkedList.list();
+        //linkedList.list();
+        System.out.println(linkedList.size());
         System.out.println("*********************************");
         linkedList.delById(1);
-        linkedList.list();
+        //linkedList.list();
+        System.out.println(linkedList.size());
     }
 
     @Test
@@ -88,5 +90,31 @@ public class SimpleLinkedListTest {
         assertTrue(null == node);
         node = linkedList.get(3);
         System.out.println(node);        
+    }
+
+    @Test
+    public void test6(){
+        HeroNode node1 = new HeroNode(1,"宋江","及时雨");
+        HeroNode node2 = new HeroNode(2,"卢俊义","玉麒麟");
+        HeroNode node3 = new HeroNode(3,"吴用","智多星");
+        HeroNode node4 = new HeroNode(4,"公孙胜","入云龙");
+        HeroNode node5 = new HeroNode(5,"关胜","大刀");
+        HeroNode node6 = new HeroNode(6,"林冲","豹子头");
+        HeroNode node7 = new HeroNode(7,"秦明","霹雳火");
+        HeroNode node8 = new HeroNode(8,"呼延灼","双鞭");
+        linkedList.addByOrder(node4);
+        linkedList.addByOrder(node3);
+        linkedList.addByOrder(node2);
+        linkedList.addByOrder(node1);
+        linkedList.addByOrder(node8);
+        linkedList.addByOrder(node7);
+        linkedList.addByOrder(node6);
+        linkedList.addByOrder(node5);
+        
+        linkedList.list();
+        System.out.println("*************************");
+        linkedList.reverse();
+        linkedList.list();
+        
     }
 }
