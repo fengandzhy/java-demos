@@ -9,6 +9,7 @@ public class SimpleLinkedList {
         this.head = new HeroNode();
     }
     
+    //随意增加
     public void add(HeroNode heroNode){
         HeroNode temp = this.head;
         while(true){            
@@ -21,6 +22,7 @@ public class SimpleLinkedList {
         }
     }
 
+    //有序增加
     public void addByOrder(HeroNode heroNode){
         HeroNode temp = this.head;
         boolean isDuplicate = false;
@@ -41,6 +43,7 @@ public class SimpleLinkedList {
         temp.setNext(heroNode);
     }
     
+    //修改
     public void update(HeroNode node){
         boolean isExists = false;
         HeroNode temp = head;
@@ -62,12 +65,90 @@ public class SimpleLinkedList {
         System.out.println("没有找到对应节点!");
     }
     
+    //遍历
     public void list(){
         HeroNode temp = this.head;
         while(temp.getNext()!=null){
             temp = temp.getNext();
             System.out.println(temp.toString());
         }
+    }
+    
+    //根据ID来删除
+    public void delById(Integer id){
+        HeroNode currentNode = findById(id);
+        if(null!=currentNode){
+            HeroNode previousNode = findPreviousNode(currentNode);
+            previousNode.setNext(currentNode.getNext());            
+        }else{
+            System.out.println("无此节点!");
+        }
+        
+    }
+    
+    //根据index来查到
+    public HeroNode get(int index){
+        if(this.size()>index){
+            int i = -1;
+            HeroNode temp = head;
+            while(true){
+                temp = temp.getNext();
+                i++;
+                if(i == index){
+                   break; 
+                }
+            }
+            return temp;
+        }
+        return null;
+    }
+    
+    //大小
+    public int size(){
+        int size =0;
+        if(this.isEmpty()){
+            return size;
+        }
+        HeroNode temp = head;
+        while(true){
+            temp = temp.getNext();
+            size++;
+            if(temp.getNext()==null){
+                break;
+            }
+        }
+        return size;
+    }
+    
+    //根据ID来查找
+    private HeroNode findById(Integer id){
+        HeroNode temp = head;
+        while(true){
+            temp = temp.getNext();
+            if(temp == null){
+                break;
+            }
+            if(temp.getId().equals(id)){
+                break;
+            }
+        }
+        return temp;        
+    }
+
+    //查找之前的节点
+    private HeroNode findPreviousNode(HeroNode heroNode){
+        HeroNode temp = head;
+        while(true){
+            if(temp.getNext()==null){
+                temp = null;
+                break;
+            }
+            if(temp.getNext().getId()==heroNode.getId()){
+                break;
+            }
+            temp = temp.getNext();
+        }
+        return  temp;
     }
     
     public boolean isEmpty(){
