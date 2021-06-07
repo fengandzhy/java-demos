@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c5b254cc-81c8-4695-8980-be85932a6799" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/../data-structure/structure-linked-list/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data-structure/structure-linked-list/src/main/java/org/zhouhy/structure/linkedlist/LinkedListApp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data-structure/structure-linked-list/src/main/java/org/zhouhy/structure/linkedlist/demo01/SimpleLinkedList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data-structure/structure-linked-list/src/main/java/org/zhouhy/structure/linkedlist/demo01/node/HeroNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data-structure/structure-linked-list/src/test/java/org/zhouhy/structure/linkedlist/demo01/SimpleLinkedListTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../data-structure/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../data-structure/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../data-structure/structure-queue/queue.md" beforeDir="false" afterPath="$PROJECT_DIR$/../data-structure/structure-queue/queue.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../data-structure/structure-queue/src/main/java/org/zhouhy/structure/SimpleQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/../data-structure/structure-queue/src/main/java/org/zhouhy/structure/SimpleQueue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../data-structure/structure-linked-list/src/main/java/org/zhouhy/structure/linkedlist/demo01/SimpleLinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/../data-structure/structure-linked-list/src/main/java/org/zhouhy/structure/linkedlist/demo01/SimpleLinkedList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../data-structure/structure-linked-list/src/test/java/org/zhouhy/structure/linkedlist/demo01/SimpleLinkedListTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../data-structure/structure-linked-list/src/test/java/org/zhouhy/structure/linkedlist/demo01/SimpleLinkedListTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
