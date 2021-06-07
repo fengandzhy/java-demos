@@ -53,7 +53,7 @@ public class SimpleQueue {
             if(index == arr.length){
                 index =0;
             }
-            System.out.println(arr[index]);
+            System.out.printf("arr[%d]=%d\n",index,arr[index]);
             index ++;
             size --;
         }

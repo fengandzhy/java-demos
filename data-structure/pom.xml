@@ -12,6 +12,7 @@
         <module>structure-dfs</module>
         <module>structure-sparese-array</module>
         <module>structure-queue</module>
+        <module>structure-linked-list</module>
     </modules>
     <packaging>pom</packaging>
     <dependencies>
