@@ -1,0 +1,5 @@
+package org.zhouhy.structure.linkedlist.demo02.node;
+
+public class BiDirectionHeroNode {
+    
+}

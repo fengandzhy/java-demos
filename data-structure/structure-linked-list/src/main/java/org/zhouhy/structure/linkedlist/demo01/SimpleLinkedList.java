@@ -166,7 +166,5 @@ public class SimpleLinkedList {
             temp = temp.getNext();
         }
         return  temp;
-    }
-    
-    
+    }    
 }
