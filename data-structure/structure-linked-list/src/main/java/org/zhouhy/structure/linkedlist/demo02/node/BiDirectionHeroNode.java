@@ -12,6 +12,7 @@ public class BiDirectionHeroNode {
         this.name = name;
         this.nickname = nickname;
     }
-    
-    
+
+    public BiDirectionHeroNode() {
+    }
 }
