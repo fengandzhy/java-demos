@@ -15,4 +15,44 @@ public class BiDirectionHeroNode {
 
     public BiDirectionHeroNode() {
     }
+
+    public Integer getId() {
+        return Id;
+    }
+
+    public void setId(Integer id) {
+        Id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public BiDirectionHeroNode getNext() {
+        return next;
+    }
+
+    public void setNext(BiDirectionHeroNode next) {
+        this.next = next;
+    }
+
+    public BiDirectionHeroNode getPrevious() {
+        return previous;
+    }
+
+    public void setPrevious(BiDirectionHeroNode previous) {
+        this.previous = previous;
+    }
 }
