@@ -55,4 +55,13 @@ public class BiDirectionHeroNode {
     public void setPrevious(BiDirectionHeroNode previous) {
         this.previous = previous;
     }
+
+    @Override
+    public String toString() {
+        return "BiDirectionHeroNode{" +
+                "Id=" + Id +
+                ", name='" + name + '\'' +
+                ", nickname='" + nickname + '\'' +
+                '}';
+    }
 }
