@@ -31,11 +31,12 @@ public class BiDirectionLinkedList {
             this.biDirectionHeroNode = node;
             this.biDirectionHeroNode.setNext(this.biDirectionHeroNode);
             this.biDirectionHeroNode.setPrevious(this.biDirectionHeroNode);
+            return;
         }
         
         BiDirectionHeroNode tempNode = biDirectionHeroNode.getNext();
         while(true){
-            if(tempNode == biDirectionHeroNode){
+            if(tempNode.getNext() == biDirectionHeroNode){
                 break;
             }
             tempNode = tempNode.getNext();
