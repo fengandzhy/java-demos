@@ -47,8 +47,21 @@ public class BiDirectionLinkedList {
     }
     
     public BiDirectionHeroNode get(int index){
-        int size = this.size();
-        
+        int size = this.size();       
+        if(size-1>=index){
+            int iterator = 0;
+            BiDirectionHeroNode tempNode = this.biDirectionHeroNode;
+            while(true){
+               if(iterator == index){
+                   break;
+               }
+               tempNode = tempNode.getNext();
+               iterator++;
+            }
+            return tempNode;
+        }else{
+            throw new ArrayIndexOutOfBoundsException("数组越界");
+        }        
     }
     
 }
