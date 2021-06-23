@@ -67,7 +67,31 @@ public class BiDirectionLinkedList {
 
     public void remove(int index){
         int size = this.size();
-        
+        if(size-1>=index){
+            BiDirectionHeroNode tempNode = this.get(index);
+            BiDirectionHeroNode pre = tempNode.getPrevious();
+            BiDirectionHeroNode next = tempNode.getNext();
+            pre.setNext(next);
+            next.setPrevious(pre);
+            if(tempNode.equals(biDirectionHeroNode)){
+                this.biDirectionHeroNode = next;
+            }
+        }else{
+            throw new ArrayIndexOutOfBoundsException("数组越界");
+        }
+    }
+    
+    public void list(){
+        if(!this.isEmpty()){
+            BiDirectionHeroNode tempNode = this.biDirectionHeroNode;
+            while(true){
+                System.out.println(tempNode);
+                if(tempNode.getNext().equals(biDirectionHeroNode)){
+                    break;
+                }
+                tempNode = tempNode.getNext();
+            }
+        }
     }
     
 }
