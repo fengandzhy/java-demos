@@ -62,7 +62,12 @@ public class BiDirectionLinkedList {
             return tempNode;
         }else{
             throw new ArrayIndexOutOfBoundsException("数组越界");
-        }        
+        }       
+    }
+
+    public void remove(int index){
+        int size = this.size();
+        
     }
     
 }
