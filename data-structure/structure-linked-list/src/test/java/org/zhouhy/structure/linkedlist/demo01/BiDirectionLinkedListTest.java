@@ -58,6 +58,53 @@ public class BiDirectionLinkedListTest {
 
         System.out.println(biDirectionLinkedList.get(2));
     }
-    
-    
+
+    @Test
+    public void test3(){        
+        BiDirectionHeroNode node = new BiDirectionHeroNode(2,"卢俊义","玉麒麟");
+        biDirectionLinkedList.add(node);
+        biDirectionLinkedList.list();
+        System.out.println("-----------------------");
+        node = new BiDirectionHeroNode(3,"吴勇","军师");
+        biDirectionLinkedList.add(node);
+        biDirectionLinkedList.list();
+        System.out.println("-----------------------");
+        node = new BiDirectionHeroNode(4,"公孙胜","入云龙");
+        biDirectionLinkedList.add(node);
+        biDirectionLinkedList.list();
+        System.out.println("-----------------------");
+        node = new BiDirectionHeroNode(5,"关胜","大刀");
+        biDirectionLinkedList.add(node);
+        biDirectionLinkedList.list();        
+    }
+
+    @Test
+    public void test4(){
+        BiDirectionHeroNode node = new BiDirectionHeroNode(2,"卢俊义","玉麒麟");
+        biDirectionLinkedList.add(node);        
+        node = new BiDirectionHeroNode(3,"吴勇","军师");
+        biDirectionLinkedList.add(node);
+        node = new BiDirectionHeroNode(4,"公孙胜","入云龙");
+        biDirectionLinkedList.add(node);        
+        node = new BiDirectionHeroNode(5,"关胜","大刀");
+        biDirectionLinkedList.add(node);
+
+        biDirectionLinkedList.list();
+        System.out.println("-----------------------");
+        biDirectionLinkedList.remove(0);
+        biDirectionLinkedList.list();
+        System.out.println("-----------------------");
+
+        node = new BiDirectionHeroNode(6,"林冲","豹子头");
+        biDirectionLinkedList.add(node);
+        biDirectionLinkedList.list();
+        System.out.println("-----------------------");
+
+        biDirectionLinkedList.remove(3);
+        biDirectionLinkedList.list();
+        System.out.println("-----------------------");
+
+        biDirectionLinkedList.remove(1);
+        biDirectionLinkedList.list();
+    }
 }
