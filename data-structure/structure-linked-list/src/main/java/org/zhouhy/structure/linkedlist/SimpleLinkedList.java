@@ -1,6 +1,6 @@
-package org.zhouhy.structure.linkedlist.demo01;
+package org.zhouhy.structure.linkedlist;
 
-import org.zhouhy.structure.linkedlist.demo01.node.HeroNode;
+import org.zhouhy.structure.linkedlist.node.HeroNode;
 
 public class SimpleLinkedList {
     private HeroNode head;

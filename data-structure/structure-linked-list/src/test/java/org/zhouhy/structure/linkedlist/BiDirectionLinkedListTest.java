@@ -1,4 +1,4 @@
-package org.zhouhy.structure.linkedlist.demo01;
+package org.zhouhy.structure.linkedlist;
 
 import org.junit.Before;
 import org.junit.Test;

@@ -1,8 +1,8 @@
-package org.zhouhy.structure.linkedlist.demo01;
+package org.zhouhy.structure.linkedlist;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.zhouhy.structure.linkedlist.demo01.node.HeroNode;
+import org.zhouhy.structure.linkedlist.node.HeroNode;
 
 import static org.junit.Assert.assertTrue;
 
