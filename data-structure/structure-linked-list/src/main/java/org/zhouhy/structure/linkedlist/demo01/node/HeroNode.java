@@ -1,4 +1,4 @@
-package org.zhouhy.structure.linkedlist.node;
+package org.zhouhy.structure.linkedlist.demo01.node;
 
 public class HeroNode {
     private Integer Id;
