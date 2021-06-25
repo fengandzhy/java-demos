@@ -2,10 +2,10 @@ package org.zhouhy.structure.linkedlist.demo03;
 
 import org.zhouhy.structure.linkedlist.demo03.node.HeroNode;
 
-public class DoubleLinedList {
+public class DoubleLinekdList {
     private HeroNode head;
     
-    public DoubleLinedList(){
+    public DoubleLinekdList(){
         this.head = new HeroNode();
     }
     
