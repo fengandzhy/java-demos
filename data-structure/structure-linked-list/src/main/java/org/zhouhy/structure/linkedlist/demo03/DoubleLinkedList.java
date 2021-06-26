@@ -41,6 +41,24 @@ public class DoubleLinkedList {
         return size;
     }
     
+    public HeroNode get(int index){
+        int size = this.size();
+        int i = 0;
+        if(size-1>=index){
+            HeroNode tempNode = head.getNext();
+            while(true){
+                if(i == index){
+                    break;
+                }
+                tempNode = tempNode.getNext();
+                i++;
+            }
+            return tempNode;
+        }else{
+            throw new ArrayIndexOutOfBoundsException("数组越界");
+        }
+    }
+    
     public void list(){
         if(!this.isEmpty()){
             HeroNode tempNode = this.head.getNext();
