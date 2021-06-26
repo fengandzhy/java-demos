@@ -2,10 +2,10 @@ package org.zhouhy.structure.linkedlist.demo03;
 
 import org.zhouhy.structure.linkedlist.demo03.node.HeroNode;
 
-public class DoubleLinekdList {
+public class DoubleLinkedList {
     private HeroNode head;
     
-    public DoubleLinekdList(){
+    public DoubleLinkedList(){
         this.head = new HeroNode();
     }
     
@@ -39,6 +39,19 @@ public class DoubleLinekdList {
             tempNode = tempNode.getNext();
         }
         return size;
+    }
+    
+    public void list(){
+        if(!this.isEmpty()){
+            HeroNode tempNode = this.head.getNext();
+            while(true){
+                System.out.println(tempNode.toString());
+                if(tempNode.getNext()==null){
+                    break;
+                }
+                tempNode = tempNode.getNext();
+            }
+        }
     }
     
 }
