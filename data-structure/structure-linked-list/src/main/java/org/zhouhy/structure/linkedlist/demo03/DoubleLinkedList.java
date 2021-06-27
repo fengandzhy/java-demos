@@ -59,6 +59,21 @@ public class DoubleLinkedList {
         }
     }
     
+    public void remove(int index){
+        int size = this.size();
+        if(size-1>=index){
+            HeroNode node = this.get(index);
+            HeroNode pre = node.getPrevious();
+            HeroNode next = node.getNext();
+            if(next!=null){                
+                next.setPrevious(pre);
+            }
+            pre.setNext(next);
+        }else{
+            throw new ArrayIndexOutOfBoundsException("数组越界"); 
+        }
+    }
+    
     public void list(){
         if(!this.isEmpty()){
             HeroNode tempNode = this.head.getNext();

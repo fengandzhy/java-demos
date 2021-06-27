@@ -61,4 +61,30 @@ public class DoubleLikedListTest {
         HeroNode result = doubleLinkedList.get(1);
         assertEquals("卢俊义", result.getName());
     }
+
+    @Test
+    public void test3(){
+        int size = doubleLinkedList.size();
+        assertEquals(0, size);
+        HeroNode node = new HeroNode(1,"宋江","及时雨");
+        doubleLinkedList.add(node);
+        node = new HeroNode(2,"卢俊义","玉麒麟");
+        doubleLinkedList.add(node);
+        node = new HeroNode(3,"吴用","智多星");
+        doubleLinkedList.add(node);
+        node = new HeroNode(4,"公孙胜","入云龙");
+        doubleLinkedList.add(node);
+
+        try{
+            doubleLinkedList.remove(4);
+            fail("No exception thrown.");
+        }catch(Exception ex){
+            assertTrue(ex instanceof ArrayIndexOutOfBoundsException);
+            assertTrue(ex.getMessage().contains("数组越界"));
+        }
+
+        doubleLinkedList.remove(1);
+        HeroNode result = doubleLinkedList.get(1);
+        assertEquals("吴用", result.getName());
+    }
 }
