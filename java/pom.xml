@@ -13,6 +13,7 @@
         <module>java-stream</module>
         <module>java-mock</module>
         <module>java-collections</module>
+        <module>java-objects</module>
     </modules>
     <packaging>pom</packaging>
 
