@@ -12,6 +12,7 @@
         <module>java-serializable</module>
         <module>java-stream</module>
         <module>java-mock</module>
+        <module>java-collections</module>
     </modules>
     <packaging>pom</packaging>
 
