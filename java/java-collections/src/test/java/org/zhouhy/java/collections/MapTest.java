@@ -40,4 +40,28 @@ public class MapTest {
             System.out.println(courseMap.get(key));
         }
     }
+
+    @Test
+    public void IteratorTest3(){
+        for(Map.Entry<Integer,String> entry:courseMap.entrySet()){
+            System.out.print(entry.getKey()+":");
+            System.out.println(entry.getValue());
+        }        
+    }
+
+    @Test
+    public void IteratorTest4(){
+        courseMap.forEach((key,value)->{
+            System.out.print(key+":");
+            System.out.println(value);
+        });
+    }
+
+    @Test
+    public void IteratorTest5(){
+        courseMap.entrySet().stream().forEach(entry->{
+            System.out.print(entry.getKey()+":");
+            System.out.println(entry.getValue());
+        });
+    }
 }
