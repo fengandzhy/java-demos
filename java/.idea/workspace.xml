@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c5b254cc-81c8-4695-8980-be85932a6799" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/java-objects/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/java-objects/src/test/java/org/zhouhy/java/object/EqualsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../data-structure/structure-linked-list/src/main/java/org/zhouhy/structure/linkedlist/demo04/SingleCycleLinkedList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../data-structure/structure-linked-list/src/main/java/org/zhouhy/structure/linkedlist/demo04/node/Boy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,7 +197,7 @@
       <workItem from="1622338789194" duration="1466000" />
       <workItem from="1622361215970" duration="2187000" />
       <workItem from="1622943411521" duration="1449000" />
-      <workItem from="1624900810534" duration="2298000" />
+      <workItem from="1624900810534" duration="4696000" />
     </task>
     <servers />
   </component>
