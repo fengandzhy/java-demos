@@ -19,7 +19,11 @@ package org.zhouhy.java;
  * oos.writeObject(classroom); 就会报错, 因为Classroom 没有实现序列化, 但是这样写入oos.writeObject(classroom.getId());
  * 就正确了, 因为Integer 是实现Serializable 的
  * 
+ * 7. 根据java虚拟机的内存模型，我们知道其中规定了：共享变量存储在主内存(Main Memory)中，
+ * 每个线程都有一个私有的本地内存（Local Memory），本地内存保存了被该线程使用到的主内存的副本拷贝，
+ * 线程对变量的所有操作都必须在工作内存中进行，而不能直接读写主内存中的变量。
  * 
+ * 8. 一是保证共享变量对所有线程的可见性；所谓可见性，就是指当一个线程修改了这个共享变量的值，可以立即同步到主存，每次使用前从主存刷新。
  * 
  * 
  * */
