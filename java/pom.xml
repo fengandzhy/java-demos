@@ -14,6 +14,7 @@
         <module>java-mock</module>
         <module>java-collections</module>
         <module>java-objects</module>
+        <module>java-optional</module>
     </modules>
     <packaging>pom</packaging>
 

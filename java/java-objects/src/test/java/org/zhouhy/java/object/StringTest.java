@@ -29,5 +29,7 @@ public class StringTest {
         System.out.println(str2==str1); //false
         String str3 = "abc";
         System.out.println(str3 == str1);//false
+        StringBuffer sb = new StringBuffer();
+        StringBuilder sb1 = new StringBuilder();
     }
 }
