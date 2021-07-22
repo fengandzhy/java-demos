@@ -13,4 +13,16 @@ public class OptionalTest {
         Optional<User> emptyOpt = Optional.empty();
         emptyOpt.get();
     }
+
+    @Test(expected = NullPointerException.class)
+    public void whenCreateOfEmptyOptional_thenNullPointerException(){
+        User user = null;
+        Optional<User> opt = Optional.of(user);
+    }
+
+    @Test(expected = Test.None.class)
+    public void whenCreateOfNullableEmptyOptional_thenNoException1(){
+        User user = null;
+        Optional<User> opt = Optional.ofNullable(user);        
+    }
 }
