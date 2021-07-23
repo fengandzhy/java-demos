@@ -25,4 +25,6 @@ public class OptionalTest {
         User user = null;
         Optional<User> opt = Optional.ofNullable(user);        
     }
+    
+    
 }
