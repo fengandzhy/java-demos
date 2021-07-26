@@ -10,6 +10,8 @@ package org.zhouhy.java;
  * 
  * 4. 对于optional 来说, 你传一个null值给of 例如 Optional.of(null) 它会报出异常, 但是你如果传null给ofNullable 他不会报异常
  * 
+ * 5. 对于ifPresent 来说如果返回为true, 就是里面有元素的话, 可以将这个元素直接传入consumer 
+ * 
  * 
  * */
 public class OptionalApp {

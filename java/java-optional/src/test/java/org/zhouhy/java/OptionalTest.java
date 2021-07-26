@@ -43,4 +43,11 @@ public class OptionalTest {
         assertTrue(userOptional.isPresent());
         assertEquals(userOptional.get().getEmail(),user.getEmail());        
     }
+
+    @Test
+    public void whenCheckIfPresent_thenConsume() {
+        User user = new User("john@gmail.com", "1234");
+        Optional<User> userOptional = Optional.ofNullable(user);
+        userOptional.ifPresent(u->System.out.println(u.getEmail()));
+    }
 }
