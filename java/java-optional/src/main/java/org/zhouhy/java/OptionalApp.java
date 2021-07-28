@@ -20,7 +20,9 @@ package org.zhouhy.java;
  * Optional.ofNullable(user).orElse(createNewUser());
  * Optional.ofNullable(user).orElseGet(() -> createNewUser());
  * 
- * 
+ * 8. 使用slf4j日志的方法
+ *  1) private static final Logger logger = LoggerFactory.getLogger(OptionalTest.class);
+ *  2) 使用@Slf4j 注解
  * */
 public class OptionalApp {
     public static void main(String[] args) {
