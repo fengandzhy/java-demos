@@ -1,6 +1,8 @@
 package org.zhouhy.java;
 
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.zhouhy.java.domain.User;
 
 import java.util.NoSuchElementException;
@@ -9,6 +11,9 @@ import java.util.Optional;
 import static org.junit.Assert.*;
 
 public class OptionalTest {
+    
+    private static final Logger logger = LoggerFactory.getLogger(OptionalTest.class);
+    
     
     @Test(expected = NoSuchElementException.class)
     public void whenCreateEmptyOptional_thenNull(){
@@ -61,17 +66,17 @@ public class OptionalTest {
         assertEquals(result.getEmail(),user2.getEmail());
     }
 
-//    @Test
-//    public void givenPresentValue_whenCompare_thenOk() {    
-//        User user = new User("john@gmail.com", "1234");    
-//        logger.info("Using orElse");    
-//        User result = Optional.ofNullable(user).orElse(createNewUser());    
-//        logger.info("Using orElseGet");    
-//        User result2 = Optional.ofNullable(user).orElseGet(() -> createNewUser());
-//    }
-//
-//    private User createNewUser() {
-//        logger.debug("Creating New User");
-//        return new User("extra@gmail.com", "1234");
-//    }
+    @Test
+    public void givenPresentValue_whenCompare_thenOk() {    
+        User user = new User("john@gmail.com", "1234");    
+        logger.info("Using orElse");    
+        User result = Optional.ofNullable(user).orElse(createNewUser());    
+        logger.info("Using orElseGet");    
+        User result2 = Optional.ofNullable(user).orElseGet(() -> createNewUser());
+    }
+
+    private User createNewUser() {
+        logger.info("Creating New User");
+        return new User("extra@gmail.com", "1234");
+    }
 }

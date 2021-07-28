@@ -15,6 +15,11 @@ package org.zhouhy.java;
  * 6. orElse()方法的意思是, 如果有值则返回该值，否则返回传递给它的参数值. userOptional.orElse(user2); 如果userOptional
  * 取不到, 则就返回user2
  * 
+ * 7. orElse 和 orElseGet 的区别在于 当下面的user不为null时 orElse 仍然会去操作createNewUser()
+ * 但是orElseGet 不会操作
+ * Optional.ofNullable(user).orElse(createNewUser());
+ * Optional.ofNullable(user).orElseGet(() -> createNewUser());
+ * 
  * 
  * */
 public class OptionalApp {
