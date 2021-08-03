@@ -14,8 +14,8 @@ import java.util.concurrent.TimeUnit;
  */
 public class VolatileDemo {
 
-    volatile int x = 0;
-    volatile boolean b = false;
+    int x = 0;
+    boolean b = false;
 
     /**
      * 写方法

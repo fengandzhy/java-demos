@@ -15,6 +15,7 @@
         <module>java-collections</module>
         <module>java-objects</module>
         <module>java-optional</module>
+        <module>java-volatile</module>
     </modules>
     <packaging>pom</packaging>
 

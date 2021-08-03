@@ -44,6 +44,6 @@ public class Test {
         thread2.join();
 
         //线程1和线程2结束，main线程执行
-        System.out.println("执行结束");
+        System.out.println("执行结束！！！");
     }
 }
