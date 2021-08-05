@@ -16,6 +16,7 @@
         <module>java-objects</module>
         <module>java-optional</module>
         <module>java-volatile</module>
+        <module>java-innerclass</module>
     </modules>
     <packaging>pom</packaging>
 
