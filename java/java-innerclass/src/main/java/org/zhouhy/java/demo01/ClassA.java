@@ -37,7 +37,7 @@ public class ClassA {
         }
         
         public void print(){
-            System.out.println(name+","+this.name);
+            System.out.println(ClassA.this.name+","+this.name);
         }
     }   
 }
