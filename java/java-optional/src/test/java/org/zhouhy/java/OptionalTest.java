@@ -60,6 +60,18 @@ public class OptionalTest {
         User result = userOptional.orElse(user2);
         assertEquals(result.getEmail(),user2.getEmail());
     }
-    
-    
+
+//    @Test
+//    public void givenPresentValue_whenCompare_thenOk() {    
+//        User user = new User("john@gmail.com", "1234");    
+//        logger.info("Using orElse");    
+//        User result = Optional.ofNullable(user).orElse(createNewUser());    
+//        logger.info("Using orElseGet");    
+//        User result2 = Optional.ofNullable(user).orElseGet(() -> createNewUser());
+//    }
+//
+//    private User createNewUser() {
+//        logger.debug("Creating New User");
+//        return new User("extra@gmail.com", "1234");
+//    }
 }
