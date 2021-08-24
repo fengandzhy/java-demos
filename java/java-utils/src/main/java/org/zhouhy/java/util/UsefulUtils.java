@@ -2,6 +2,7 @@ package org.zhouhy.java.util;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class UsefulUtils {
@@ -14,5 +15,11 @@ public class UsefulUtils {
         System.out.println(str);
     }
     
-    
+    public static boolean equalsIgnoreCase(String strA,String strB){
+        return strA.equalsIgnoreCase(strB);
+    }
+
+    public static boolean isEquals(Object objA,Object objB){
+        return Objects.equals(objA,objB);
+    }
 }
