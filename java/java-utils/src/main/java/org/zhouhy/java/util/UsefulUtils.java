@@ -22,4 +22,9 @@ public class UsefulUtils {
     public static boolean isEquals(Object objA,Object objB){
         return Objects.equals(objA,objB);
     }
+
+    public static <E> List<E> retainList(List<E> listA,List<E> listB){
+        listA.retainAll(listB);
+        return listA;
+    }
 }
