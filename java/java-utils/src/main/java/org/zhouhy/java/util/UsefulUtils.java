@@ -1,5 +1,7 @@
 package org.zhouhy.java.util;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -26,5 +28,9 @@ public class UsefulUtils {
     public static <E> List<E> retainList(List<E> listA,List<E> listB){
         listA.retainAll(listB);
         return listA;
+    }
+
+    public static String abbreviate(String str, int maxWidth){
+        return StringUtils.abbreviate(str,maxWidth);
     }
 }

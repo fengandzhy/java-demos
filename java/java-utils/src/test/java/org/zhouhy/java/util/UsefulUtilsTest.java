@@ -44,4 +44,9 @@ public class UsefulUtilsTest {
         UsefulUtils.retainList(listA,listB);
         System.out.println(listA);
     }
+
+    @Test
+    public void testAbbreviate(){
+        System.out.println(UsefulUtils.abbreviate("abcdefg",6));
+    }
 }
