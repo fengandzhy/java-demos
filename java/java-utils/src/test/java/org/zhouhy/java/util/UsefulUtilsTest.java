@@ -49,4 +49,9 @@ public class UsefulUtilsTest {
     public void testAbbreviate(){
         System.out.println(UsefulUtils.abbreviate("abcdefg",6));
     }
+
+    @Test
+    public void testAbbreviateMiddle(){
+        UsefulUtils.abbreviateMiddle();
+    }
 }

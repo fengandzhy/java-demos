@@ -33,4 +33,22 @@ public class UsefulUtils {
     public static String abbreviate(String str, int maxWidth){
         return StringUtils.abbreviate(str,maxWidth);
     }
+    
+    
+    /**
+     * 
+     * */
+    public static void abbreviateMiddle(){
+        String str2 = StringUtils.abbreviateMiddle("15889009897","****",9);
+        System.out.println(str2); //158****97
+        //字符刚好只有10个
+        String s1 = StringUtils.abbreviateMiddle("134235453as4", "**", 10);
+        System.out.println(s1); //1342354534
+        //截取5个字符
+        String s2 = StringUtils.abbreviateMiddle("12345678910", "***", 5);
+        System.out.println(s2); //12*10
+        //截取长度不能小于2
+        String s3 = StringUtils.abbreviateMiddle("12345678910", "*", 4);
+        System.out.println(s3); //12345678910
+    } 
 }
