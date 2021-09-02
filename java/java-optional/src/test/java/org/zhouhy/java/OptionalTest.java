@@ -74,6 +74,15 @@ public class OptionalTest {
         logger.info("Using orElseGet");    
         User result2 = Optional.ofNullable(user).orElseGet(() -> createNewUser());
     }
+    
+    @Test
+    public void whenMap_thenOk() {
+        User user = new User("anna@gmail.com", "1234");
+        String email = Optional.ofNullable(user)
+                .map(u -> u.getEmail()).orElse("default@gmail.com");
+
+        assertEquals(email, user.getEmail());
+    }
 
     private User createNewUser() {
         logger.info("Creating New User");
