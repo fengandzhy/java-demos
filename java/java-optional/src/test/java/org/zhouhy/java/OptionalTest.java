@@ -3,6 +3,8 @@ package org.zhouhy.java;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.zhouhy.java.domain.Address;
+import org.zhouhy.java.domain.Country;
 import org.zhouhy.java.domain.User;
 
 import java.util.NoSuchElementException;
@@ -82,6 +84,37 @@ public class OptionalTest {
                 .map(u -> u.getEmail()).orElse("default@gmail.com");
 
         assertEquals(email, user.getEmail());
+    }
+
+    @Test
+    public void whenFlatMap_thenOk() {
+        User user = new User("anna@gmail.com", "1234");
+        user.setPosition("Developer");
+        String position = Optional.ofNullable(user)
+                .flatMap(u -> u.getPosition()).orElse("default");
+
+        assertEquals(position, user.getPosition().get());
+    }
+
+    @Test
+    public void whenFilter_thenOk() {
+        User user = new User("anna@gmail.com", "1234");
+        Optional<User> result = Optional.ofNullable(user)
+                .filter(u -> u.getEmail() != null && u.getEmail().contains("@"));
+        assertTrue(result.isPresent());
+    }
+
+    @Test
+    public void whenChaining_thenOk() {
+        User user = new User("anna@gmail.com", "1234");
+
+        String result = Optional.ofNullable(user)
+                .flatMap(User::getAddress)
+                .flatMap(Address::getCountry)
+                .map(Country::getIsocode)
+                .orElse("default");
+
+        assertEquals(result, "default");
     }
 
     private User createNewUser() {

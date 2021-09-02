@@ -23,6 +23,21 @@ package org.zhouhy.java;
  * 8. 使用slf4j日志的方法
  *  1) private static final Logger logger = LoggerFactory.getLogger(OptionalTest.class);
  *  2) 使用@Slf4j 注解
+ *  
+ * 9. 通过把Address和User类做如下改造, 然后就可以通过flatMap取到值 .flatMap(Address::getCountry) 
+ * public Optional<Country> getCountry() {
+ *  return Optional.ofNullable(country);
+ * }
+ * 
+ * 如下链式调用就省的抛出空指针异常了
+ * String result = Optional.ofNullable(user)
+ *                 .flatMap(User::getAddress)
+ *                 .flatMap(Address::getCountry)
+ *                 .map(Country::getIsocode)
+ *                 .orElse("default");
+ * 
+ * 
+ * 
  * */
 public class OptionalApp {
     public static void main(String[] args) {
