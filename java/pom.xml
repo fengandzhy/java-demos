@@ -18,6 +18,7 @@
         <module>java-volatile</module>
         <module>java-innerclass</module>
         <module>java-utils</module>
+        <module>java-mail</module>
     </modules>
     <packaging>pom</packaging>
 

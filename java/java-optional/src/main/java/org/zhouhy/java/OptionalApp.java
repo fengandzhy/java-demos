@@ -41,6 +41,6 @@ package org.zhouhy.java;
  * */
 public class OptionalApp {
     public static void main(String[] args) {
-        
+//        InternetAddress internetAddress = new InternetAddress("22@123.com");
     }
 }
