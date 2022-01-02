@@ -39,6 +39,7 @@ public class OptionalTest {
         Optional<Student> opt1 = Optional.ofNullable(stu);
         Optional<Person> opt2 = Optional.ofNullable(stu);
         Optional<? extends Person> opt3 = this.getSomePerson();
+        Optional<Student> opt4 = this.getSomeStudent();
     }
 
     @Test
@@ -158,5 +159,9 @@ public class OptionalTest {
     
     private Optional<? extends Person> getSomePerson(){
         return Optional.ofNullable(new Person());
+    }
+
+    private Optional<Student> getSomeStudent(){
+        return Optional.ofNullable(new Student());
     }
 }
