@@ -3,9 +3,7 @@ package org.zhouhy.java;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.zhouhy.java.domain.Address;
-import org.zhouhy.java.domain.Country;
-import org.zhouhy.java.domain.User;
+import org.zhouhy.java.domain.*;
 
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -33,6 +31,14 @@ public class OptionalTest {
     public void whenCreateOfNullableEmptyOptional_thenNoException(){
         User user = null;
         Optional<User> opt = Optional.ofNullable(user);        
+    }
+
+    @Test(expected = Test.None.class)
+    public void whenCreateOfNullableSubClassOptional_thenNoException(){
+        Student stu = new Student();
+        Optional<Student> opt1 = Optional.ofNullable(stu);
+        Optional<Person> opt2 = Optional.ofNullable(stu);
+        Optional<? extends Person> opt3 = this.getSomePerson();
     }
 
     @Test
@@ -104,9 +110,9 @@ public class OptionalTest {
     @Test
     public void whenMap_thenOk() {
         User user = new User("anna@gmail.com", "1234");
-        String email = Optional.ofNullable(user)
-                .map(u -> u.getEmail()).orElse("default@gmail.com");
-
+        Optional<String> emailOptional = Optional.ofNullable(user)
+                .map(u -> u.getEmail());
+        String email = emailOptional.orElse("default@gmail.com");
         assertEquals(email, user.getEmail());
     }
 
@@ -114,6 +120,10 @@ public class OptionalTest {
     public void whenFlatMap_thenOk() {
         User user = new User("anna@gmail.com", "1234");
         user.setPosition("Developer");
+        Optional <Optional<String>> opt1 = Optional.ofNullable(user)
+                .map(u -> u.getPosition());
+        Optional<String> opt2 = Optional.ofNullable(user)
+                .flatMap(u->u.getPosition());        
         String position = Optional.ofNullable(user)
                 .flatMap(u -> u.getPosition()).orElse("default");
 
@@ -144,5 +154,9 @@ public class OptionalTest {
     private User createNewUser() {
         logger.info("Creating New User");
         return new User("extra@gmail.com", "1234");
+    }
+    
+    private Optional<? extends Person> getSomePerson(){
+        return Optional.ofNullable(new Person());
     }
 }
