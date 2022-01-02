@@ -30,7 +30,7 @@ public class OptionalTest {
     }
 
     @Test(expected = Test.None.class)
-    public void whenCreateOfNullableEmptyOptional_thenNoException1(){
+    public void whenCreateOfNullableEmptyOptional_thenNoException(){
         User user = null;
         Optional<User> opt = Optional.ofNullable(user);        
     }
@@ -42,8 +42,15 @@ public class OptionalTest {
         assertEquals("John",opt.get());
     }
 
+    @Test(expected = NoSuchElementException.class) 
+    public void whenGetFromOptional_thenNoSuchElementException() {
+        String name =null;
+        Optional<String> opt = Optional.ofNullable(name);
+        opt.get();
+    }
+
     @Test
-    public void whenCheckIfPresent_thenOk() {
+    public void whenCheckIsPresent_thenOk() {
         User user = new User("john@gmail.com", "1234");
         Optional<User> userOptional = Optional.ofNullable(user);
         assertTrue(userOptional.isPresent());
@@ -54,7 +61,13 @@ public class OptionalTest {
     public void whenCheckIfPresent_thenConsume() {
         User user = new User("john@gmail.com", "1234");
         Optional<User> userOptional = Optional.ofNullable(user);
-        userOptional.ifPresent(u->System.out.println(u.getEmail()));
+        userOptional.ifPresent(u->System.out.println("The email is "+u.getEmail()));
+    }
+
+    @Test
+    public void whenCheckIfPresent_thenNotConsume() {        
+        Optional<User> userOptional = Optional.ofNullable(null);
+        userOptional.ifPresent(u->System.out.println("The email is "+u.getEmail()));
     }
 
     @Test
@@ -64,17 +77,28 @@ public class OptionalTest {
         Optional<User> userOptional = Optional.ofNullable(user);
         assertFalse(userOptional.isPresent());
         
-        User result = userOptional.orElse(user2);
-        assertEquals(result.getEmail(),user2.getEmail());
+        User u1 = userOptional.orElse(user2);
+        assertEquals(u1.getEmail(),user2.getEmail());
+
+        User u2 = userOptional.orElseGet(()->createNewUser());
+        assertEquals(u2.getEmail(),"extra@gmail.com");
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void whenEmptyValue_thenThrowException() {
+        User user = null;        
+        Optional<User> userOptional = Optional.ofNullable(user);
+        assertFalse(userOptional.isPresent());
+        userOptional.orElseThrow(()-> new RuntimeException("没有加载到相关数据"));        
     }
 
     @Test
     public void givenPresentValue_whenCompare_thenOk() {    
         User user = new User("john@gmail.com", "1234");    
         logger.info("Using orElse");    
-        User result = Optional.ofNullable(user).orElse(createNewUser());    
+        User u1 = Optional.ofNullable(user).orElse(createNewUser());    
         logger.info("Using orElseGet");    
-        User result2 = Optional.ofNullable(user).orElseGet(() -> createNewUser());
+        User u2 = Optional.ofNullable(user).orElseGet(() -> createNewUser());        
     }
     
     @Test
