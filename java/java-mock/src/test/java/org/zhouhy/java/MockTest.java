@@ -8,13 +8,12 @@ import org.mockito.MockitoAnnotations;
 import org.zhouhy.java.entity.Dummy;
 import org.zhouhy.java.repository.DummyRepository;
 import org.zhouhy.java.service.DummyService;
+import org.zhouhy.java.service.ExampleService;
 
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 
 public class MockTest {
@@ -23,7 +22,7 @@ public class MockTest {
     private DummyRepository dummyRepository;
 
     @InjectMocks
-    private DummyService dummyService;
+    private DummyService dummyService;    
 
     @Before
     public void setUp() throws Exception {
@@ -40,7 +39,23 @@ public class MockTest {
         assertThat(result, is("DM1"));
     }
 
-    
+    @Test
+    public void testExampleService() {
+
+        ExampleService exampleService = mock(ExampleService.class);
+
+        // 设置让 add(1,2) 返回 100
+        when(exampleService.add(1, 2)).thenReturn(100);
+
+        exampleService.add(1, 2);
+
+        // 校验是否调用过 add(1, 2) -> 校验通过
+        verify(exampleService).add(1, 2);
+
+        // 校验是否调用过 add(2, 2) -> 校验不通过
+//        verify(exampleService).add(2, 2);
+
+    }
 
 
 }
