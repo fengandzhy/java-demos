@@ -11,6 +11,8 @@ import org.zhouhy.java.service.DummyService;
 import org.zhouhy.java.service.ExampleService;
 
 
+import java.util.List;
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.*;
@@ -22,7 +24,7 @@ public class MockTest {
     private DummyRepository dummyRepository;
 
     @InjectMocks
-    private DummyService dummyService;    
+    private DummyService dummyService;
 
     @Before
     public void setUp() throws Exception {
@@ -41,21 +43,34 @@ public class MockTest {
 
     @Test
     public void testExampleService() {
-
         ExampleService exampleService = mock(ExampleService.class);
-
         // 设置让 add(1,2) 返回 100
         when(exampleService.add(1, 2)).thenReturn(100);
-
         exampleService.add(1, 2);
-
         // 校验是否调用过 add(1, 2) -> 校验通过
         verify(exampleService).add(1, 2);
-
         // 校验是否调用过 add(2, 2) -> 校验不通过
 //        verify(exampleService).add(2, 2);
-
     }
 
+    @Test
+    public void testMockitoList() {
+        List<String> mockList = mock(List.class);
+        mockList.add("Pankaj");
+        mockList.size();
+        verify(mockList).add("Pankaj");
+        verify(mockList, times(1)).size();
 
+        verify(mockList, times(1)).size(); //same as normal verify method
+        verify(mockList, atLeastOnce()).size(); // must be called at least once
+        verify(mockList, atMost(2)).size(); // must be called at most 2 times
+        verify(mockList, atLeast(1)).size(); // must be called at least once
+        verify(mockList, never()).clear(); // must never be called
+
+        verifyNoMoreInteractions(mockList); // 在这之前，凡是上面用道的mockList的方法都verify了，那么这个pass
+        mockList.isEmpty();
+        verify(mockList).isEmpty();
+        // isEmpty() is not verified, so below will fail
+        verifyNoMoreInteractions(mockList); // 如果上面的这方法mockList.isEmpty()没有被验证过，那么这里就不通过
+    }
 }
