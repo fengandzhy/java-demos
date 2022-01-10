@@ -19,6 +19,7 @@
         <module>java-innerclass</module>
         <module>java-utils</module>
         <module>java-mail</module>
+        <module>java-enmu</module>
     </modules>
     <packaging>pom</packaging>
 
