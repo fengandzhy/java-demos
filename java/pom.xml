@@ -20,6 +20,7 @@
         <module>java-utils</module>
         <module>java-mail</module>
         <module>java-enmu</module>
+        <module>java-reflection</module>
     </modules>
     <packaging>pom</packaging>
 
