@@ -1,6 +1,7 @@
 package org.zhouhy.java;
 
 import org.junit.Test;
+import org.zhouhy.java.domain.Car;
 import org.zhouhy.java.domain.Person;
 import static org.junit.Assert.assertTrue;
 
@@ -23,5 +24,10 @@ public class GetClassTest {
         
         assertTrue(class1 == class2);
         assertTrue(class2 == class1);
-    }    
+    }
+
+    @Test
+    public void getSuperClassTest() throws ClassNotFoundException {
+        Class carClass = Car.class;
+    }
 }

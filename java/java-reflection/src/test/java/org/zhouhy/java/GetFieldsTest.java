@@ -1,11 +1,16 @@
 package org.zhouhy.java;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.zhouhy.java.domain.Person;
 import org.zhouhy.java.domain.Student;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
+@Slf4j
 public class GetFieldsTest {
 
     @Test(expected = Test.None.class /* no exception expected */)
@@ -48,6 +53,38 @@ public class GetFieldsTest {
         idField.set(person, 1312120l);
         System.out.println("id：" + idField.get(person));
     }
-    
-    
+
+    @Test (expected = Test.None.class)
+    public void getFieldsByGetDeclaredFields() throws NoSuchFieldException, IllegalAccessException {
+        Class personClass = Person.class;
+        Class<? extends Person> stuClass = Student.class;
+
+        Field[] personFields = personClass.getDeclaredFields();
+        for (Field field : personFields) {
+            System.out.println(field);
+        }
+        
+        System.out.println("************************************************");
+        
+        Field[] studentFields = stuClass.getDeclaredFields();
+        for (Field field : studentFields) {
+            System.out.println(field);
+        }        
+    }
+
+    @Test (expected = Test.None.class)
+    public void getSuperClassFieldsFromSubClass() throws NoSuchFieldException, IllegalAccessException {
+        List<Field> fieldList = new ArrayList<>() ;
+        Class<?> tempClass = Student.class;
+        while(tempClass != null){
+            Field[] fields = tempClass.getDeclaredFields();
+            fieldList.addAll(Arrays.asList(fields));
+            tempClass = tempClass.getSuperclass();
+            System.out.println(tempClass);
+        }
+
+        for (Field f : fieldList) {
+            System.out.println(f.getName());
+        }        
+    }
 }
