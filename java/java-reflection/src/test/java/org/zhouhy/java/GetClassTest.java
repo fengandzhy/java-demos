@@ -1,8 +1,11 @@
 package org.zhouhy.java;
 
 import org.junit.Test;
+import org.zhouhy.java.domain.AbstractCar;
 import org.zhouhy.java.domain.Car;
+import org.zhouhy.java.domain.ICar;
 import org.zhouhy.java.domain.Person;
+
 import static org.junit.Assert.assertTrue;
 
 public class GetClassTest {
@@ -29,5 +32,31 @@ public class GetClassTest {
     @Test
     public void getSuperClassTest() throws ClassNotFoundException {
         Class carClass = Car.class;
+        Class[] class3 = carClass.getInterfaces();
+        while(carClass != null){
+            System.out.println(carClass);
+            carClass = carClass.getSuperclass();            
+        }
+
+        Class class1 = Class.forName("org.zhouhy.java.domain.ICar");
+        System.out.println(class1);
+
+        Class class2 = ICar.class;
+        System.out.println(class2);
+        
+        System.out.println(class1 == class3[0]);
+    }
+
+    @Test
+    public void getInterfaceClassTest() throws ClassNotFoundException {
+        Class carClass = AbstractCar.class;
+        Class[] class3 = carClass.getInterfaces();        
+
+        Class class1 = Class.forName("org.zhouhy.java.domain.ICar");
+        System.out.println(class1);
+        Class class2 = ICar.class;
+        System.out.println(class2);
+
+        System.out.println(class1 == class3[0]);
     }
 }

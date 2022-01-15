@@ -1,8 +1,7 @@
 package org.zhouhy.java.domain;
 
-public class Car extends AbstractCar{
-    
-    
+public class AbstractCar implements ICar{
+
     @Override
     public void drive() {
         
