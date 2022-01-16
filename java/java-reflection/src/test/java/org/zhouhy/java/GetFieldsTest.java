@@ -87,4 +87,14 @@ public class GetFieldsTest {
             System.out.println(f.getName());
         }        
     }
+
+    @Test (expected = Test.None.class)
+    public void setPrivateFieldValue() throws NoSuchFieldException, IllegalAccessException {
+        Class<Person> personClass = Person.class;
+        Field field = personClass.getDeclaredField("name");
+        field.setAccessible(true);
+        Person p = new Person();
+        field.set(p,"name");
+        System.out.println(p.getName());
+    }
 }
