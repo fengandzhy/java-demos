@@ -84,4 +84,8 @@ public class Person {
         sb.append('}');
         return sb.toString();
     }
+    
+    private void println(){
+        System.out.println("I am a private method");
+    }
 }
