@@ -6,6 +6,7 @@ import org.zhouhy.java.domain.Person;
 import org.zhouhy.java.domain.Student;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -96,5 +97,18 @@ public class GetFieldsTest {
         Person p = new Person();
         field.set(p,"name");
         System.out.println(p.getName());
+    }
+
+    @Test (expected = Test.None.class)
+    public void getAllFieldsInfo() {
+        Class<Person> personClass = Person.class;
+        Field[] personFields = personClass.getDeclaredFields();
+        for (Field field : personFields) {
+            Class fieldType = field.getType();
+            String typeName = fieldType.getSimpleName();
+            
+            System.out.println(Modifier.toString(field.getModifiers())
+                    +" "+typeName+" "+field.getName());
+        }
     }
 }
