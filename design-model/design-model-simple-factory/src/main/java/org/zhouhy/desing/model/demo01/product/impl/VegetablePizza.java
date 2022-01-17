@@ -3,7 +3,7 @@ package org.zhouhy.desing.model.demo01.product.impl;
 import org.zhouhy.desing.model.demo01.product.Pizza;
 
 public class VegetablePizza extends Pizza {
-    
+
     @Override
     public void prepare() {
         System.out.println("准备蔬菜");
