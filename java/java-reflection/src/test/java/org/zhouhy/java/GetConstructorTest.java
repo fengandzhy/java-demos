@@ -30,5 +30,9 @@ public class GetConstructorTest {
         for (Constructor constructor : constructors1) {
             System.out.println(constructor);
         }
+
+        System.out.println("用 getDeclaredConstructors 取特定构造器试试");
+        Constructor constructor3 = personClass.getDeclaredConstructor(String.class);
+        System.out.println(constructor3);
     }
 }
