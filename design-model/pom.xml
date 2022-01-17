@@ -10,6 +10,7 @@
     <modules>
         <module>design-model-proxy</module>
         <module>design-model-singleton</module>
+        <module>design-model-simple-factory</module>
     </modules>
     <packaging>pom</packaging>
     <dependencies>
