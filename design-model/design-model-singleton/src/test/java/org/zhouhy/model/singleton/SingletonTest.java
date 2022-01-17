@@ -2,7 +2,7 @@ package org.zhouhy.model.singleton;
 
 import org.junit.Test;
 import org.zhouhy.model.singleton.md01.LazySafe;
-import org.zhouhy.model.singleton.md02.Hungury;
+import org.zhouhy.model.singleton.md02.Hungary;
 
 public class SingletonTest {
     
@@ -19,7 +19,7 @@ public class SingletonTest {
     public void test2(){
         for (int i = 0; i < 100; i++) {
             new Thread(() -> {
-                System.out.println(Hungury.getInstance().hashCode());
+                System.out.println(Hungary.getInstance().hashCode());
             }).start();
         }
     }
