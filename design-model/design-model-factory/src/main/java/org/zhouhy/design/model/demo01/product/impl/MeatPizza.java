@@ -1,6 +1,6 @@
-package org.zhouhy.desing.model.demo01.product.impl;
+package org.zhouhy.design.model.demo01.product.impl;
 
-import org.zhouhy.desing.model.demo01.product.Pizza;
+import org.zhouhy.design.model.demo01.product.Pizza;
 
 public class MeatPizza extends Pizza {
     private String meat;    

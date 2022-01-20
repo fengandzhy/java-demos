@@ -1,10 +1,9 @@
-package org.zhouhy.desing.model.demo01.product.impl;
+package org.zhouhy.design.model.demo01.product.impl;
 
-import org.zhouhy.desing.model.demo01.product.Pizza;
+import org.zhouhy.design.model.demo01.product.Pizza;
 
 public class VegetablePizza extends Pizza {
-    private String vegetable;
-    
+
     @Override
     public void prepare() {
         System.out.println("准备蔬菜");
@@ -18,13 +17,5 @@ public class VegetablePizza extends Pizza {
     @Override
     public void complete() {
         System.out.println("完成蔬菜pizza");
-    }
-
-    public String getVegetable() {
-        return vegetable;
-    }
-
-    public void setVegetable(String vegetable) {
-        this.vegetable = vegetable;
     }
 }

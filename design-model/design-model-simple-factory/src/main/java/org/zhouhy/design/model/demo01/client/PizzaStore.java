@@ -1,7 +1,7 @@
-package org.zhouhy.desing.model.demo01.client;
+package org.zhouhy.design.model.demo01.client;
 
-import org.zhouhy.desing.model.demo01.factory.PizzaSimpleFactory;
-import org.zhouhy.desing.model.demo01.product.Pizza;
+import org.zhouhy.design.model.demo01.factory.PizzaSimpleFactory;
+import org.zhouhy.design.model.demo01.product.Pizza;
 
 import java.util.Optional;
 

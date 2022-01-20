@@ -1,4 +1,4 @@
-package org.zhouhy.desing.model.demo01.product;
+package org.zhouhy.design.model.demo01.product;
 
 public abstract class Pizza {
 
