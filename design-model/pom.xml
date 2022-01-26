@@ -12,6 +12,7 @@
         <module>design-model-singleton</module>
         <module>design-model-simple-factory</module>
         <module>design-model-factory</module>
+        <module>design-model-abstract-factory</module>
     </modules>
     <packaging>pom</packaging>
     <dependencies>

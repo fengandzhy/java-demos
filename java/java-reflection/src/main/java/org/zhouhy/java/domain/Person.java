@@ -18,6 +18,7 @@ public class Person {
     }
 
     public Person() {
+        System.out.println("We are here!!");
     }
     
     private Person(String name){
