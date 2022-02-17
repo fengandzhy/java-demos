@@ -2,8 +2,10 @@ package org.zhouhy.structure.linkedlist.demo01;
 
 import org.zhouhy.structure.linkedlist.demo01.node.HeroNode;
 
+import java.util.Objects;
+
 public class SimpleLinkedList {
-    private HeroNode head;
+    private final HeroNode head;
     
     public SimpleLinkedList(){
         this.head = new HeroNode();
@@ -33,7 +35,7 @@ public class SimpleLinkedList {
             if(temp.getNext().getId()>heroNode.getId()){
                 break;
             }
-            if(temp.getNext().getId() == heroNode.getId()){
+            if(Objects.equals(temp.getNext().getId(), heroNode.getId())){
                 isDuplicate = true;
                 break;
             }
@@ -110,13 +112,10 @@ public class SimpleLinkedList {
             return size;
         }
         HeroNode temp = head;
-        while(true){
+        do {
             temp = temp.getNext();
             size++;
-            if(temp.getNext()==null){
-                break;
-            }
-        }
+        } while (temp.getNext() != null);
         return size;
     }
     

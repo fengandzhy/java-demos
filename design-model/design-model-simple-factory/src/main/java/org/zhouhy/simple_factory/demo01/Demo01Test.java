@@ -1,6 +1,6 @@
-package org.zhouhy.factory.demo01;
+package org.zhouhy.simple_factory.demo01;
 
-import org.zhouhy.factory.demo01.client.PizzaStore;
+import org.zhouhy.simple_factory.demo01.client.PizzaStore;
 
 
 public class Demo01Test {

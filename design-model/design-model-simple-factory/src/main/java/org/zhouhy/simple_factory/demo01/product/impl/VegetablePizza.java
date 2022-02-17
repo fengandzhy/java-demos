@@ -1,4 +1,4 @@
-package org.zhouhy.factory.demo01.product.impl;
+package org.zhouhy.simple_factory.demo01.product.impl;
 
 import org.zhouhy.factory.demo01.product.Pizza;
 
