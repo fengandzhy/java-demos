@@ -8,6 +8,7 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.Calendar;
 import java.util.Date;
 
 public class DateTest {
@@ -33,6 +34,16 @@ public class DateTest {
         ZonedDateTime zdt = localDate.atStartOfDay(zoneId);
         Date date = Date.from(zdt.toInstant());
         logger.info("LocalDate = " + localDate);
+        logger.info("Date = " + date);
+    }
+
+    @Test
+    public void fromCalendarToDateTest(){
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR,2000);
+        cal.set(Calendar.MONTH,12);
+        cal.set(Calendar.DATE,23);
+        Date date = cal.getTime();
         logger.info("Date = " + date);
     }
 }
