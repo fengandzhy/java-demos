@@ -22,6 +22,7 @@
         <module>java-enmu</module>
         <module>java-reflection</module>
         <module>java-basic</module>
+        <module>java-date</module>
     </modules>
     <packaging>pom</packaging>
 

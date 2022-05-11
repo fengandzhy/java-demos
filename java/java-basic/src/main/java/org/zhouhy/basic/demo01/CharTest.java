@@ -6,6 +6,7 @@ public class CharTest {
         System.out.println(isLetterOrDigit(c));
         System.out.println(toLowerCase('A'));
         System.out.println(toUpperCase('b'));
+        System.out.println(compare('a','b'));
     }
     
     /**
@@ -33,12 +34,6 @@ public class CharTest {
      * 可以直接比大小
      * */
     public static int compare(char c1, char c2){
-        if( c1 > c2){            
-            return 1;
-        }
-        if(c1 < c2){
-            return -1;
-        }
-        return 0;
+        return Character.compare(c1, c2);
     }
 }
