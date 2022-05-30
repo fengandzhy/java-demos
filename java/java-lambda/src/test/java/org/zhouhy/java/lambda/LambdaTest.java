@@ -2,11 +2,16 @@ package org.zhouhy.java.lambda;
 
 import org.junit.Test;
 import org.zhouhy.java.lambda.entity.Address;
+import org.zhouhy.java.lambda.entity.Employee;
+import org.zhouhy.java.lambda.entity.ParticularInstanceRef;
 import org.zhouhy.java.lambda.interfaces.ConsumerInterfaceA;
 import org.zhouhy.java.lambda.interfaces.ConsumerInterfaceB;
 import org.zhouhy.java.lambda.interfaces.Creator;
 
+import java.util.function.BiPredicate;
 import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 public class LambdaTest {    
     
@@ -73,5 +78,49 @@ public class LambdaTest {
         
         Address address = creator.create("LiaoNing", "ShenYang", "YaTa");
         System.out.println(address);
+    }
+
+    @Test
+    public void test5(){
+        Employee emp = new Employee(1001,"Tom",23,5600);
+
+        @SuppressWarnings("Convert2MethodRef") Supplier<String> sup1 = () -> emp.getName();
+        System.out.println(sup1.get());
+
+        System.out.println("*******************");
+        Supplier<String> sup2 = emp::getName;
+        System.out.println(sup2.get());
+    }
+
+    @Test
+    public void test6(){
+        @SuppressWarnings("Convert2MethodRef") BiPredicate<String,String> pre1 = (s1, s2) -> s1.equals(s2);
+        System.out.println(pre1.test("abc","abcd"));
+        System.out.println(pre1.test("abc","abc"));
+
+        System.out.println("*******************");
+        BiPredicate<String,String> pre2 = String :: equals;
+        System.out.println(pre2.test("abc","abd"));
+    }
+
+    @Test
+    public void test7(){
+        Employee employee = new Employee(1001, "Jerry", 23, 6000);
+        
+
+        Function<Employee,String> func1 = e -> e.getName();
+        System.out.println(func1.apply(employee));
+
+        System.out.println("*******************");
+
+        Function<Employee,String> func2 = Employee::getName;
+        System.out.println(func2.apply(employee));
+    }
+
+    @Test
+    public void test8(){
+        ParticularInstanceRef ref = new ParticularInstanceRef();
+        Function<String, Integer> function = ref::refMethod;        
+        System.out.println(function.apply("10086"));
     }
 }
