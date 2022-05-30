@@ -95,5 +95,9 @@ public class Employee {
         temp = Double.doubleToLongBits(salary);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
+    }  
+    
+    public Integer getFromString(String value){
+        return Integer.parseInt(value);
     }    
 }

@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.zhouhy.java.lambda.entity.Address;
 import org.zhouhy.java.lambda.entity.Employee;
 import org.zhouhy.java.lambda.entity.ParticularInstanceRef;
+import org.zhouhy.java.lambda.entity.StaticMethodRef;
 import org.zhouhy.java.lambda.interfaces.ConsumerInterfaceA;
 import org.zhouhy.java.lambda.interfaces.ConsumerInterfaceB;
 import org.zhouhy.java.lambda.interfaces.Creator;
@@ -107,7 +108,6 @@ public class LambdaTest {
     public void test7(){
         Employee employee = new Employee(1001, "Jerry", 23, 6000);
         
-
         Function<Employee,String> func1 = e -> e.getName();
         System.out.println(func1.apply(employee));
 
@@ -115,12 +115,21 @@ public class LambdaTest {
 
         Function<Employee,String> func2 = Employee::getName;
         System.out.println(func2.apply(employee));
+
+        Function<String,Integer> func3 = employee::getFromString;
+        System.out.println(func3.apply("10086"));
     }
 
     @Test
     public void test8(){
         ParticularInstanceRef ref = new ParticularInstanceRef();
         Function<String, Integer> function = ref::refMethod;        
+        System.out.println(function.apply("10086"));
+    }
+
+    @Test
+    public void test9(){
+        Function<String, Integer> function = StaticMethodRef::staticMethod;        
         System.out.println(function.apply("10086"));
     }
 }
