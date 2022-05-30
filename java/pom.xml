@@ -24,6 +24,7 @@
         <module>java-basic</module>
         <module>java-date</module>
         <module>java-io</module>
+        <module>java-lambda</module>
     </modules>
     <packaging>pom</packaging>
 
