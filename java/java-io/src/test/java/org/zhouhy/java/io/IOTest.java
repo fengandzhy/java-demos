@@ -16,4 +16,6 @@ public class IOTest {
         logger.info(ClassLoader.getSystemResource("").getPath() );
         logger.info(FileOutPut.class.getResource("").getPath());
     }
+    
+    
 }
