@@ -30,10 +30,8 @@ public class LambdaTest {
 
         System.out.println("***********************");
 
-        Runnable r2 = () -> {
-            System.out.println("世界那么大，我不想去看了");
-        };
-
+        Runnable r2 = () -> System.out.println("世界那么大，我不想去看了");
+        
         r2.run();
     }
 
@@ -131,5 +129,12 @@ public class LambdaTest {
     public void test9(){
         Function<String, Integer> function = StaticMethodRef::staticMethod;        
         System.out.println(function.apply("10086"));
+    }
+
+    @Test
+    public void test10(){
+        Function<Integer,Employee> func2 = Employee :: new;
+        Employee employee = func2.apply(1002);
+        System.out.println(employee);
     }
 }
