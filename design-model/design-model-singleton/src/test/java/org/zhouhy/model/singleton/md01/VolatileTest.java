@@ -16,7 +16,7 @@ public class VolatileTest {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            demo.write();
+            demo.write();            
         });
         
         Thread t2 = new Thread(()->{
@@ -25,7 +25,7 @@ public class VolatileTest {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            demo.read();
+            demo.read();            
         });
         
         t2.start();
