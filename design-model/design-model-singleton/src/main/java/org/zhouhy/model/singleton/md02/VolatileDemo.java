@@ -1,6 +1,4 @@
-package org.zhouhy.singleton.md02;
-
-import java.util.concurrent.TimeUnit;
+package org.zhouhy.model.singleton.md02;
 
 /**
  * @BelongsProject: SingleTon

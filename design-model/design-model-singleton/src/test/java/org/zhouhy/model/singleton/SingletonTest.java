@@ -1,8 +1,8 @@
-package org.zhouhy.singleton;
+package org.zhouhy.model.singleton;
 
 import org.junit.Test;
-import org.zhouhy.singleton.md01.LazySafe;
-import org.zhouhy.singleton.md02.Hungary;
+import org.zhouhy.model.singleton.md01.LazySafe;
+import org.zhouhy.model.singleton.md02.Hungary;
 
 public class SingletonTest {
     

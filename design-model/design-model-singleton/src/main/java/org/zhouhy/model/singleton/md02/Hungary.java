@@ -1,4 +1,4 @@
-package org.zhouhy.singleton.md02;
+package org.zhouhy.model.singleton.md02;
 
 public class Hungary {
     

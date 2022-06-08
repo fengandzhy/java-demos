@@ -1,15 +1,7 @@
-package org.zhouhy.singleton.md02;
+package org.zhouhy.model.singleton.md02;
 
 import java.util.concurrent.TimeUnit;
 
-/**
- * @BelongsProject: SingleTon
- * @BelongsPackage: com.bruceliu.demo2
- * @Author: bruceliu
- * @QQ:1241488705
- * @CreateTime: 2020-05-14 11:15
- * @Description: TODO
- */
 public class Test {
 
     public static void main(String[] args) throws Exception {
@@ -18,18 +10,10 @@ public class Test {
         final VolatileDemo volatileDemo=new VolatileDemo();
 
         //匿名内部类写法
-        Thread thread1=new Thread(new Runnable() {
-            public void run() {
-                volatileDemo.write();
-            }
-        });
+        Thread thread1=new Thread(volatileDemo::write);
 
 
-        Thread thread2=new Thread(new Runnable() {
-            public void run() {
-                volatileDemo.read();
-            }
-        });
+        Thread thread2=new Thread(volatileDemo::read);
 
         //让线程2先运行
         thread2.start();

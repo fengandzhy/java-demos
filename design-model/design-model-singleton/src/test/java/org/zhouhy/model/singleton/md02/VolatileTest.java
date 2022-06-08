@@ -1,4 +1,4 @@
-package org.zhouhy.singleton.md02;
+package org.zhouhy.model.singleton.md02;
 
 import org.junit.Test;
 import java.util.concurrent.TimeUnit;

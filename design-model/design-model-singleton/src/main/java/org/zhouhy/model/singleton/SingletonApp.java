@@ -1,4 +1,4 @@
-package org.zhouhy.singleton;
+package org.zhouhy.model.singleton;
 
 /**
  * 1. 线程join的意思就是把指定的线程加入到当前线程中，把当前线程的CPU执行时间让给另一个线程，也就是说在VolatileTest中

@@ -1,4 +1,4 @@
-package org.zhouhy.singleton.md01;
+package org.zhouhy.model.singleton.md01;
 
 import org.junit.Test;
 
