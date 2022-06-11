@@ -47,8 +47,15 @@ public class FileTest {
         }
     }
     
+    @Test
     public void testFileInfo(){
         File file = new File("d://io//a.txt");
-        
+        logger.info("文件名："+file.getName());
+        logger.info("绝对路径："+file.getAbsolutePath());
+        logger.info("父目录："+file.getParent());
+        logger.info("文件大小："+file.length());
+        logger.info("文件是否存在："+file.exists());
+        logger.info("是否是个文件："+file.isFile());
+        logger.info("是否是个目录："+file.isDirectory());
     }
 }
