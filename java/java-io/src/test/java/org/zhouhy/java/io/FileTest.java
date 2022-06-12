@@ -58,4 +58,19 @@ public class FileTest {
         logger.info("是否是个文件："+file.isFile());
         logger.info("是否是个目录："+file.isDirectory());
     }
+    
+    @Test
+    public void testFileDelete(){
+        String filePath = "d://io//a.txt";
+        File file = new File(filePath);
+        if(file.exists()){
+            if(file.delete()){
+                logger.info("文件删除成功");                        
+            }else{
+                logger.info("文件删除失败...");
+            }
+        }else {
+            logger.info("文件不存在...");
+        }
+    }
 }
