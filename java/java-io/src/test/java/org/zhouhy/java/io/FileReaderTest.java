@@ -25,4 +25,25 @@ public class FileReaderTest {
             e.printStackTrace();
         }
     }
+
+    /**
+     * 1 fileReader.read(buf) 读取字符放到这个buf中, 返回的是读到的字符长度, 最多一次读取buf长度个字符, 返回-1说明读取完毕.
+     * */
+    @Test
+    public void testFileReader2(){
+        String filePath = "d://io//a.txt";
+        FileReader fileReader = null;
+        char[] buf = new char[8];
+        int dataLength;
+        try {
+            fileReader =  new FileReader(filePath);
+            while((dataLength = fileReader.read(buf))!= -1){
+                System.out.print(new String(buf,0, dataLength));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            IOUtil.close(fileReader);
+        }
+    }
 }

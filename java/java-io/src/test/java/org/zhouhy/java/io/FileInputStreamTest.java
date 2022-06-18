@@ -22,11 +22,7 @@ public class FileInputStreamTest {
         } catch (IOException e) {
             e.printStackTrace();
         }finally{
-            try {
-                fis.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            IOUtil.close(fis);
         }
     }
 
@@ -49,11 +45,7 @@ public class FileInputStreamTest {
         } catch (IOException e) {
             e.printStackTrace();
         }finally{
-            try {
-                fis.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            IOUtil.close(fis);
         }
     }
 }

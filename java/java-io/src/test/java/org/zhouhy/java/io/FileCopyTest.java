@@ -31,12 +31,8 @@ public class FileCopyTest {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            try {
-                fis.close();
-                fos.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            IOUtil.close(fos);
+            IOUtil.close(fis);
         }
     }
 }

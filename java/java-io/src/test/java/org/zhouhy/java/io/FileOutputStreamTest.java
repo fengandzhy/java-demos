@@ -18,11 +18,7 @@ public class FileOutputStreamTest {
         } catch (IOException e) {
             e.printStackTrace();
         }finally{
-            try {
-                fos.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            IOUtil.close(fos);
         }
     }
 
@@ -42,11 +38,7 @@ public class FileOutputStreamTest {
         } catch (IOException e) {
             e.printStackTrace();
         }finally{
-            try {
-                fos.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            IOUtil.close(fos);
         }
     }
 }
