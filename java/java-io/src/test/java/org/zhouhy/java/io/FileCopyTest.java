@@ -2,9 +2,7 @@ package org.zhouhy.java.io;
 
 import org.junit.Test;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 
 public class FileCopyTest {
     
@@ -14,7 +12,7 @@ public class FileCopyTest {
      * 
      * */
     @Test
-    public void testFileCopy(){
+    public void testFileCopy1(){
         String srcFilePath = "d://io//a.png";
         String tarFilePath = "d://io//b.png";
         FileInputStream fis = null;
@@ -33,6 +31,62 @@ public class FileCopyTest {
         } finally {
             IOUtil.close(fos);
             IOUtil.close(fis);
+        }
+    }
+
+    /**
+     * 1 这里表面上跟上面的没啥区别，但是有了BufferedInputStream/BufferedOutputStream 它使得这个流多了很多方法
+     * 
+     * */
+    @Test
+    public void testFileCopy2(){
+        String srcFilePath = "d://io//a.png";
+        String tarFilePath = "d://io//c.png";
+        BufferedInputStream bis = null;
+        BufferedOutputStream bos = null;
+        byte[] bytes = new byte[1024];
+        int readLength = 0;
+        try {
+            bis = new BufferedInputStream(new FileInputStream(srcFilePath));
+            bos = new BufferedOutputStream(new FileOutputStream(tarFilePath));
+            while((readLength = bis.read(bytes))!= -1){
+                bos.write(bytes,0,readLength);
+            }
+            System.out.println("文件拷贝完毕.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            IOUtil.close(bos);
+            IOUtil.close(bis);
+        }
+    }
+
+    /**
+     * 1 br.readLine() 读取一行,
+     * 
+     * */
+    @Test
+    public void testFileCopy3(){
+        String srcFilePath = "d://io//a.txt";
+        String tarFilePath = "d://io//c.txt";
+        BufferedReader br = null;
+        BufferedWriter bw = null;        
+        String line;
+        try {
+            br = new BufferedReader(new FileReader(srcFilePath));
+            bw = new BufferedWriter(new FileWriter(tarFilePath));
+            line = br.readLine();
+            while(line!= null){
+                bw.write(line);
+                bw.newLine();
+                line = br.readLine();
+            }
+            System.out.println("文件拷贝完毕.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            IOUtil.close(br);
+            IOUtil.close(bw);
         }
     }
 }
