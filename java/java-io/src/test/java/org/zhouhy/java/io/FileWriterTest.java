@@ -4,7 +4,8 @@ import org.junit.Test;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PipedReader;
+import java.io.InputStreamReader;
+import java.io.PrintStream;
 
 public class FileWriterTest {
 
@@ -15,7 +16,7 @@ public class FileWriterTest {
      * 
      * */
     @Test
-    public void testFileWriter1(){
+    public void testFileWriter1(){         
         String filePath = "d://io//c.txt";
         FileWriter fileWriter = null;        
         try {
