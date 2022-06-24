@@ -50,14 +50,14 @@ public class User implements Serializable {
                 '}';
     }
 
-    //这样设置时
-//    private void writeObject(ObjectOutputStream oos)throws IOException {
-//        oos.defaultWriteObject();
-//        oos.writeObject(password);
-//    }
-//
-//    private void readObject(ObjectInputStream ois)throws IOException, ClassNotFoundException{
-//        ois.defaultReadObject();
-//        password = (String)ois.readObject();
-//    }
+    //这样设置时就可以将transient的属性写入流中了
+    private void writeObject(ObjectOutputStream oos)throws IOException {
+        oos.defaultWriteObject();
+        oos.writeObject(password);
+    }
+
+    private void readObject(ObjectInputStream ois)throws IOException, ClassNotFoundException{
+        ois.defaultReadObject();
+        password = (String)ois.readObject();
+    }
 }
