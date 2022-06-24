@@ -26,6 +26,7 @@
         <module>java-io</module>
         <module>java-lambda</module>
         <module>java-inheritance</module>
+        <module>java-for</module>
     </modules>
     <packaging>pom</packaging>
 
