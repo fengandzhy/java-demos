@@ -2,8 +2,12 @@ package org.zhouhy.java.io;
 
 import org.junit.Test;
 import org.zhouhy.java.io.entity.Employee;
+import org.zhouhy.java.io.entity.Manager;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class ObjectOutputStreamTest {
     
@@ -40,5 +44,35 @@ public class ObjectOutputStreamTest {
         } finally {
             IOUtil.close(objectInputStream);
         }
+    }
+    
+    @Test
+    public void testReadAndWrite(){
+        Employee employee = new Employee("LiLei", 1000);
+        Manager manager = new Manager("Jim", 20000);
+        manager.setSecretary(employee);
+        
+        List<Employee> employeeList = new ArrayList<>();
+        employeeList.add(employee);
+        employeeList.add(manager);
+
+        ObjectOutputStream objectOutputStream = null;
+        ObjectInputStream objectInputStream = null;
+        try {
+            objectOutputStream = new ObjectOutputStream(new FileOutputStream("d://io//employeeList.dat"));
+            objectOutputStream.writeObject(employeeList);
+            
+            objectInputStream = new ObjectInputStream(new FileInputStream("d://io//employeeList.dat"));
+            List<Employee> employees = (List<Employee>) objectInputStream.readObject();
+            Iterator<Employee> iterator = employees.iterator();
+            while(iterator.hasNext()){
+                System.out.println(iterator.next().toString());
+            }
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }finally {
+            IOUtil.close(objectOutputStream);
+        }
+
     }
 }
