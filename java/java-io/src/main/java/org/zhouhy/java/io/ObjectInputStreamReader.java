@@ -2,7 +2,7 @@ package org.zhouhy.java.io;
 
 import java.io.*;
 
-public class OutputStreamReader <T> {
+public class ObjectInputStreamReader<T> {
 
     public T read( String filePath){
         ObjectInputStream objectInputStream = null;

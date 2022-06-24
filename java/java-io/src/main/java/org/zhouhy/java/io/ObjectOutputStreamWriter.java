@@ -2,7 +2,7 @@ package org.zhouhy.java.io;
 
 import java.io.*;
 
-public class OutputStreamWriter <T>{
+public class ObjectOutputStreamWriter<T>{
     public void write(T t, String filePath){
         ObjectOutputStream objectOutputStream = null;
         try {
@@ -13,5 +13,5 @@ public class OutputStreamWriter <T>{
         }finally {
             IOUtil.close(objectOutputStream);
         }
-    }
+    }    
 }

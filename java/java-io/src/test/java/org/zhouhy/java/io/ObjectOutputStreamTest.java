@@ -1,9 +1,7 @@
 package org.zhouhy.java.io;
 
 import org.junit.Test;
-import org.zhouhy.java.io.entity.Employee;
-import org.zhouhy.java.io.entity.Manager;
-import org.zhouhy.java.io.entity.User;
+import org.zhouhy.java.io.entity.*;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -22,13 +20,13 @@ public class ObjectOutputStreamTest {
     @Test
     public void testWriteObjectToFile(){
         Employee employee = new Employee("LiLei", 1000);
-        OutputStreamWriter<Employee> outputStreamWriter = new OutputStreamWriter<>();
-        outputStreamWriter.write(employee,"d://io//employee.dat");        
+        ObjectOutputStreamWriter<Employee> objectOutputStreamWriter = new ObjectOutputStreamWriter<>();
+        objectOutputStreamWriter.write(employee,"d://io//employee.dat");        
     }
 
     @Test
     public void testReadObjectFromFile(){  
-        OutputStreamReader<Employee> reader = new OutputStreamReader<>();
+        ObjectInputStreamReader<Employee> reader = new ObjectInputStreamReader<>();
         Employee employee = reader.read("d://io//employee.dat");
         System.out.println(employee.toString());        
     }
@@ -86,10 +84,17 @@ public class ObjectOutputStreamTest {
             e.printStackTrace();
         }finally {
             IOUtil.close(objectOutputStream);
+            IOUtil.close(objectInputStream);
         }
     }
-    
-    
-    
+
+
+    @Test
+    public void testReadAndWriteObjectWithAnotherObject(){
+        Classroom classroom = new Classroom(1,"A");
+        Student student = new Student(1,"A","123",classroom);
+        ObjectOutputStreamWriter<Student> writer = new ObjectOutputStreamWriter<>();
+        writer.write(student,"d://io//student.dat");        
+    }
     
 }
