@@ -27,6 +27,7 @@
         <module>java-lambda</module>
         <module>java-inheritance</module>
         <module>java-for</module>
+        <module>java-generic</module>
     </modules>
     <packaging>pom</packaging>
 
