@@ -1,2 +1,4 @@
-package org.zhouhy.java;public class inheritance {
+package org.zhouhy.java;
+
+public class App {
 }
