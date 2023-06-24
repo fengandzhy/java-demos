@@ -1,4 +1,4 @@
-package org.frank.java.jackson.util.util;
+package org.frank.java.jackson.utils;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -90,6 +90,7 @@ public class JsonUtil {
         }
     }
     
+    @NotNull
     private static ObjectMapper getObjectMapper(){
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.configure(Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
