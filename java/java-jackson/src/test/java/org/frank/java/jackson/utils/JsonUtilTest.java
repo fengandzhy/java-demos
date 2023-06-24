@@ -14,6 +14,11 @@ public class JsonUtilTest {
 
         User u2 = new User(2,"b",18);
         App app = new App();
-        
+        app.setId(1);
+        app.setName("app1");
+        app.getUsers().add(u1);
+        app.getUsers().add(u2);
+
+        System.out.println(JsonUtil.toJsonString(app));        
     }
 }
