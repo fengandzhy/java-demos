@@ -3,7 +3,7 @@ package org.frank.java.jackson.beans;
 import java.util.ArrayList;
 import java.util.List;
 
-public class System {
+public class App {
     private Integer id;
     private String name;
     private List<User> users = new ArrayList<>();
