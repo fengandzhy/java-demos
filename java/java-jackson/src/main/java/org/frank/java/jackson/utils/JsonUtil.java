@@ -17,6 +17,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.TimeZone;
 
 
 public class JsonUtil {
@@ -96,6 +98,8 @@ public class JsonUtil {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.configure(Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
         objectMapper.configure(Feature.ALLOW_SINGLE_QUOTES, true);
+        objectMapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
+        objectMapper.setTimeZone(TimeZone.getDefault());
         return objectMapper;
     }
     

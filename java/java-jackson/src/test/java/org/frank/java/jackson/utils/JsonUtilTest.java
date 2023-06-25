@@ -62,6 +62,12 @@ public class JsonUtilTest {
         Employee e1 = new Employee("abc", "a");
         System.out.println(JsonUtil.toJsonString(e1));
     }
+
+    @Test
+    public void testToJsonString6() {
+        Manager manager = new Manager("a", new Date());
+        System.out.println(JsonUtil.toJsonString(manager));
+    }
     
     @Test
     public void testParseObjectWithClass1() {
@@ -154,6 +160,16 @@ public class JsonUtilTest {
         String jsonStr6 = "{\"name\":\"张三\",\"addresses\":[{\"prov\":\"江苏\",\"cty\":\"南京\"},{\"prov\":\"安徽\",\"cty\":\"合肥\"}]}";
         Student student = JsonUtil.parseObject(jsonStr6, Student.class);
         System.out.println(student);
+    }
+
+    @Test
+    public void testParseObjectWithClass7() {
+        new Manager("a", new Date());
+        String jsonStr7 = JsonUtil.toJsonString(new Manager("a", new Date()));
+        System.out.println(jsonStr7);
+        
+        Manager manager = JsonUtil.parseObject(jsonStr7, Manager.class);
+        System.out.println(manager);
     }
 
     @Test
