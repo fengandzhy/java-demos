@@ -2,38 +2,71 @@ package org.frank.java.jackson.utils;
 
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import org.frank.java.jackson.beans.App;
-import org.frank.java.jackson.beans.StatusBean;
-import org.frank.java.jackson.beans.User;
+import org.frank.java.jackson.beans.*;
 import org.junit.Test;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class JsonUtilTest {
     
     @Test
-    public void testToJsonString(){
-        User u1 = new User(1,"a",18);
+    public void testToJsonString1() {
+        User u1 = new User(1, "a", 18);
         System.out.println(JsonUtil.toJsonString(u1));
+    }
 
-        User u2 = new User(2,"b",18);
+    @Test
+    public void testToJsonString2() {
+        User u1 = new User(1, "a", 18);
+        User u2 = new User(2, "b", 18);
         App app = new App();
         app.setId(1);
         app.setName("app1");
         app.getUsers().add(u1);
         app.getUsers().add(u2);
-
         System.out.println(JsonUtil.toJsonString(app));
+    }
 
-        Map map=new HashMap();
+    @Test
+    public void testToJsonString3(){    
+        Map<String,Integer> map=new HashMap<>();
         map.put("A",1);
         map.put("B",2);
         map.put("C",3);
         map.put("D",4);
 
         System.out.println(JsonUtil.toJsonString(map));
+    }
+
+    @Test
+    public void testToJsonString4() {
+        Student student = new Student();
+        student.setTrueName("张三");
+        Address address1 = new Address();
+        address1.setCity("南京");
+        address1.setProvince("江苏");
+
+        Address address2 = new Address();
+        address2.setCity("合肥");
+        address2.setProvince("安徽");
+        List<Address> list = new ArrayList<>();
+        list.add(address1);
+        list.add(address2);
+        student.setAddresses(list);
+
+        System.out.println(JsonUtil.toJsonString(student));
+    }
+
+    @Test
+    public void testToJsonString5() {
+        Employee e1 = new Employee("abc", "a");
+        System.out.println(JsonUtil.toJsonString(e1));
+    }
+
+    @Test
+    public void testToJsonString6() {
+        Manager manager = new Manager("a", new Date());
+        System.out.println(JsonUtil.toJsonString(manager));
     }
     
     @Test
@@ -51,6 +84,7 @@ public class JsonUtilTest {
     }
 
     @Test
+    @SuppressWarnings("unchecked")
     public void testParseObjectWithClass3() {
         String jsonStr3 = "{\n" +
                 "\t\"msg\": \"success\",\n" +
@@ -73,11 +107,11 @@ public class JsonUtilTest {
                 "\t],\n" +
                 "\t\"status\": 200\n" +
                 "}\n";
-        Map<String, Object> map = JsonUtil.parseObject(jsonStr3, Map.class);
-        System.out.println(map);
-        String msg = String.valueOf(map.get("msg"));
+        Map<String,Object> map = JsonUtil.parseObject(jsonStr3, Map.class);
+        System.out.println(map);        
+        String msg = String.valueOf(Objects.requireNonNull(map).get("msg"));
         System.out.println(msg);
-        List dataList = (List) map.get("data");
+        List<User> dataList = (List<User>) map.get("data");
         System.out.println(dataList.toString());
     }
 
@@ -109,6 +143,36 @@ public class JsonUtilTest {
     }
 
     @Test
+    @SuppressWarnings("unchecked")
+    public void testParseObjectWithClass5() {
+        String jsonStr5 = "[{\"prov\":\"江苏\",\"cty\":\"南京\"},{\"prov\":\"安徽\",\"cty\":\"合肥\"}]";
+        List<Address> addresses = JsonUtil.parseObject(jsonStr5, List.class);
+        System.out.println(addresses);
+    }
+
+    /**
+     * @JsonProperty 序列化反序列化都管用 转成json string 的时候, trueName 变成 name
+     * 由json string 转成bean 的时候, name 会直接赋值到 trueName 上
+     * 
+     * */
+    @Test    
+    public void testParseObjectWithClass6() {
+        String jsonStr6 = "{\"name\":\"张三\",\"addresses\":[{\"prov\":\"江苏\",\"cty\":\"南京\"},{\"prov\":\"安徽\",\"cty\":\"合肥\"}]}";
+        Student student = JsonUtil.parseObject(jsonStr6, Student.class);
+        System.out.println(student);
+    }
+
+    @Test
+    public void testParseObjectWithClass7() {
+        new Manager("a", new Date());
+        String jsonStr7 = JsonUtil.toJsonString(new Manager("a", new Date()));
+        System.out.println(jsonStr7);
+        
+        Manager manager = JsonUtil.parseObject(jsonStr7, Manager.class);
+        System.out.println(manager);
+    }
+
+    @Test
     public void testParseObjectWithTypeReference1() {
         String jsonStr1 = "{\"id\":1,\"name\":\"a\",\"age\":18}";
         User user = JsonUtil.parseObject(jsonStr1, new TypeReference<User>() {
@@ -125,6 +189,7 @@ public class JsonUtilTest {
     }
 
     @Test
+    @SuppressWarnings("unchecked")
     public void testParseObjectWithTypeReference3() {
         String jsonStr3 = "{\n" +
                 "\t\"msg\": \"success\",\n" +
@@ -147,11 +212,11 @@ public class JsonUtilTest {
                 "\t],\n" +
                 "\t\"status\": 200\n" +
                 "}\n" ;
-        Map<String, Object> map = JsonUtil.parseObject(jsonStr3, new TypeReference<Map>(){});
+        Map<String, Object> map = JsonUtil.parseObject(jsonStr3, new TypeReference<Map<String, Object>>(){});
         System.out.println(map);
-        String  msg = String.valueOf(map.get("msg"));
+        String  msg = String.valueOf(Objects.requireNonNull(map).get("msg"));
         System.out.println(msg);
-        List dataList = (List) map.get("data");
+        List<User> dataList = (List<User>) map.get("data");
         System.out.println(dataList.toString());        
     }
 
@@ -180,5 +245,24 @@ public class JsonUtilTest {
                 "}\n";
         StatusBean bean = JsonUtil.parseObject(jsonStr4, new TypeReference<StatusBean>(){});
         System.out.println(bean);
+    }
+
+    /**
+     *  相比于上面的List<Address> addresses = JsonUtil.parseObject(jsonStr5, List.class); 
+     *  这里写成 List<Address> addresses = JsonUtil.parseObject(jsonStr5, new TypeReference<List<Address>>(){}); 只是起到了避免警告的作用
+     * 
+     * */
+    @Test    
+    public void testParseObjectWithTypeReference5() {
+        String jsonStr5 = "[{\"prov\":\"江苏\",\"cty\":\"南京\"},{\"prov\":\"安徽\",\"cty\":\"合肥\"}]";
+        List<Address> addresses = JsonUtil.parseObject(jsonStr5, new TypeReference<List<Address>>(){});
+        System.out.println(addresses);
+    }
+
+    @Test
+    public void testParseSnakeObject1() {
+        String jsonStr1 = "{\"first_name\":\"abc\",\"last_name\":\"a\"}";
+        Employee employee = JsonUtil.parseSnakeObject(jsonStr1, Employee.class);
+        System.out.println(employee);
     }
 }
