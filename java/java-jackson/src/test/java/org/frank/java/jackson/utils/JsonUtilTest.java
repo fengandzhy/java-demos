@@ -56,6 +56,12 @@ public class JsonUtilTest {
 
         System.out.println(JsonUtil.toJsonString(student));
     }
+
+    @Test
+    public void testToJsonString5() {
+        Employee e1 = new Employee("abc", "a");
+        System.out.println(JsonUtil.toJsonString(e1));
+    }
     
     @Test
     public void testParseObjectWithClass1() {
@@ -131,10 +137,23 @@ public class JsonUtilTest {
     }
 
     @Test
+    @SuppressWarnings("unchecked")
     public void testParseObjectWithClass5() {
         String jsonStr5 = "[{\"prov\":\"江苏\",\"cty\":\"南京\"},{\"prov\":\"安徽\",\"cty\":\"合肥\"}]";
-        @SuppressWarnings("unchecked") List<Address> addresses = JsonUtil.parseObject(jsonStr5, List.class);
+        List<Address> addresses = JsonUtil.parseObject(jsonStr5, List.class);
         System.out.println(addresses);
+    }
+
+    /**
+     * @JsonProperty 序列化反序列化都管用 转成json string 的时候, trueName 变成 name
+     * 由json string 转成bean 的时候, name 会直接赋值到 trueName 上
+     * 
+     * */
+    @Test    
+    public void testParseObjectWithClass6() {
+        String jsonStr6 = "{\"name\":\"张三\",\"addresses\":[{\"prov\":\"江苏\",\"cty\":\"南京\"},{\"prov\":\"安徽\",\"cty\":\"合肥\"}]}";
+        Student student = JsonUtil.parseObject(jsonStr6, Student.class);
+        System.out.println(student);
     }
 
     @Test
@@ -210,5 +229,24 @@ public class JsonUtilTest {
                 "}\n";
         StatusBean bean = JsonUtil.parseObject(jsonStr4, new TypeReference<StatusBean>(){});
         System.out.println(bean);
+    }
+
+    /**
+     *  相比于上面的List<Address> addresses = JsonUtil.parseObject(jsonStr5, List.class); 
+     *  这里写成 List<Address> addresses = JsonUtil.parseObject(jsonStr5, new TypeReference<List<Address>>(){}); 只是起到了避免警告的作用
+     * 
+     * */
+    @Test    
+    public void testParseObjectWithTypeReference5() {
+        String jsonStr5 = "[{\"prov\":\"江苏\",\"cty\":\"南京\"},{\"prov\":\"安徽\",\"cty\":\"合肥\"}]";
+        List<Address> addresses = JsonUtil.parseObject(jsonStr5, new TypeReference<List<Address>>(){});
+        System.out.println(addresses);
+    }
+
+    @Test
+    public void testParseSnakeObject1() {
+        String jsonStr1 = "{\"first_name\":\"abc\",\"last_name\":\"a\"}";
+        Employee employee = JsonUtil.parseSnakeObject(jsonStr1, Employee.class);
+        System.out.println(employee);
     }
 }

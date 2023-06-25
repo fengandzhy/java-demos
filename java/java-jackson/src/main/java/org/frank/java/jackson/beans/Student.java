@@ -28,4 +28,12 @@ public class Student {
     public void setAddresses(List<Address> addresses) {
         this.addresses = addresses;
     }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "trueName='" + trueName + '\'' +
+                ", addresses=" + addresses +
+                '}';
+    }
 }

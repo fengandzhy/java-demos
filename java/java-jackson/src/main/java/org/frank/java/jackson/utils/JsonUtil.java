@@ -31,7 +31,8 @@ public class JsonUtil {
         }
         ObjectMapper objectMapper = getObjectMapper();
         objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-        objectMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);       
+        objectMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
+        objectMapper.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE); // 加上这个就会按照驼峰命名方式转换
 
         try {
             return objectMapper.writeValueAsString(data);
