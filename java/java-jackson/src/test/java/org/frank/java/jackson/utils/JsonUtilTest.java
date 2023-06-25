@@ -2,11 +2,10 @@ package org.frank.java.jackson.utils;
 
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import org.frank.java.jackson.beans.App;
-import org.frank.java.jackson.beans.StatusBean;
-import org.frank.java.jackson.beans.User;
+import org.frank.java.jackson.beans.*;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,19 +13,25 @@ import java.util.Map;
 public class JsonUtilTest {
     
     @Test
-    public void testToJsonString(){
-        User u1 = new User(1,"a",18);
+    public void testToJsonString1() {
+        User u1 = new User(1, "a", 18);
         System.out.println(JsonUtil.toJsonString(u1));
+    }
 
-        User u2 = new User(2,"b",18);
+    @Test
+    public void testToJsonString2() {
+        User u1 = new User(1, "a", 18);
+        User u2 = new User(2, "b", 18);
         App app = new App();
         app.setId(1);
         app.setName("app1");
         app.getUsers().add(u1);
         app.getUsers().add(u2);
-
         System.out.println(JsonUtil.toJsonString(app));
+    }
 
+    @Test
+    public void testToJsonString3(){    
         Map map=new HashMap();
         map.put("A",1);
         map.put("B",2);
@@ -34,6 +39,25 @@ public class JsonUtilTest {
         map.put("D",4);
 
         System.out.println(JsonUtil.toJsonString(map));
+    }
+
+    @Test
+    public void testToJsonString4() {
+        Student student = new Student();
+        student.setTrueName("张三");
+        Address address1 = new Address();
+        address1.setCity("南京");
+        address1.setProvince("江苏");
+
+        Address address2 = new Address();
+        address2.setCity("合肥");
+        address2.setProvince("安徽");
+        List<Address> list = new ArrayList<>();
+        list.add(address1);
+        list.add(address2);
+        student.setAddresses(list);
+
+        System.out.println(JsonUtil.toJsonString(student));
     }
     
     @Test
