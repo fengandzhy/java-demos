@@ -5,10 +5,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import org.frank.java.jackson.beans.*;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class JsonUtilTest {
     
@@ -32,7 +29,7 @@ public class JsonUtilTest {
 
     @Test
     public void testToJsonString3(){    
-        Map map=new HashMap();
+        Map<String,Integer> map=new HashMap<>();
         map.put("A",1);
         map.put("B",2);
         map.put("C",3);
@@ -75,6 +72,7 @@ public class JsonUtilTest {
     }
 
     @Test
+    @SuppressWarnings("unchecked")
     public void testParseObjectWithClass3() {
         String jsonStr3 = "{\n" +
                 "\t\"msg\": \"success\",\n" +
@@ -97,11 +95,11 @@ public class JsonUtilTest {
                 "\t],\n" +
                 "\t\"status\": 200\n" +
                 "}\n";
-        Map<String, Object> map = JsonUtil.parseObject(jsonStr3, Map.class);
-        System.out.println(map);
-        String msg = String.valueOf(map.get("msg"));
+        Map<String,Object> map = JsonUtil.parseObject(jsonStr3, Map.class);
+        System.out.println(map);        
+        String msg = String.valueOf(Objects.requireNonNull(map).get("msg"));
         System.out.println(msg);
-        List dataList = (List) map.get("data");
+        List<User> dataList = (List<User>) map.get("data");
         System.out.println(dataList.toString());
     }
 
@@ -133,6 +131,13 @@ public class JsonUtilTest {
     }
 
     @Test
+    public void testParseObjectWithClass5() {
+        String jsonStr5 = "[{\"prov\":\"江苏\",\"cty\":\"南京\"},{\"prov\":\"安徽\",\"cty\":\"合肥\"}]";
+        @SuppressWarnings("unchecked") List<Address> addresses = JsonUtil.parseObject(jsonStr5, List.class);
+        System.out.println(addresses);
+    }
+
+    @Test
     public void testParseObjectWithTypeReference1() {
         String jsonStr1 = "{\"id\":1,\"name\":\"a\",\"age\":18}";
         User user = JsonUtil.parseObject(jsonStr1, new TypeReference<User>() {
@@ -149,6 +154,7 @@ public class JsonUtilTest {
     }
 
     @Test
+    @SuppressWarnings("unchecked")
     public void testParseObjectWithTypeReference3() {
         String jsonStr3 = "{\n" +
                 "\t\"msg\": \"success\",\n" +
@@ -171,11 +177,11 @@ public class JsonUtilTest {
                 "\t],\n" +
                 "\t\"status\": 200\n" +
                 "}\n" ;
-        Map<String, Object> map = JsonUtil.parseObject(jsonStr3, new TypeReference<Map>(){});
+        Map<String, Object> map = JsonUtil.parseObject(jsonStr3, new TypeReference<Map<String, Object>>(){});
         System.out.println(map);
-        String  msg = String.valueOf(map.get("msg"));
+        String  msg = String.valueOf(Objects.requireNonNull(map).get("msg"));
         System.out.println(msg);
-        List dataList = (List) map.get("data");
+        List<User> dataList = (List<User>) map.get("data");
         System.out.println(dataList.toString());        
     }
 
