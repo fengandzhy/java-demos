@@ -60,25 +60,11 @@ public class JsonUtilTest {
         App a3 = JsonUtil.parseObject(appJson, new TypeReference<App>(){});
         System.out.println(a3);
     }
-    
-    
 
     @Test
-    public void testToJsonString2() {
-        User u1 = new User(1, "a", 18);
-        User u2 = new User(2, "b", 18);
-        App app = new App();
-        app.setId(1);
-        app.setName("app1");
-        app.getUsers().add(u1);
-        app.getUsers().add(u2);
-        System.out.println(JsonUtil.toJsonString(app));
-    }    
-
-    @Test
-    public void testToJsonString4() {
-        Student student = new Student();
-        student.setTrueName("张三");
+    public void testStudent(){
+        Student student1 = new Student();
+        student1.setTrueName("张三");
         Address address1 = new Address();
         address1.setCity("南京");
         address1.setProvince("江苏");
@@ -89,10 +75,17 @@ public class JsonUtilTest {
         List<Address> list = new ArrayList<>();
         list.add(address1);
         list.add(address2);
-        student.setAddresses(list);
+        student1.setAddresses(list);
+        
+        String studentJson = JsonUtil.toJsonString(student1);
+        System.out.println(studentJson);
 
-        System.out.println(JsonUtil.toJsonString(student));
-    }
+        Student student2 = JsonUtil.parseObject(studentJson, Student.class);
+        System.out.println(student2);
+
+        Student student3 = JsonUtil.parseObject(studentJson, new TypeReference<Student>(){});
+        System.out.println(student3);
+    }    
 
     @Test
     public void testToJsonString5() {
