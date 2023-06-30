@@ -20,11 +20,30 @@ public class JsonUtilTest {
 
         User u3 = JsonUtil.parseObject(userJson, new TypeReference<User>(){});
         System.out.println(u3);
-        
-        System.out.println(u2.equals(u3));
-//        System.out.println(u2.hashCode() == u3.hashCode());
-        
+
+        assert u2 != null;
+        System.out.println(u2.equals(u3));        
     }
+    
+    
+    @Test    
+    public void testMap(){
+        Map<String,Integer> map1=new HashMap<>();
+        map1.put("A",1);
+        map1.put("B",2);
+        map1.put("C",3);
+        map1.put("D",4);
+        String mapJson = JsonUtil.toJsonString(map1);
+        System.out.println(JsonUtil.toJsonString(mapJson));
+
+        @SuppressWarnings("unchecked") Map<String,Integer> map2 = JsonUtil.parseObject(mapJson, Map.class);
+        System.out.println(map2);
+
+        Map<String,Integer> map3 = JsonUtil.parseObject(mapJson, new TypeReference<Map<String,Integer>>(){});
+        System.out.println(map3);
+    }
+    
+    
     
     
 
@@ -49,6 +68,7 @@ public class JsonUtilTest {
         map.put("D",4);
 
         System.out.println(JsonUtil.toJsonString(map));
+        
     }
 
     @Test
