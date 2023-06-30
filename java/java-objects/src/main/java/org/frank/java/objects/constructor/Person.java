@@ -1,4 +1,4 @@
-package org.frank.objects.constructor;
+package org.frank.java.objects.constructor;
 
 public class Person {
     private int Id;

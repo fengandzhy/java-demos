@@ -1,4 +1,4 @@
-package org.frank.objects.objects;
+package org.frank.java.objects;
 
 import org.junit.Test;
 
