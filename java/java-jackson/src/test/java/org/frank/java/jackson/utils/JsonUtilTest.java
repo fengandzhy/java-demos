@@ -10,10 +10,21 @@ import java.util.*;
 public class JsonUtilTest {
     
     @Test
-    public void testToJsonString1() {
+    public void testUser(){
         User u1 = new User(1, "a", 18);
-        System.out.println(JsonUtil.toJsonString(u1));
+        String userJson = JsonUtil.toJsonString(u1);
+        System.out.println(userJson);
+
+        User u2 = JsonUtil.parseObject(userJson, User.class);
+        System.out.println(u2);
+
+        User u3 = JsonUtil.parseObject(userJson, new TypeReference<User>(){});
+        System.out.println(u3);
+        
+        System.out.println(u2.equals(u3));
     }
+    
+    
 
     @Test
     public void testToJsonString2() {
