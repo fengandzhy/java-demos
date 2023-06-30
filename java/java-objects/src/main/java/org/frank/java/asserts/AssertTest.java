@@ -1,4 +1,4 @@
-package org.zhouhy.java.asserts;
+package org.frank.java.asserts;
 
 public class AssertTest {
     public static void main(String[] args) {

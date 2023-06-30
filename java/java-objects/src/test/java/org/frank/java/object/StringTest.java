@@ -1,4 +1,4 @@
-package org.zhouhy.java.object;
+package org.frank.java.object;
 
 import org.junit.Test;
 

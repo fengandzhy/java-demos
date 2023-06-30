@@ -1,4 +1,4 @@
-package org.zhouhy.java.constructor;
+package org.frank.java.constructor;
 
 public class Person {
     private int Id;
