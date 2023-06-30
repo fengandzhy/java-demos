@@ -42,8 +42,24 @@ public class JsonUtilTest {
         Map<String,Integer> map3 = JsonUtil.parseObject(mapJson, new TypeReference<Map<String,Integer>>(){});
         System.out.println(map3);
     }
-    
-    
+
+    @Test
+    public void testApp(){
+        User u1 = new User(1, "a", 18);
+        User u2 = new User(2, "b", 18);
+        App a1 = new App();
+        a1.setId(1);
+        a1.setName("app1");
+        a1.getUsers().add(u1);
+        a1.getUsers().add(u2);
+        String appJson = JsonUtil.toJsonString(a1);
+        System.out.println(appJson);
+        App a2 = JsonUtil.parseObject(appJson, App.class);
+        System.out.println(a2);
+
+        App a3 = JsonUtil.parseObject(appJson, new TypeReference<App>(){});
+        System.out.println(a3);
+    }
     
     
 
@@ -57,19 +73,7 @@ public class JsonUtilTest {
         app.getUsers().add(u1);
         app.getUsers().add(u2);
         System.out.println(JsonUtil.toJsonString(app));
-    }
-
-    @Test
-    public void testToJsonString3(){    
-        Map<String,Integer> map=new HashMap<>();
-        map.put("A",1);
-        map.put("B",2);
-        map.put("C",3);
-        map.put("D",4);
-
-        System.out.println(JsonUtil.toJsonString(map));
-        
-    }
+    }    
 
     @Test
     public void testToJsonString4() {
