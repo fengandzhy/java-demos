@@ -1,4 +1,4 @@
-package org.frank.objects.asserts;
+package org.frank.java.objects.asserts;
 
 public class AssertTest {
     public static void main(String[] args) {

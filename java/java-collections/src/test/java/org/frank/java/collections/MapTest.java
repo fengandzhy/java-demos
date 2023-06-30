@@ -1,4 +1,4 @@
-package org.zhouhy.java.collections;
+package org.frank.java.collections;
 
 import org.junit.Before;
 import org.junit.Test;
