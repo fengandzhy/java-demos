@@ -87,10 +87,20 @@ public class JsonUtilTest {
         System.out.println(student3);
     }    
 
+    /**
+     * 注意这里的驼峰设置 
+     * objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+     * objectMapper.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
+     * 有了以上两个设置就可以把 firstName 转成 first_name  
+     * */
     @Test
-    public void testToJsonString5() {
+    public void testEmployee() {
         Employee e1 = new Employee("abc", "a");
-        System.out.println(JsonUtil.toJsonString(e1));
+        String employeeJson = JsonUtil.toJsonString(e1);
+        System.out.println(employeeJson);
+        Employee e2 = JsonUtil.parseSnakeObject(employeeJson, Employee.class);
+        System.out.println(e2);
+        
     }
 
     @Test
