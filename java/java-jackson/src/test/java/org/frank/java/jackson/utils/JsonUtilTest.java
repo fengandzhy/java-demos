@@ -10,38 +10,61 @@ import java.util.*;
 public class JsonUtilTest {
     
     @Test
-    public void testToJsonString1() {
+    public void testUser(){
         User u1 = new User(1, "a", 18);
-        System.out.println(JsonUtil.toJsonString(u1));
+        String userJson = JsonUtil.toJsonString(u1);
+        System.out.println(userJson);
+
+        User u2 = JsonUtil.parseObject(userJson, User.class);
+        System.out.println(u2);
+
+        User u3 = JsonUtil.parseObject(userJson, new TypeReference<User>(){});
+        System.out.println(u3);
+
+        assert u2 != null;
+        System.out.println(u2.equals(u3));        
+    }
+    
+    
+    @Test    
+    public void testMap(){
+        Map<String,Integer> map1=new HashMap<>();
+        map1.put("A",1);
+        map1.put("B",2);
+        map1.put("C",3);
+        map1.put("D",4);
+        String mapJson = JsonUtil.toJsonString(map1);
+        System.out.println(JsonUtil.toJsonString(mapJson));
+
+        @SuppressWarnings("unchecked") Map<String,Integer> map2 = JsonUtil.parseObject(mapJson, Map.class);
+        System.out.println(map2);
+
+        Map<String,Integer> map3 = JsonUtil.parseObject(mapJson, new TypeReference<Map<String,Integer>>(){});
+        System.out.println(map3);
     }
 
     @Test
-    public void testToJsonString2() {
+    public void testApp(){
         User u1 = new User(1, "a", 18);
         User u2 = new User(2, "b", 18);
-        App app = new App();
-        app.setId(1);
-        app.setName("app1");
-        app.getUsers().add(u1);
-        app.getUsers().add(u2);
-        System.out.println(JsonUtil.toJsonString(app));
+        App a1 = new App();
+        a1.setId(1);
+        a1.setName("app1");
+        a1.getUsers().add(u1);
+        a1.getUsers().add(u2);
+        String appJson = JsonUtil.toJsonString(a1);
+        System.out.println(appJson);
+        App a2 = JsonUtil.parseObject(appJson, App.class);
+        System.out.println(a2);
+
+        App a3 = JsonUtil.parseObject(appJson, new TypeReference<App>(){});
+        System.out.println(a3);
     }
 
     @Test
-    public void testToJsonString3(){    
-        Map<String,Integer> map=new HashMap<>();
-        map.put("A",1);
-        map.put("B",2);
-        map.put("C",3);
-        map.put("D",4);
-
-        System.out.println(JsonUtil.toJsonString(map));
-    }
-
-    @Test
-    public void testToJsonString4() {
-        Student student = new Student();
-        student.setTrueName("张三");
+    public void testStudent(){
+        Student student1 = new Student();
+        student1.setTrueName("张三");
         Address address1 = new Address();
         address1.setCity("南京");
         address1.setProvince("江苏");
@@ -52,10 +75,17 @@ public class JsonUtilTest {
         List<Address> list = new ArrayList<>();
         list.add(address1);
         list.add(address2);
-        student.setAddresses(list);
+        student1.setAddresses(list);
+        
+        String studentJson = JsonUtil.toJsonString(student1);
+        System.out.println(studentJson);
 
-        System.out.println(JsonUtil.toJsonString(student));
-    }
+        Student student2 = JsonUtil.parseObject(studentJson, Student.class);
+        System.out.println(student2);
+
+        Student student3 = JsonUtil.parseObject(studentJson, new TypeReference<Student>(){});
+        System.out.println(student3);
+    }    
 
     @Test
     public void testToJsonString5() {
