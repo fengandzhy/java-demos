@@ -102,6 +102,24 @@ public class JsonUtilTest {
         System.out.println(e2);        
     }
 
+    /**
+     * 1. 关于时间, 如果不做任何设置 那么它输出的就是一个毫秒数, 从1970年1月1日开始
+     * 
+     * 2. 在Manager上加入以下注解即可, JsonDateFormatSerializer, JsonDateFormatDeserializer 都是自定义的 
+     *    @JsonSerialize(using = JsonDateFormatSerializer.class)
+     *    @JsonDeserialize(using = JsonDateFormatDeserializer.class)
+     * 
+     * 
+     * */
+    @Test
+    public void testManager() {
+        Manager manager1 = new Manager("a", new Date());
+        String managerJson = JsonUtil.toJsonString(manager1);
+        System.out.println(managerJson);
+        Manager manager2 = JsonUtil.parseObject(managerJson, Manager.class);
+        System.out.println(manager2);        
+    }
+
     @Test
     public void testToJsonString6() {
         Manager manager = new Manager("a", new Date());
