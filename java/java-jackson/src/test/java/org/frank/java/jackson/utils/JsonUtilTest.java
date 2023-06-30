@@ -61,6 +61,11 @@ public class JsonUtilTest {
         System.out.println(a3);
     }
 
+    /**
+     * @JsonProperty 序列化反序列化都管用 转成json string 的时候, trueName 变成 name
+     * 由json string 转成bean 的时候, name 会直接赋值到 trueName 上
+     *
+     * */
     @Test
     public void testStudent(){
         Student student1 = new Student();
@@ -109,6 +114,9 @@ public class JsonUtilTest {
      *    @JsonSerialize(using = JsonDateFormatSerializer.class)
      *    @JsonDeserialize(using = JsonDateFormatDeserializer.class)
      * 
+     * 3. 还有一种方法就是在 JsonUtil 中加入 
+     * objectMapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
+     * objectMapper.setTimeZone(TimeZone.getDefault());
      * 
      * */
     @Test
@@ -118,31 +126,11 @@ public class JsonUtilTest {
         System.out.println(managerJson);
         Manager manager2 = JsonUtil.parseObject(managerJson, Manager.class);
         System.out.println(manager2);        
-    }
-
-    @Test
-    public void testToJsonString6() {
-        Manager manager = new Manager("a", new Date());
-        System.out.println(JsonUtil.toJsonString(manager));
-    }
+    }   
     
-    @Test
-    public void testParseObjectWithClass1() {
-        String jsonStr1 = "{\"id\":1,\"name\":\"a\",\"age\":18}";
-        User user = JsonUtil.parseObject(jsonStr1, User.class);
-        System.out.println(user);
-    }
-    
-    @Test
-    public void testParseObjectWithClass2() {
-        String jsonStr2 = "{\"id\":1,\"name\":\"app1\",\"users\":[{\"id\":1,\"name\":\"a\",\"age\":18},{\"id\":2,\"name\":\"b\",\"age\":18}]}";
-        App app = JsonUtil.parseObject(jsonStr2, App.class);
-        System.out.println(app);
-    }
 
-    @Test
-    @SuppressWarnings("unchecked")
-    public void testParseObjectWithClass3() {
+    @Test    
+    public void testParseJsonToMap() {
         String jsonStr3 = "{\n" +
                 "\t\"msg\": \"success\",\n" +
                 "\t\"data\": [\n" +
@@ -164,16 +152,15 @@ public class JsonUtilTest {
                 "\t],\n" +
                 "\t\"status\": 200\n" +
                 "}\n";
-        Map<String,Object> map = JsonUtil.parseObject(jsonStr3, Map.class);
-        System.out.println(map);        
-        String msg = String.valueOf(Objects.requireNonNull(map).get("msg"));
-        System.out.println(msg);
-        List<User> dataList = (List<User>) map.get("data");
-        System.out.println(dataList.toString());
+        @SuppressWarnings("unchecked") Map<String,Object> map1 = JsonUtil.parseObject(jsonStr3, Map.class);
+        System.out.println(map1);        
+
+        Map<String,Object> map2 = JsonUtil.parseObject(jsonStr3, new TypeReference<Map<String,Object>>(){});
+        System.out.println(map2);
     }
 
     @Test
-    public void testParseObjectWithClass4() {
+    public void testParseJsonToBean() {
         String jsonStr4 = "{\n" +
                 "\t\"msg\": \"success\",\n" +
                 "\t\"data\": [\n" +
@@ -199,127 +186,19 @@ public class JsonUtilTest {
         System.out.println(bean);
     }
 
-    @Test
-    @SuppressWarnings("unchecked")
-    public void testParseObjectWithClass5() {
-        String jsonStr5 = "[{\"prov\":\"江苏\",\"cty\":\"南京\"},{\"prov\":\"安徽\",\"cty\":\"合肥\"}]";
-        List<Address> addresses = JsonUtil.parseObject(jsonStr5, List.class);
-        System.out.println(addresses);
-    }
-
+    
     /**
-     * @JsonProperty 序列化反序列化都管用 转成json string 的时候, trueName 变成 name
-     * 由json string 转成bean 的时候, name 会直接赋值到 trueName 上
+     * List<Address> addresses1 = JsonUtil.parseObject(jsonStr5, List.class); 容易得到一个警告
+     * List<Address> addresses2 = JsonUtil.parseObject(jsonStr5, new TypeReference<List<Address>>(){}); 写成这样就不会得到警告了
      * 
      * */
     @Test    
-    public void testParseObjectWithClass6() {
-        String jsonStr6 = "{\"name\":\"张三\",\"addresses\":[{\"prov\":\"江苏\",\"cty\":\"南京\"},{\"prov\":\"安徽\",\"cty\":\"合肥\"}]}";
-        Student student = JsonUtil.parseObject(jsonStr6, Student.class);
-        System.out.println(student);
-    }
-
-    @Test
-    public void testParseObjectWithClass7() {
-        new Manager("a", new Date());
-        String jsonStr7 = JsonUtil.toJsonString(new Manager("a", new Date()));
-        System.out.println(jsonStr7);
-        
-        Manager manager = JsonUtil.parseObject(jsonStr7, Manager.class);
-        System.out.println(manager);
-    }
-
-    @Test
-    public void testParseObjectWithTypeReference1() {
-        String jsonStr1 = "{\"id\":1,\"name\":\"a\",\"age\":18}";
-        User user = JsonUtil.parseObject(jsonStr1, new TypeReference<User>() {
-        });
-        System.out.println(user);
-    }
-
-    @Test
-    public void testParseObjectWithTypeReference2() {
-        String jsonStr2 = "{\"id\":1,\"name\":\"app1\",\"users\":[{\"id\":1,\"name\":\"a\",\"age\":18},{\"id\":2,\"name\":\"b\",\"age\":18}]}";
-        App app = JsonUtil.parseObject(jsonStr2, new TypeReference<App>() {
-        });
-        System.out.println(app);
-    }
-
-    @Test
-    @SuppressWarnings("unchecked")
-    public void testParseObjectWithTypeReference3() {
-        String jsonStr3 = "{\n" +
-                "\t\"msg\": \"success\",\n" +
-                "\t\"data\": [\n" +
-                "\t\t{\n" +
-                "\t\t\t\"id\": 101,\n" +
-                "\t\t\t\"name\": \"JCccc1\",\n" +
-                "\t\t\t\"age\": 18\n" +
-                "\t\t},\n" +
-                "\t\t{\n" +
-                "\t\t\t\"id\": 102,\n" +
-                "\t\t\t\"name\": \"JCccc2\",\n" +
-                "\t\t\t\"age\": 18\n" +
-                "\t\t},\n" +
-                "\t\t{\n" +
-                "\t\t\t\"id\": 103,\n" +
-                "\t\t\t\"name\": \"JCccc3\",\n" +
-                "\t\t\t\"age\": 18\n" +
-                "\t\t}\n" +
-                "\t],\n" +
-                "\t\"status\": 200\n" +
-                "}\n" ;
-        Map<String, Object> map = JsonUtil.parseObject(jsonStr3, new TypeReference<Map<String, Object>>(){});
-        System.out.println(map);
-        String  msg = String.valueOf(Objects.requireNonNull(map).get("msg"));
-        System.out.println(msg);
-        List<User> dataList = (List<User>) map.get("data");
-        System.out.println(dataList.toString());        
-    }
-
-    @Test
-    public void testParseObjectWithTypeReference4() {
-        String jsonStr4 = "{\n" +
-                "\t\"msg\": \"success\",\n" +
-                "\t\"data\": [\n" +
-                "\t\t{\n" +
-                "\t\t\t\"id\": 101,\n" +
-                "\t\t\t\"name\": \"JCccc1\",\n" +
-                "\t\t\t\"age\": 18\n" +
-                "\t\t},\n" +
-                "\t\t{\n" +
-                "\t\t\t\"id\": 102,\n" +
-                "\t\t\t\"name\": \"JCccc2\",\n" +
-                "\t\t\t\"age\": 18\n" +
-                "\t\t},\n" +
-                "\t\t{\n" +
-                "\t\t\t\"id\": 103,\n" +
-                "\t\t\t\"name\": \"JCccc3\",\n" +
-                "\t\t\t\"age\": 18\n" +
-                "\t\t}\n" +
-                "\t],\n" +
-                "\t\"status\": 200\n" +
-                "}\n";
-        StatusBean bean = JsonUtil.parseObject(jsonStr4, new TypeReference<StatusBean>(){});
-        System.out.println(bean);
-    }
-
-    /**
-     *  相比于上面的List<Address> addresses = JsonUtil.parseObject(jsonStr5, List.class); 
-     *  这里写成 List<Address> addresses = JsonUtil.parseObject(jsonStr5, new TypeReference<List<Address>>(){}); 只是起到了避免警告的作用
-     * 
-     * */
-    @Test    
-    public void testParseObjectWithTypeReference5() {
+    public void testParseJsonToList() {
         String jsonStr5 = "[{\"prov\":\"江苏\",\"cty\":\"南京\"},{\"prov\":\"安徽\",\"cty\":\"合肥\"}]";
-        List<Address> addresses = JsonUtil.parseObject(jsonStr5, new TypeReference<List<Address>>(){});
-        System.out.println(addresses);
-    }
+        @SuppressWarnings("unchecked") List<Address> addresses1 = JsonUtil.parseObject(jsonStr5, List.class);
+        System.out.println(addresses1);
 
-    @Test
-    public void testParseSnakeObject1() {
-        String jsonStr1 = "{\"first_name\":\"abc\",\"last_name\":\"a\"}";
-        Employee employee = JsonUtil.parseSnakeObject(jsonStr1, Employee.class);
-        System.out.println(employee);
-    }
+        List<Address> addresses2 = JsonUtil.parseObject(jsonStr5, new TypeReference<List<Address>>(){});
+        System.out.println(addresses2);
+    }    
 }
