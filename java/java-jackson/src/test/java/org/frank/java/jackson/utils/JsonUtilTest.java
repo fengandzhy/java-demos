@@ -99,8 +99,7 @@ public class JsonUtilTest {
         String employeeJson = JsonUtil.toJsonString(e1);
         System.out.println(employeeJson);
         Employee e2 = JsonUtil.parseSnakeObject(employeeJson, Employee.class);
-        System.out.println(e2);
-        
+        System.out.println(e2);        
     }
 
     @Test
