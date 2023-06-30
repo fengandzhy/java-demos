@@ -1,8 +1,9 @@
 package org.frank.java.jackson.beans;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import org.frank.java.jackson.utils.JsonDateFormatFull;
+import org.frank.java.jackson.utils.JsonDateFormatDeserializer;
+import org.frank.java.jackson.utils.JsonDateFormatSerializer;
 
 import java.util.Date;
 
@@ -10,7 +11,8 @@ public class Manager {
     
     private String name;
     
-//    @JsonSerialize(using = JsonDateFormatFull.class)    
+    @JsonSerialize(using = JsonDateFormatSerializer.class)
+    @JsonDeserialize(using = JsonDateFormatDeserializer.class)
 //    @JsonFormat( pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date date;
 

@@ -87,10 +87,37 @@ public class JsonUtilTest {
         System.out.println(student3);
     }    
 
+    /**
+     * 注意这里的驼峰设置 
+     * objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+     * objectMapper.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
+     * 有了以上两个设置就可以把 firstName 转成 first_name  
+     * */
     @Test
-    public void testToJsonString5() {
+    public void testEmployee() {
         Employee e1 = new Employee("abc", "a");
-        System.out.println(JsonUtil.toJsonString(e1));
+        String employeeJson = JsonUtil.toJsonString(e1);
+        System.out.println(employeeJson);
+        Employee e2 = JsonUtil.parseSnakeObject(employeeJson, Employee.class);
+        System.out.println(e2);        
+    }
+
+    /**
+     * 1. 关于时间, 如果不做任何设置 那么它输出的就是一个毫秒数, 从1970年1月1日开始
+     * 
+     * 2. 在Manager上加入以下注解即可, JsonDateFormatSerializer, JsonDateFormatDeserializer 都是自定义的 
+     *    @JsonSerialize(using = JsonDateFormatSerializer.class)
+     *    @JsonDeserialize(using = JsonDateFormatDeserializer.class)
+     * 
+     * 
+     * */
+    @Test
+    public void testManager() {
+        Manager manager1 = new Manager("a", new Date());
+        String managerJson = JsonUtil.toJsonString(manager1);
+        System.out.println(managerJson);
+        Manager manager2 = JsonUtil.parseObject(managerJson, Manager.class);
+        System.out.println(manager2);        
     }
 
     @Test
