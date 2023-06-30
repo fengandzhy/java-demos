@@ -22,6 +22,8 @@ public class JsonUtilTest {
         System.out.println(u3);
         
         System.out.println(u2.equals(u3));
+//        System.out.println(u2.hashCode() == u3.hashCode());
+        
     }
     
     
