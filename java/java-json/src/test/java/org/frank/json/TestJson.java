@@ -1,4 +1,4 @@
-package org.frank.java;
+package org.frank.json;
 
 
 
