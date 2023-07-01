@@ -1,6 +1,5 @@
 package org.frank.java.objects.entities;
 
-import java.util.HashMap;
 
 public class Person {
     private int age;
@@ -43,7 +42,7 @@ public class Person {
             return true;
         if (obj == null)
             return false;
-        if (this.getClass() != obj.getClass())
+        if (obj == null || this.getClass() != obj.getClass())
             return false;
         Person other = (Person)obj;
         if(this.age != other.age)
@@ -53,8 +52,12 @@ public class Person {
         return true;
     }
 
-//    @Override
-//    public int hashCode() {
-//        return super.hashCode();
-//    }
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + age;
+        result = prime * result + ((name == null) ? 0 : name.hashCode());
+        return result;
+    }
 }
