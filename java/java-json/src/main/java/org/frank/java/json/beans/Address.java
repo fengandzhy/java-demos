@@ -1,13 +1,13 @@
-package org.frank.java;
+package org.frank.java.json.beans;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+
 
 public class Address {
 
-    @JsonProperty("prov")
+    
     private String province;
 
-    @JsonProperty("cty")
+    
     private String city;
 
     public String getProvince() {
@@ -24,5 +24,13 @@ public class Address {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "province='" + province + '\'' +
+                ", city='" + city + '\'' +
+                '}';
     }
 }

@@ -1,16 +1,16 @@
-package org.frank.java;
+package org.frank.java.json.beans;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+
 
 import java.util.List;
 
 
 public class Student {
 
-    @JsonProperty("name")
+    
     private String trueName;
 
-    @JsonProperty("addresses")
+    
     private List<Address> addresses;
 
     public String getTrueName() {
@@ -27,5 +27,13 @@ public class Student {
 
     public void setAddresses(List<Address> addresses) {
         this.addresses = addresses;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "trueName='" + trueName + '\'' +
+                ", addresses=" + addresses +
+                '}';
     }
 }
