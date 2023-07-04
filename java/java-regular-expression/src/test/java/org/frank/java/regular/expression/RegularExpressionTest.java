@@ -3,20 +3,9 @@ package org.frank.java.regular.expression;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 
-/**
- * .Any character (may or may not match line terminators), 任意字符
- * X?	X, once or not at all       零个或一个
- * X*	X, zero or more times       零个或多个
- * X+	X, one or more times        一个或多个
- * X{n}	X, exactly n times          x出现n次
- * X{n,}	X, at least n times     x出现至少n次
- * X{n,m}	X, at least n but not more than m times 出现n~m次
- *
- */
+
 public class RegularExpressionTest {
 
     /**
@@ -40,9 +29,39 @@ public class RegularExpressionTest {
         Assert.assertTrue(str4.matches(reg4));
     }
 
+    /**
+     * .	Any character (may or may not match line terminators), 任意字符
+     * X?	X, once or not at all       零个或一个
+     * X*	X, zero or more times       零个或多个
+     * X+	X, one or more times        一个或多个
+     * X{n}	X, exactly n times          x出现n次
+     * X{n,}	X, at least n times     x出现至少n次
+     * X{n,m}	X, at least n but not more than m times 出现n~m次
+     * 
+     */    
     @Test
     public void test2(){
+        Assert.assertTrue("a".matches("."));
+        Assert.assertTrue("aa".matches("aa"));
         
+        Assert.assertTrue("aaaa".matches("a*"));
+        Assert.assertTrue("".matches("a*"));
+        
+        Assert.assertTrue("aaaa".matches("a+"));
+        Assert.assertTrue("a".matches("a+"));
+        Assert.assertFalse("".matches("a+"));
+        
+        Assert.assertTrue("a".matches("a?"));
+        Assert.assertTrue("".matches("a?"));
+        Assert.assertFalse("aa".matches("a?"));
+
+        // \d	A digit: [0-9], 表示数字, 但是在java中对"\"这个符号需要使用\进行转义, 所以出现\\d
+        Assert.assertTrue("2345".matches("\\d{2,5}"));
+        // \\.用于匹配"."
+        Assert.assertTrue("192.168.0.123".matches("\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}"));
+        // [0-2]指必须是0~2中的一个数字
+        Assert.assertTrue("192".matches("[0-2][0-9][0-9]"));
+
         
     }
 
