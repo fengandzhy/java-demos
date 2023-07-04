@@ -57,6 +57,8 @@ public class RegularExpressionTest {
         Assert.assertTrue("a".matches("a?"));
         Assert.assertTrue("".matches("a?"));
         Assert.assertFalse("aa".matches("a?"));
+        Assert.assertFalse("do".matches("do(es)?")); // do后面跟着1次或者0次的es
+        Assert.assertFalse("does".matches("do(es)?"));
 
         // \d	A digit: [0-9], 表示数字, 但是在java中对"\"这个符号需要使用\进行转义, 所以出现\\d
         Assert.assertTrue("2345".matches("\\d{2,5}"));
@@ -73,7 +75,19 @@ public class RegularExpressionTest {
         Assert.assertTrue("090".matches("[0,9]{2,3}")); // 不是9就是0的数字有两到三位
     }
 
-
+    @Test
+    public void test3(){
+        //[abc]指abc中的其中一个字母
+        Assert.assertTrue("a".matches("[abc]"));
+        //[^abc]指除了abc之外的字符
+        Assert.assertTrue("1".matches("[^abc]"));
+        //a~z或A~Z的字符, 以下三个均是或的写法
+        Assert.assertTrue("A".matches("[a-zA-Z]"));
+        Assert.assertTrue("A".matches("[a-z|A-Z]"));
+        Assert.assertTrue("A".matches("[a-z[A-Z]]"));
+        //[A-Z&&[REQ]]指A~Z中并且属于REQ其中之一的字符
+        Assert.assertTrue("R".matches("[A-Z&&[REQ]]"));        
+    }
 //
 //    /**
 //     * windows 后面要跟至少一个字符(.{1,}), 这些字符必须是95,98,NT,2000里面任意选一个
