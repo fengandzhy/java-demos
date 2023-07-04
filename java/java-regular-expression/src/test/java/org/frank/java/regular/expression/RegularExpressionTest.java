@@ -37,6 +37,9 @@ public class RegularExpressionTest {
      * X{n}	X, exactly n times          x出现n次
      * X{n,}	X, at least n times     x出现至少n次
      * X{n,m}	X, at least n but not more than m times 出现n~m次
+     * [0,9] 表示就一位，不是0，就是 9
+     * [0-9] 表示就一位，从0到9 
+     * 
      * 
      */    
     @Test
@@ -61,26 +64,16 @@ public class RegularExpressionTest {
         Assert.assertTrue("192.168.0.123".matches("\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}"));
         // [0-2]指必须是0~2中的一个数字
         Assert.assertTrue("192".matches("[0-2][0-9][0-9]"));
-
+        Assert.assertTrue("192".matches("[0-9]{2,3}"));
+        Assert.assertFalse("192".matches("[0-9]{4}")); // 0到9 的数字有4位
         
+        Assert.assertTrue("0".matches("[0,9]")); // 不是0就是9 
+        Assert.assertTrue("9".matches("[0,9]"));
+        Assert.assertFalse("8".matches("[0,9]"));
+        Assert.assertTrue("090".matches("[0,9]{2,3}")); // 不是9就是0的数字有两到三位
     }
 
-//    /**
-//     * [0-9] 表示0到9之间的数字 默认的个数是1个
-//     * [0-9]+ 表示0到9之间的数字一个或多个
-//     * */
-//    @Test
-//    public void test2(){
-//        String reg1 = "[0-9]";
-//        String str1 = "3";
-//        String reg2 = "(0,9)";
-//        String str2 = "0";
-//        String str3 = "(0,9)";
-//        Assert.assertTrue(str1.matches(reg1));
-//        Assert.assertFalse(str1.matches(reg2));
-//        Assert.assertFalse(str2.matches(reg2));
-//        Assert.assertTrue(str3.matches(reg2));
-//    }
+
 //
 //    /**
 //     * windows 后面要跟至少一个字符(.{1,}), 这些字符必须是95,98,NT,2000里面任意选一个
