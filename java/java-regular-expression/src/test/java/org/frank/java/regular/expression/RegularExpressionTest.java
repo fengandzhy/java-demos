@@ -75,18 +75,56 @@ public class RegularExpressionTest {
         Assert.assertTrue("090".matches("[0,9]{2,3}")); // 不是9就是0的数字有两到三位
     }
 
+    /**
+     * [] 括起来的都是一位字符 [^abc] 表示这里只有一位字符, 这个字符是除 abc之外的所有字符
+     * */
     @Test
     public void test3(){
         //[abc]指abc中的其中一个字母
         Assert.assertTrue("a".matches("[abc]"));
         //[^abc]指除了abc之外的字符
         Assert.assertTrue("1".matches("[^abc]"));
+        Assert.assertFalse("1".matches("[^abc|1]")); // 除了abc以及1以外的所有字符都能匹配
         //a~z或A~Z的字符, 以下三个均是或的写法
         Assert.assertTrue("A".matches("[a-zA-Z]"));
         Assert.assertTrue("A".matches("[a-z|A-Z]"));
         Assert.assertTrue("A".matches("[a-z[A-Z]]"));
         //[A-Z&&[REQ]]指A~Z中并且属于REQ其中之一的字符
         Assert.assertTrue("R".matches("[A-Z&&[REQ]]"));        
+    }
+
+    /**
+     * \d	A digit: [0-9]          数字
+     * \D	A non-digit: [^0-9]     非数字
+     * \s	A whitespace character: [ \t\n\x0B\f\r] 空格
+     * \S	A non-whitespace character: [^\s]       非空格
+     * \w	A word character: [a-zA-Z_0-9]          数字字母和下划线
+     * \W	A non-word character: [^\w]             非数字字母和下划线
+     * 在String 中表达转义符\ 用的是\\, 
+     * 在正则表达式中要表达转义符用的是\\\\  前面两个\\ 表达转移符 \ 后面两个\\ 表达 \ 本身
+     * 
+     * 
+     * */
+    @Test
+    public void test4(){
+        // \\s{4}表示4个空白符 \\s 表示空白符, 默认是一个字符, 加上{4} 就表示有4个
+        Assert.assertTrue(" \n\r\t".matches("\\s{4}"));
+        Assert.assertTrue("\n\r\t".matches("\\s{3}")); // 注意和上面相比少了第一个空格
+        
+        
+        // \\S表示非空白符
+        Assert.assertTrue("a".matches("\\S"));
+        // \\w{3}表示数字字母和下划线
+        Assert.assertTrue("a_8".matches("\\w{3}"));
+        
+        //[a-z]{1,3}字母有1到3个, \\d+ 数字有至少一个  [%^&*]+ %^&* 这些字符至少有一个  
+        Assert.assertTrue("abc888&^%".matches("[a-z]{1,3}\\d+[%^&*]+"));
+        // 匹配 \
+        Assert.assertTrue("\\".matches("\\\\")); // 在正则表达式中//// 表示 /, 正常的 
+
+        Assert.assertFalse("a".matches("aa"));
+        Assert.assertTrue("aa".matches("aa"));
+
     }
 //
 //    /**
