@@ -92,6 +92,30 @@ public class RegularExpressionTest {
         //[A-Z&&[REQ]]指A~Z中并且属于REQ其中之一的字符
         Assert.assertTrue("R".matches("[A-Z&&[REQ]]"));        
     }
+
+    /**
+     * \d	A digit: [0-9]          数字
+     * \D	A non-digit: [^0-9]     非数字
+     * \s	A whitespace character: [ \t\n\x0B\f\r] 空格
+     * \S	A non-whitespace character: [^\s]       非空格
+     * \w	A word character: [a-zA-Z_0-9]          数字字母和下划线
+     * \W	A non-word character: [^\w]             非数字字母和下划线     
+     * */
+    @Test
+    public void test4(){
+        // \\s{4}表示4个空白符 \\s 表示空白符, 默认是一个字符, 加上{4} 就表示有4个
+        Assert.assertTrue(" \n\r\t".matches("\\s{4}"));
+        Assert.assertTrue("\n\r\t".matches("\\s{3}")); // 注意和上面相比少了第一个空格
+        
+        
+        // \\S表示非空白符
+        Assert.assertTrue("a".matches("\\S"));
+        // \\w{3}表示数字字母和下划线
+        Assert.assertTrue("a_8".matches("\\w{3}"));
+        Assert.assertTrue("abc888&^%".matches("[a-z]{1,3}\\d+[%^&*]+"));
+        // 匹配 \
+        Assert.assertTrue("\\".matches("\\\\"));        
+    }
 //
 //    /**
 //     * windows 后面要跟至少一个字符(.{1,}), 这些字符必须是95,98,NT,2000里面任意选一个
