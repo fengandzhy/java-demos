@@ -75,12 +75,16 @@ public class RegularExpressionTest {
         Assert.assertTrue("090".matches("[0,9]{2,3}")); // 不是9就是0的数字有两到三位
     }
 
+    /**
+     * [] 括起来的都是一位字符 [^abc] 表示这里只有一位字符, 这个字符是除 abc之外的所有字符
+     * */
     @Test
     public void test3(){
         //[abc]指abc中的其中一个字母
         Assert.assertTrue("a".matches("[abc]"));
         //[^abc]指除了abc之外的字符
         Assert.assertTrue("1".matches("[^abc]"));
+        Assert.assertFalse("1".matches("[^abc|1]")); // 除了abc以及1以外的所有字符都能匹配
         //a~z或A~Z的字符, 以下三个均是或的写法
         Assert.assertTrue("A".matches("[a-zA-Z]"));
         Assert.assertTrue("A".matches("[a-z|A-Z]"));
