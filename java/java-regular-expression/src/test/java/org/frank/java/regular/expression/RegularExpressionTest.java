@@ -99,7 +99,11 @@ public class RegularExpressionTest {
      * \s	A whitespace character: [ \t\n\x0B\f\r] 空格
      * \S	A non-whitespace character: [^\s]       非空格
      * \w	A word character: [a-zA-Z_0-9]          数字字母和下划线
-     * \W	A non-word character: [^\w]             非数字字母和下划线     
+     * \W	A non-word character: [^\w]             非数字字母和下划线
+     * 在String 中表达转义符\ 用的是\\, 
+     * 在正则表达式中要表达转义符用的是\\\\  前面两个\\ 表达转移符 \ 后面两个\\ 表达 \ 本身
+     * 
+     * 
      * */
     @Test
     public void test4(){
@@ -112,9 +116,15 @@ public class RegularExpressionTest {
         Assert.assertTrue("a".matches("\\S"));
         // \\w{3}表示数字字母和下划线
         Assert.assertTrue("a_8".matches("\\w{3}"));
+        
+        //[a-z]{1,3}字母有1到3个, \\d+ 数字有至少一个  [%^&*]+ %^&* 这些字符至少有一个  
         Assert.assertTrue("abc888&^%".matches("[a-z]{1,3}\\d+[%^&*]+"));
         // 匹配 \
-        Assert.assertTrue("\\".matches("\\\\"));        
+        Assert.assertTrue("\\".matches("\\\\")); // 在正则表达式中//// 表示 /, 正常的 
+
+        Assert.assertFalse("a".matches("aa"));
+        Assert.assertTrue("aa".matches("aa"));
+
     }
 //
 //    /**
