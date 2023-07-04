@@ -136,7 +136,9 @@ public class RegularExpressionTest {
         Assert.assertTrue("dd.-aa".matches("[\\w[.-]]+"));
         Assert.assertTrue(".-aa".matches("[\\w[.-]]+"));
 
-        // [0-9a-zA-Z][\w[.-]]+第一个字符必须是数字或者字母, 后面跟着多个或者一个上述描述的字符(数字字母和下划线 以及 . 和 -) [\w[.-]] 
+        // [0-9a-zA-Z][\w[.-]]+第一个字符必须是数字或者字母, 后面跟着多个或者一个上述描述的字符(数字字母和下划线 以及 . 和 -) [\w[.-]]
+        // [] 表示一个字符, 例如[\w[.-]] 它就表示一个数字字母和下划线 以及 . 和 -的字符,
+        // 而中括号[] 后面的量词 例如 +*{m,n}等,表示对这类字符的数量描述, [\w[.-]]+ 这类字符有一个或者多个 
         Assert.assertFalse(".-aa".matches("[0-9a-zA-Z][\\w[.-]]+"));
         Assert.assertTrue("b.-aa".matches("[0-9a-zA-Z][\\w[.-]]+"));
     }
