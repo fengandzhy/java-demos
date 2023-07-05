@@ -142,6 +142,29 @@ public class RegularExpressionTest {
         Assert.assertFalse(".-aa".matches("[0-9a-zA-Z][\\w[.-]]+"));
         Assert.assertTrue("b.-aa".matches("[0-9a-zA-Z][\\w[.-]]+"));
     }
+
+    /**
+     * 分组校验
+     * 
+     * */
+    @Test
+    public void test5(){
+        String regex1 = "-?([1-9]+|0)\\d*";
+        String str1 = "-03";
+        String str5 = "-003";
+        Assert.assertTrue(str1.matches(regex1));
+        Assert.assertTrue(str5.matches(regex1));
+        
+        
+        String regex2 = "^(-?[1-9]\\d*)|0?$"; 
+        String str2 = "-3";
+        String str3 = "3";
+        String str4 = "0";        
+        Assert.assertTrue(str2.matches(regex2));
+        Assert.assertTrue(str3.matches(regex2));
+        Assert.assertTrue(str4.matches(regex2));
+        
+    }
 //
 //    /**
 //     * windows 后面要跟至少一个字符(.{1,}), 这些字符必须是95,98,NT,2000里面任意选一个
