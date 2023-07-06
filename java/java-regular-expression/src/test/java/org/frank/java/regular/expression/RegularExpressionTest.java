@@ -3,7 +3,8 @@ package org.frank.java.regular.expression;
 import org.junit.Assert;
 import org.junit.Test;
 
-
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class RegularExpressionTest {
@@ -163,6 +164,18 @@ public class RegularExpressionTest {
         Assert.assertTrue(str2.matches(regex2));
         Assert.assertTrue(str3.matches(regex2));
         Assert.assertTrue(str4.matches(regex2));
+        
+        String regex3 = "z|food";
+        String str7 = "z";
+        String str6 = "food";
+        Assert.assertTrue(str7.matches(regex3));
+        Assert.assertTrue(str6.matches(regex3));
+
+        String regex4 = "(z|f)ood";
+        String str8 = "z";
+        String str9 = "food";
+        Assert.assertFalse(str8.matches(regex4));
+        Assert.assertTrue(str9.matches(regex4));
         
     }
 //
