@@ -3,7 +3,8 @@ package org.frank.java.regular.expression;
 import org.junit.Assert;
 import org.junit.Test;
 
-
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class RegularExpressionTest {
@@ -144,7 +145,7 @@ public class RegularExpressionTest {
     }
 
     /**
-     * 分组校验
+     * 分支校验
      * 
      * */
     @Test
@@ -156,13 +157,38 @@ public class RegularExpressionTest {
         Assert.assertTrue(str5.matches(regex1));
         
         
-        String regex2 = "^(-?[1-9]\\d*)|0?$"; 
+        String regex2 = "^-?[1-9]\\d*|0?$"; 
         String str2 = "-3";
         String str3 = "3";
         String str4 = "0";        
         Assert.assertTrue(str2.matches(regex2));
         Assert.assertTrue(str3.matches(regex2));
         Assert.assertTrue(str4.matches(regex2));
+        
+        String regex3 = "z|food";
+        String str7 = "z";
+        String str6 = "food";
+        Assert.assertTrue(str7.matches(regex3));
+        Assert.assertTrue(str6.matches(regex3));
+
+        String regex4 = "(z|f)ood";
+        String str8 = "zood";
+        String str9 = "food";
+        Assert.assertTrue(str8.matches(regex4));
+        Assert.assertTrue(str9.matches(regex4));
+
+        String regex5 = "[1-9]\\d*.?\\d{1,2}|-[0-9]\\d*.?\\d{1,2}|[0].\\d{1,2}";
+        String str10 = "0.3";
+        String str11 = "-0.33";
+        String str12 = "-.33";
+        Assert.assertTrue(str10.matches(regex5));
+        Assert.assertTrue(str11.matches(regex5));
+        Assert.assertFalse(str12.matches(regex5));
+    }
+
+    @Test
+    public void test6(){
+        String regex1 = "-?([1-9]+|0)\\d*";
         
     }
 //
