@@ -157,7 +157,7 @@ public class RegularExpressionTest {
         Assert.assertTrue(str5.matches(regex1));
         
         
-        String regex2 = "^(-?[1-9]\\d*)|0?$"; 
+        String regex2 = "^-?[1-9]\\d*|0?$"; 
         String str2 = "-3";
         String str3 = "3";
         String str4 = "0";        
@@ -172,10 +172,15 @@ public class RegularExpressionTest {
         Assert.assertTrue(str6.matches(regex3));
 
         String regex4 = "(z|f)ood";
-        String str8 = "z";
+        String str8 = "zood";
         String str9 = "food";
-        Assert.assertFalse(str8.matches(regex4));
-        Assert.assertTrue(str9.matches(regex4));
+        Assert.assertTrue(str8.matches(regex4));
+        Assert.assertTrue(str9.matches(regex4));        
+    }
+
+    @Test
+    public void test6(){
+        String regex1 = "-?([1-9]+|0)\\d*";
         
     }
 //
