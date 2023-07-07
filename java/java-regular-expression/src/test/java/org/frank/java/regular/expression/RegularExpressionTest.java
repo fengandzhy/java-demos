@@ -177,13 +177,17 @@ public class RegularExpressionTest {
         Assert.assertTrue(str8.matches(regex4));
         Assert.assertTrue(str9.matches(regex4));
 
-        String regex5 = "[1-9]\\d*.?\\d{1,2}|-[0-9]\\d*.?\\d{1,2}|[0].\\d{1,2}";
+        String regex5 = "[1-9]\\d*.?\\d{1,2}|-[1-9]\\d*.?\\d{1,2}|[0].\\d{1,2}|-[0].\\d{1,2}";
         String str10 = "0.3";
         String str11 = "-0.33";
         String str12 = "-.33";
+        String str13 = "-1222.33";
+        String str14 = "-00.33";
         Assert.assertTrue(str10.matches(regex5));
         Assert.assertTrue(str11.matches(regex5));
         Assert.assertFalse(str12.matches(regex5));
+        Assert.assertTrue(str13.matches(regex5));
+        Assert.assertFalse(str14.matches(regex5));
     }
 
     @Test
