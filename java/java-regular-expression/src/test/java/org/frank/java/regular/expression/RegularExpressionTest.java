@@ -191,6 +191,7 @@ public class RegularExpressionTest {
         String str14 = "-03";
         String str15 = "0000";
         String str16 = "0";
+        String str17 = "-0";
         Assert.assertTrue(str10.matches(regex5));
         Assert.assertTrue(str11.matches(regex5));
         Assert.assertFalse(str12.matches(regex5));
@@ -198,6 +199,7 @@ public class RegularExpressionTest {
         Assert.assertFalse(str14.matches(regex5));
         Assert.assertFalse(str15.matches(regex5));
         Assert.assertTrue(str16.matches(regex5));
+        Assert.assertFalse(str17.matches(regex5));
     }
 
     /**
@@ -236,16 +238,17 @@ public class RegularExpressionTest {
         Assert.assertFalse(str23.matches(regex6));
     }
 //
-//    /**
-//     * windows 后面要跟至少一个字符(.{1,}), 这些字符必须是95,98,NT,2000里面任意选一个
-//     * */
-//    @Test
-//    public void test3(){
-//        String reg3 = "windows(?=95|98|NT|2000).{2}";
-//        String str3 = "windows95";
-//        //Assert.assertTrue(str3.matches(reg3));
-//        System.out.println(str3.matches(reg3));
-//    }
+    /**
+     * windows 后面要跟至少一个字符(.{1,}), 这些字符必须是95,98,NT,2000里面任意选一个
+     * */
+    @Test
+    public void test7(){
+        String reg3 = "windows(?=95|98|NT|2000).{2}";
+        String str3 = "windows95";
+        Assert.assertTrue(str3.matches(reg3));
+        
+        
+    }
 //
 //    @Test
 //    public void test4(){
