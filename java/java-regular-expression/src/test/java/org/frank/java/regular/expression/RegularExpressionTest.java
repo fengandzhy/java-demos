@@ -145,7 +145,11 @@ public class RegularExpressionTest {
     }
 
     /**
-     * 分支校验
+     * 分支校验 | 
+     * [1-9]\d*\.?\d{1,2}|-[1-9]\d*\.?\d{1,2}|[0]\.\d{1,2}|-[0]\.\d{1,2} 这里有四个分支 分别是 
+     * [1-9]\d*\.?\d{1,2} -[1-9]\d*\.?\d{1,2} [0]\.\d{1,2} -[0]\.\d{1,2} 所写出来的式子只要满足一个就可以
+     * 
+     * 
      * 
      * */
     @Test
@@ -177,23 +181,42 @@ public class RegularExpressionTest {
         Assert.assertTrue(str8.matches(regex4));
         Assert.assertTrue(str9.matches(regex4));
 
-        String regex5 = "[1-9]\\d*.?\\d{1,2}|-[1-9]\\d*.?\\d{1,2}|[0].\\d{1,2}|-[0].\\d{1,2}";
+        
+        String regex5 = "[1-9]\\d*\\.?\\d{1,2}|-[1-9]\\d*\\.?\\d{1,2}|[0]\\.\\d{1,2}|-[0]\\.\\d{1,2}";
         String str10 = "0.3";
         String str11 = "-0.33";
         String str12 = "-.33";
         String str13 = "-1222.33";
         String str14 = "-00.33";
+        String str15 = "0000";
         Assert.assertTrue(str10.matches(regex5));
         Assert.assertTrue(str11.matches(regex5));
         Assert.assertFalse(str12.matches(regex5));
         Assert.assertTrue(str13.matches(regex5));
         Assert.assertFalse(str14.matches(regex5));
+        Assert.assertFalse(str15.matches(regex5));
+
+        String regex6 = "([1-9]\\d*|-[1-9]\\d*|[0]|-[0])\\.?\\d{1,2}";
+        String str16 = "0.3";
+        String str17 = "-0.33";
+        String str18 = "-.33";
+        String str19 = "-1222.33";
+        String str20 = "-00.33";
+        String str21 = "0000";
+
+        Assert.assertTrue(str16.matches(regex6));
+        Assert.assertTrue(str17.matches(regex6));
+        Assert.assertFalse(str18.matches(regex6));
+        Assert.assertTrue(str19.matches(regex6));
+        Assert.assertFalse(str20.matches(regex6));
+        Assert.assertFalse(str21.matches(regex6));       
     }
 
     @Test
     public void test6(){
-        String regex1 = "-?([1-9]+|0)\\d*";
-        
+//        String regex5 = "[0]\\.\\d{1,2}";
+//        String str15 = "0000";
+//        Assert.assertTrue(str15.matches(regex5));
     }
 //
 //    /**
