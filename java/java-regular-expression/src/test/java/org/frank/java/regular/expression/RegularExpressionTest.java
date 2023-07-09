@@ -245,6 +245,14 @@ public class RegularExpressionTest {
      * windows(?=95|98|NT|2000).{2}
      * windows 后面要跟两个字符.{2}, 这些字符必须是95,98,NT,2000里面任意选一个
      * 2000 是四个字符, 所以 windows2000 匹配不上
+     * (?=.*[0-9]) .* 表示任意字符, 零个或者多个, [0-9]这是一个数字, 那么连起来就是 必须要有数字
+     * (?=.*[A-z]) 那就表示必须包含字母
+     * (?=.*[\x21-\x2f]) 表示必须包含特殊字符
+     * [A-z0-9\x21-\x2f]{6,16} 字母, 数字, 特殊字符的组合长度为6到16位 但是这个组合必须先满足 (?=.*[0-9])(?=.*[A-z])(?=.*[\x21-\x2f]) 这些预判断
+     * 
+     * sin(?=M\.).{2} 表示sin 后面必须跟两个字符 .{2}, (?=M\.) 对这两个字符做了限定, 必须是 M. (?=M\.) 正向肯定检查, sin.{2} 做了一个限制
+     * 
+     * 
      * 
      * */
     @Test
@@ -255,9 +263,17 @@ public class RegularExpressionTest {
         Assert.assertTrue(str1.matches(reg));
         Assert.assertFalse(str2.matches(reg));
 
-        String reg1 = "windows(?=95|98|NT|2000)";
-        Assert.assertTrue(str1.matches(reg1));
-        Assert.assertTrue(str2.matches(reg1));        
+        String reg1 = "windows(?=95|98|NT|2000)"; // 没有量词
+        Assert.assertFalse(str1.matches(reg1));
+        Assert.assertFalse(str2.matches(reg1));
+
+        String reg2 = "^(?=.*[0-9])(?=.*[A-z])(?=.*[\\x21-\\x2f])[A-z0-9\\x21-\\x2f]{6,16}$";
+        String str3 = "Xiaoxiong211610&";
+        Assert.assertTrue(str3.matches(reg2));
+
+        String reg3 = "sin(?=M\\.).{2}";
+        String str4 = "sinM.";
+        Assert.assertTrue(str4.matches(reg3));
     }
 
     
