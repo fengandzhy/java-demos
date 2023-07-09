@@ -242,7 +242,10 @@ public class RegularExpressionTest {
     }
 
     /**
-     * windows 后面要跟至少一个字符(.{1,}), 这些字符必须是95,98,NT,2000里面任意选一个
+     * windows(?=95|98|NT|2000).{2}
+     * windows 后面要跟两个字符.{2}, 这些字符必须是95,98,NT,2000里面任意选一个
+     * 2000 是四个字符, 所以 windows2000 匹配不上
+     * 
      * */
     @Test
     public void test8(){
@@ -251,6 +254,10 @@ public class RegularExpressionTest {
         String str2 = "windows2000";
         Assert.assertTrue(str1.matches(reg));
         Assert.assertFalse(str2.matches(reg));
+
+        String reg1 = "windows(?=95|98|NT|2000)";
+        Assert.assertTrue(str1.matches(reg1));
+        Assert.assertTrue(str2.matches(reg1));        
     }
 
     
