@@ -300,11 +300,47 @@ public class RegularExpressionTest {
 
         String reg2 = "^(?=.*[0-9])(?=.*[A-z])(?=.*[\\x21-\\x2f])[A-z0-9\\x21-\\x2f]{6,16}$";
         String str3 = "Xiaoxiong211610&";
-        Assert.assertTrue(str3.matches(reg2));
+        Assert.assertTrue(str3.matches(reg2));        
 
         String reg3 = "sin(?=M\\.).{2}";
         String str4 = "sinM.";
         Assert.assertTrue(str4.matches(reg3));
+    }
+
+    /**
+     *  "fiction(?!compiler) 只要不在compiler 前面的fiction 都能匹配
+     *  (?<=compiler)fiction 只要在compiler 后面的fiction 都能匹配上
+     *  (?<!compiler)fiction 只要不在compiler 后面的fiction 都能匹配上
+     * */
+    @Test
+    public void test9(){
+        String reg = "fiction(?!compiler)";
+        Pattern r = Pattern.compile(reg);
+        String str1 = "compilerfiction";
+        Matcher m = r.matcher(str1);
+        if (m.find( )) {
+            System.out.println("Found value: " + m.group(0) );
+        } else {
+            System.out.println("NO MATCH");
+        }
+
+        String reg1 = "(?<=compiler)fiction";
+        r = Pattern.compile(reg1);        
+        m = r.matcher(str1);
+        if (m.find( )) {
+            System.out.println("Found value: " + m.group(0) );
+        } else {
+            System.out.println("NO MATCH");
+        }
+
+        String reg2 = "(?<!compiler)fiction";
+        r = Pattern.compile(reg2);
+        m = r.matcher(str1);
+        if (m.find( )) {
+            System.out.println("Found value: " + m.group(0) );
+        } else {
+            System.out.println("NO MATCH");
+        }
     }
 
     
