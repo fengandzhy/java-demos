@@ -300,7 +300,7 @@ public class RegularExpressionTest {
 
         String reg2 = "^(?=.*[0-9])(?=.*[A-z])(?=.*[\\x21-\\x2f])[A-z0-9\\x21-\\x2f]{6,16}$";
         String str3 = "Xiaoxiong211610&";
-        Assert.assertTrue(str3.matches(reg2));
+        Assert.assertTrue(str3.matches(reg2));        
 
         String reg3 = "sin(?=M\\.).{2}";
         String str4 = "sinM.";
