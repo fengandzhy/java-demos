@@ -3,10 +3,6 @@ package org.frank.java.regular.expression;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-
 public class RegularExpressionTest {
 
     /**
@@ -237,18 +233,34 @@ public class RegularExpressionTest {
         Assert.assertTrue(str22.matches(regex6));
         Assert.assertFalse(str23.matches(regex6));
     }
-//
-    /**
-     * windows 后面要跟至少一个字符(.{1,}), 这些字符必须是95,98,NT,2000里面任意选一个
-     * */
+
     @Test
     public void test7(){
-        String reg3 = "windows(?=95|98|NT|2000).{2}";
-        String str3 = "windows98";
-        String str4 = "windows2000";
-        Assert.assertTrue(str3.matches(reg3));
-        Assert.assertFalse(str4.matches(reg3));
+        String telephone = "^$";
+        
+
     }
+
+    /**
+     * windows(?=95|98|NT|2000).{2}
+     * windows 后面要跟两个字符.{2}, 这些字符必须是95,98,NT,2000里面任意选一个
+     * 2000 是四个字符, 所以 windows2000 匹配不上
+     * 
+     * */
+    @Test
+    public void test8(){
+        String reg = "windows(?=95|98|NT|2000).{2}";
+        String str1 = "windows98";
+        String str2 = "windows2000";
+        Assert.assertTrue(str1.matches(reg));
+        Assert.assertFalse(str2.matches(reg));
+
+        String reg1 = "windows(?=95|98|NT|2000)";
+        Assert.assertTrue(str1.matches(reg1));
+        Assert.assertTrue(str2.matches(reg1));        
+    }
+
+    
 //
 //    @Test
 //    public void test4(){
