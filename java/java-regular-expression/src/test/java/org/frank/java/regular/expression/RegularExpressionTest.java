@@ -3,6 +3,9 @@ package org.frank.java.regular.expression;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class RegularExpressionTest {
 
     /**
@@ -234,11 +237,39 @@ public class RegularExpressionTest {
         Assert.assertFalse(str23.matches(regex6));
     }
 
+    /**
+     * Windows(?=95|98|NT|2000) 只有2000 98 95 这三个字符串之前的 Windows字符串 才能被匹配 
+     * 
+     * Windows(?=95|98|NT|2000).*  需要这么看 Windows.* Windows后面跟着0个或多个字符, 但是 这个Windows 必须是在 2000 98 95 这三个字符串之前
+     * 
+     * */
     @Test
     public void test7(){
-        String telephone = "^$";
-        
+        String reg1 = "Windows(?=95|98|NT|2000)"; // 
+        Pattern r = Pattern.compile(reg1);
+        String str1 = "Windows2000";
+        String str2 = "Windows2001";
+        Matcher m = r.matcher(str1);
+        if (m.find( )) {
+            System.out.println("Found value: " + m.group(0) );            
+        } else {
+            System.out.println("NO MATCH");
+        }
 
+         m = r.matcher(str2);
+        if (m.find( )) {
+            System.out.println("Found value: " + m.group(0) );
+        } else {
+            System.out.println("NO MATCH");
+        }
+
+        String reg2 = "Windows(?=95|98|NT|2000).*";
+        String str3 = "Windows2000abcd";
+        String str4 = "Windows98ddss";
+        String str5 = "Windows97ddss";
+        Assert.assertTrue(str3.matches(reg2));
+        Assert.assertTrue(str4.matches(reg2));
+        Assert.assertFalse(str5.matches(reg2));
     }
 
     /**
