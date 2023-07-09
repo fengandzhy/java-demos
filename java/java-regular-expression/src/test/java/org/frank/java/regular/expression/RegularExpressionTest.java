@@ -3,8 +3,6 @@ package org.frank.java.regular.expression;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 
 public class RegularExpressionTest {
@@ -243,11 +241,19 @@ public class RegularExpressionTest {
      * */
     @Test
     public void test7(){
-        String reg3 = "windows(?=95|98|NT|2000).{2}";
-        String str3 = "windows98";
-        String str4 = "windows2000";
-        Assert.assertTrue(str3.matches(reg3));
-        Assert.assertFalse(str4.matches(reg3));
+        String reg = "windows(?=95|98|NT|2000).{2}";
+        String str1 = "windows98";
+        String str2 = "windows2000";
+        Assert.assertTrue(str1.matches(reg));
+        Assert.assertFalse(str2.matches(reg));
+    }
+
+    @Test
+    public void test8(){
+        String reg = "<(.*)>(.*)<\\/(.*)>|<(.*)\\/>";
+        String str1 = "<></>";        
+        Assert.assertTrue(str1.matches(reg));
+        
     }
 //
 //    @Test
