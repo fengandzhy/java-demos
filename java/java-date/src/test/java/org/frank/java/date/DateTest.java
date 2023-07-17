@@ -14,7 +14,7 @@ import java.util.Date;
 public class DateTest {
 
     private static final Logger logger = LoggerFactory.getLogger(DateTest.class);
-    
+
     @Test
     public void fromDateToLocalDateTest(){
         Date date = new Date();
@@ -45,5 +45,20 @@ public class DateTest {
         cal.set(Calendar.DATE,23);
         Date date = cal.getTime();
         logger.info("Date = " + date);
+    }
+    @Test
+    public void DateMethodTest(){
+        long currentTimeMillis = System.currentTimeMillis();
+        System.out.println("时间戳="+currentTimeMillis);
+        
+        Date date = new Date();
+        System.out.println("当前时间="+date);
+        System.out.println("当前时间="+date.toString());
+
+        //转换为本地时区：2023年2月11日 下午12:04:03
+        System.out.println("当前时间，Locale="+date.toLocaleString());
+        //转换为GMT时区：11 Feb 2023 04:04:03 GMT
+        System.out.println("当前时间，GMT="+date.toGMTString());        
+        
     }
 }
