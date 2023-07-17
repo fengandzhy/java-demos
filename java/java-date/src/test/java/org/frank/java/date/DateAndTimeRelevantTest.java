@@ -47,7 +47,7 @@ public class DateAndTimeRelevantTest {
         logger.info("Date = " + date);
     }
     @Test
-    public void DateTest(){
+    public void testDate(){
         long currentTimeMillis = System.currentTimeMillis();
         System.out.println("时间戳="+currentTimeMillis);
         
@@ -76,5 +76,16 @@ public class DateAndTimeRelevantTest {
         System.out.println("出生日期="+d2);
         long time = d2.getTime() - d1.getTime();
         System.out.println("已活天数="+time/1000/60/60/24);       
+    }
+    @Test
+    public void testCalendar(){
+        Calendar c1 = Calendar.getInstance(); // 构建Calendar 对象
+        System.out.println("c1="+c1);
+        //创建一个代表2023年2月2日的Calendar对象
+        Calendar c2 = Calendar.getInstance();
+        c2.set(2023, 5-1, 2, 10,5,25);
+        System.out.println("c2="+c2);
+
+        
     }
 }
