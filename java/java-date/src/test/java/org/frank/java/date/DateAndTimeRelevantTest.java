@@ -11,9 +11,9 @@ import java.time.ZonedDateTime;
 import java.util.Calendar;
 import java.util.Date;
 
-public class DateTest {
+public class DateAndTimeRelevantTest {
 
-    private static final Logger logger = LoggerFactory.getLogger(DateTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(DateAndTimeRelevantTest.class);
 
     @Test
     public void fromDateToLocalDateTest(){
@@ -47,7 +47,7 @@ public class DateTest {
         logger.info("Date = " + date);
     }
     @Test
-    public void DateMethodTest(){
+    public void DateTest(){
         long currentTimeMillis = System.currentTimeMillis();
         System.out.println("时间戳="+currentTimeMillis);
         
