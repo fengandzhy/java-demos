@@ -30,6 +30,7 @@
         <module>java-generic</module>
         <module>java-jackson</module>
         <module>java-regular-expression</module>
+        <module>java-test</module>
     </modules>
     <packaging>pom</packaging>
 
