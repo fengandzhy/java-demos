@@ -4,7 +4,7 @@ import org.junit.Test;
 import java.util.Collections;
 import java.util.Set;
 
-public class CollectionTest {
+public class CollectionComparableTest {
     
     @Test
     public void singletonTest(){
