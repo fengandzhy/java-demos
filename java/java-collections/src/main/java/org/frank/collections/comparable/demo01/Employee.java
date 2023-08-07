@@ -1,6 +1,6 @@
 package org.frank.collections.comparable.demo01;
 
-public class Employee implements Comparable {
+public class Employee implements Comparable<Employee> {
     int id;
     String name;
     int managerId;
@@ -12,8 +12,7 @@ public class Employee implements Comparable {
     }
 
     @Override
-    public int compareTo(Object o) {
-        Employee anotherEmployee = (Employee) o;
+    public int compareTo(Employee anotherEmployee) {        
         return this.name.compareTo(anotherEmployee.name);
     }
 
