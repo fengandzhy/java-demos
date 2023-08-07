@@ -7,7 +7,7 @@ import java.util.*;
 public class ComparableTest {
     
     /**
-     * 对于实现了 Comparable 接口的类来说, 加入到list 之后，
+     * 对于实现了 Comparable 接口的类来说, 加入到list 之后，可以用 Collections.sort(employeeList); 排序
      * */
     @Test
     @SuppressWarnings("DuplicatedCode")    
