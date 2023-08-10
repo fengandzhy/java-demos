@@ -29,7 +29,8 @@
         <module>java-for</module>
         <module>java-generic</module>
         <module>java-jackson</module>
-        <module>java-regular-expression</module>        
+        <module>java-regular-expression</module>
+        <module>java-resource</module>
     </modules>
     <packaging>pom</packaging>
 
