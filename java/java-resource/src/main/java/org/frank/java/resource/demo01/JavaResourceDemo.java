@@ -14,7 +14,7 @@ public class JavaResourceDemo {
         //获取资源输入流
         InputStream inputStream = urlConnection.getInputStream();
         //通过hutool工具类读取流中数据
-        String content = IoUtil.read(new InputStreamReader(inputStream));
-        System.out.println(content);
+//        String content = IoUtil.read(new InputStreamReader(inputStream));
+//        System.out.println(content);
     }
 }
