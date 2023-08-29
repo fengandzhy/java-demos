@@ -21,7 +21,11 @@ public class ComparatorTest {
 
         employeeList.sort(Comparator.comparing(Employee::getName));
         System.out.println("排序后：");
-        employeeList.stream().map(Employee::getName).forEach(System.out::println);     
-        
+        employeeList.stream().map(Employee::getName).forEach(System.out::println);
+
+        employeeList.sort(Comparator.comparing(Employee::getName).reversed());
+        System.out.println("反向排序后：");
+        employeeList.stream().map(Employee::getName).forEach(System.out::println);
+
     }
 }

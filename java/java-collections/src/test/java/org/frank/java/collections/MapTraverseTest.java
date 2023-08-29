@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-public class MapComparableTest {
+public class MapTraverseTest {
     
     private HashMap<Integer,String> courseMap;
     
