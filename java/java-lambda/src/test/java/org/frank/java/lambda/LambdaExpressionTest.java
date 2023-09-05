@@ -11,6 +11,9 @@ import java.util.function.Consumer;
 
 public class LambdaExpressionTest {
     
+    /**
+     * lambda 表达式的本质就是函数式接口的实现, 如果一个接口中只声明了一个抽象方法, 那么该接口就是函数式接口.
+     * */
     @Test
     public void LambdaExpressionWithoutParameter(){
         Runnable r1 = new Runnable() {
@@ -63,4 +66,6 @@ public class LambdaExpressionTest {
         
         employeeList.stream().forEach(System.out::println);
     }
+    
+    
 }
