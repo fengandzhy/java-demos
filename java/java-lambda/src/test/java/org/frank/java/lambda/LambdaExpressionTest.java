@@ -1,6 +1,8 @@
 package org.frank.java.lambda;
 
 import org.frank.java.lambda.entity.Employee;
+import org.frank.java.lambda.interfaces.ConsumerInterfaceA;
+import org.frank.java.lambda.interfaces.PredicateInterface;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -15,7 +17,7 @@ public class LambdaExpressionTest {
      * lambda 表达式的本质就是函数式接口的实现, 如果一个接口中只声明了一个抽象方法, 那么该接口就是函数式接口.
      * */
     @Test
-    public void LambdaExpressionWithoutParameter(){
+    public void lambdaExpressionWithoutParameter(){
         Runnable r1 = new Runnable() {
             @Override
             public void run() {
@@ -30,7 +32,7 @@ public class LambdaExpressionTest {
     }
 
     @Test
-    public void LambdaExpressionWithParameter(){
+    public void lambdaExpressionWithParameter(){
         Consumer<String> consumer = new Consumer<String>() {
             @Override
             public void accept(String s) {
@@ -44,7 +46,7 @@ public class LambdaExpressionTest {
     }
     
     @Test
-    public void LambdaExpressionWithParameters(){
+    public void lambdaExpressionWithParameters(){
         Comparator<Employee> comparator = (o1, o2) -> (int) (o1.getSalary() - o2.getSalary());
 
         Employee emp1 = new Employee(1001,"Tom1",23,5800);
@@ -67,5 +69,22 @@ public class LambdaExpressionTest {
         employeeList.stream().forEach(System.out::println);
     }
     
-    
+    @Test
+    public void consumerLambdaExpression(){
+        ConsumerInterfaceA<String> consumerA = a -> System.out.println(a);
+        consumerA.accept("我是个消费型接口.");        
+    }
+
+    @Test
+    public void predicateLambdaExpression(){
+        PredicateInterface<String> predicate = s -> s.indexOf("a")== -1;
+        List<String> strings = new ArrayList<>();
+        String[] strArray = new String[] {"ab", "bc", "cd", "da", "bd","ef"};
+        for(int i = 0; i<strArray.length;i++){
+            if(predicate.test(strArray[i])){
+                strings.add(strArray[i]);
+            }
+        }
+        System.out.println(strings);
+    }
 }
