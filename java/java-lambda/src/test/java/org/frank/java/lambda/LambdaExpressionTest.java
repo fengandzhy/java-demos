@@ -7,18 +7,41 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class LambdaExpressionTest {
     
     @Test
     public void LambdaExpressionWithoutParameter(){
-        Runnable r1 = () -> System.out.println("我爱北京天安门.");        
+        Runnable r1 = new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("我爱北京天安门.");
+            }
+        };
+        r1.run();
+        System.out.println("************************************************************");
+        r1 = () -> System.out.println("我爱北京天安门.");        
         Thread t1 = new Thread(r1);
         t1.start();        
     }
-    
+
     @Test
     public void LambdaExpressionWithParameter(){
+        Consumer<String> consumer = new Consumer<String>() {
+            @Override
+            public void accept(String s) {
+                System.out.println(s);
+            }
+        };
+        consumer.accept("我爱北京天安门!");
+        System.out.println("************************************************************");
+        consumer = o -> System.out.println(o);
+        consumer.accept("我爱北京天安门!");
+    }
+    
+    @Test
+    public void LambdaExpressionWithParameters(){
         Comparator<Employee> comparator = (o1, o2) -> (int) (o1.getSalary() - o2.getSalary());
 
         Employee emp1 = new Employee(1001,"Tom1",23,5800);
