@@ -220,10 +220,15 @@ public class StreamTest {
      */
     @Test
     public void reduceTestWithThreeParameters() {
-        Integer maxSalary = personList.stream().reduce(0,
+        Integer maxSalary1 = personList.stream().reduce(0,
                 (max, p) -> max > p.getSalary() ? max : p.getSalary(),
                 (max1, max2) -> max1 > max2 ? max1 : max2);
-        System.out.println("最高工资是：" + maxSalary);
+        System.out.println("最高工资是：" + maxSalary1); // 一般不是parallelStream combiner 起不到作用
+
+        Integer maxSalary2 = personList.parallelStream().reduce(0,
+                (max, p) -> max > p.getSalary() ? max : p.getSalary(),
+                (max1, max2) ->  max1 > max2 ? max1 : max2);
+        System.out.println("最高工资是：" + maxSalary2);
 
         List<Integer> temp = new ArrayList<>();
         Stream.of(1, 2, 3, 4).reduce(temp, (acc, item) -> {
@@ -365,10 +370,12 @@ public class StreamTest {
         List<String> names2 = personList.stream()
                 .sorted(Comparator.comparing(Person::getSalary).reversed())
                 .map(Person::getName).collect(Collectors.toList());
+        
         List<String> names3 = personList.stream()
                 .sorted(Comparator.comparing(Person::getSalary).reversed().thenComparing(Person::getAge))
                 .map(Person::getName).collect(Collectors.toList());
-
+        
+        
         List<String> name4 = personList.stream()
                 .sorted((a1, a2) -> {
                     if (a1.getSalary() == a2.getSalary()) {
@@ -379,7 +386,7 @@ public class StreamTest {
 
         System.out.println("按工资自然排序：" + names1);
         System.out.println("按工资降序排序：" + names2);
-        System.out.println("先按工资再按年龄自然排序：" + names3);
+        System.out.println("先按工资倒序再按年龄自然排序：" + names3);
         System.out.println("先按工资升序再按年龄降序排序：" + name4);
     }
 }
