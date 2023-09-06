@@ -401,4 +401,22 @@ public class StreamTest {
         List<String> newList = Stream.concat(stream1, stream2).distinct().collect(Collectors.toList());
         System.out.println(newList);
     }
+
+    /**
+     * skip 跳过前n个元素
+     * */
+    @Test
+    public void testSkip(){
+        List<Integer> collect2 = Stream.iterate(1, x -> x + 2).skip(1).limit(5).collect(Collectors.toList());
+        System.out.println(collect2);
+    }
+
+    /**
+     * limit 限制从流中获得前n个数据
+     * */
+    @Test
+    public void testLimit(){
+        List<Integer> collect2 = Stream.iterate(1, x -> x + 2).limit(5).collect(Collectors.toList());
+        System.out.println(collect2);
+    }
 }
