@@ -39,6 +39,9 @@ public class StreamTest {
     @Test
     public void filterTest() {
         list.stream().filter(x -> x > 6).forEach(System.out::println);
+        List<String> nameList = personList.stream()
+                .filter(p -> p.getSalary() > 8000).map(Person::getName).collect(Collectors.toList());
+        System.out.println("工资大于8000的员工:"+nameList);
     }
 
     /**
@@ -68,16 +71,7 @@ public class StreamTest {
     public void anyMatchTest() {
         boolean anyMatch = list.stream().anyMatch(x -> x > 6);
         System.out.println("是否存在大于6的值：" + anyMatch);
-    }
-
-    @Test
-    public void findNameTest() {
-        List<String> names = personList.stream()
-                .filter(x -> x.getSalary() > 8000)
-                .map(Person::getName)
-                .collect(Collectors.toList());
-        System.out.println("工资大于8000的员工姓名：" + names);
-    }
+    }    
 
     @Test
     public void maxTest() {
@@ -94,7 +88,9 @@ public class StreamTest {
     @Test
     public void countTest() {
         long count = list.stream().filter(x -> x > 6).count();
+        long employeeCount = personList.stream().filter(x -> x.getSalary() > 8000).count();
         System.out.println("大于6的元素个数：" + count);
+        System.out.println("工资大于8000个数：" + employeeCount);
     }
 
     @Test
@@ -109,9 +105,12 @@ public class StreamTest {
             int salary = person.getSalary();
             person.setSalary(salary + 1000);
             return person;
-        }).collect(Collectors.toList());
-        //newPersonList.stream().map(p->p.getSalary()).forEach(System.out::println);
+        }).collect(Collectors.toList());        
         newPersonList.stream().forEach(person -> {
+            System.out.println(person.getName() + "-->" + person.getSalary());
+        });
+        System.out.println("***********************************************************");
+        personList.stream().forEach(person -> {
             System.out.println(person.getName() + "-->" + person.getSalary());
         });
     }
