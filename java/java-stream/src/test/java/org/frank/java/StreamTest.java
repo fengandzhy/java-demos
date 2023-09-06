@@ -176,9 +176,11 @@ public class StreamTest {
     /**
      * Optional<T> reduce(BinaryOperator<T> accumulator);
      * 对Stream中的数据通过累加器accumulator迭代计算，最终得到一个Optional对象
+     * 
+     * 
      */
     @Test
-    public void reduceTest1() {
+    public void reduceTestWithOneParameter() {
         Optional<Integer> accResult = Stream.of(1, 2, 3, 4).reduce((acc, item) -> {
             System.out.println("acc : " + acc);
             acc += item;
@@ -203,6 +205,13 @@ public class StreamTest {
             return acc;
         });
         System.out.println(accResult);
+
+        int accResult1 = Stream.of(1, 2, 3, 4).reduce(0, Integer::max);
+        System.out.println(accResult1);
+
+//        List<Integer> numList = Arrays.asList(Integer.MAX_VALUE,Integer.MAX_VALUE);
+//        long result = numList.stream().reduce(0,(a,b) ->  a + b);
+//        System.out.println(result);
     }
 
     @Test
@@ -237,6 +246,10 @@ public class StreamTest {
             return acc;
         }, (acc, item) -> null); //BinaryOperator 返回的是一个null
         System.out.println(temp);
+
+        List<Integer> numList = Arrays.asList(Integer.MAX_VALUE,Integer.MAX_VALUE);
+        long result = numList.stream().reduce(0L,(a,b) ->  a + b, (a,b)-> 0L);
+        System.out.println(result);
     }
 
     @Test
