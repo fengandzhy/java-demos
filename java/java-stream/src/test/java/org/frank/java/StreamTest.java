@@ -389,4 +389,34 @@ public class StreamTest {
         System.out.println("先按工资倒序再按年龄自然排序：" + names3);
         System.out.println("先按工资升序再按年龄降序排序：" + name4);
     }
+    
+    @Test
+    public void testDistinct(){
+        String[] arr1 = { "a", "b", "c", "d" };
+        String[] arr2 = { "d", "e", "f", "g" };
+
+        Stream<String> stream1 = Stream.of(arr1);
+        Stream<String> stream2 = Stream.of(arr2);
+        // concat:合并两个流 distinct：去重
+        List<String> newList = Stream.concat(stream1, stream2).distinct().collect(Collectors.toList());
+        System.out.println(newList);
+    }
+
+    /**
+     * skip 跳过前n个元素
+     * */
+    @Test
+    public void testSkip(){
+        List<Integer> collect2 = Stream.iterate(1, x -> x + 2).skip(1).limit(5).collect(Collectors.toList());
+        System.out.println(collect2);
+    }
+
+    /**
+     * limit 限制从流中获得前n个数据
+     * */
+    @Test
+    public void testLimit(){
+        List<Integer> collect2 = Stream.iterate(1, x -> x + 2).limit(5).collect(Collectors.toList());
+        System.out.println(collect2);
+    }
 }
