@@ -127,7 +127,7 @@ public class StreamTest {
      * flatMap 里面也传入一个Function接口的实例, 该实例执行自己继承自函数式接口的方法后必须返回stream
      */
     @Test
-    public void flatMapTest() {
+    public void flatMapTest1() {
         Customer sheridan = new Customer("Sheridan");
         Customer ivanova = new Customer("Ivanova");
         Customer garibaldi = new Customer("Garibaldi");
@@ -158,6 +158,19 @@ public class StreamTest {
         System.out.println("处理前的集合：" + list1);
         System.out.println("处理后的集合：" + list2);
     }
+
+//    @Test
+//    public void flatMapTest2() {
+//        List list1 = new ArrayList();
+//        list1.add(1);
+//        list1.add(2);
+//        List list2 = new ArrayList();
+//        list2.add(3);
+//        list2.add(4);
+//        list1.add(list2);
+//        
+//        list1.stream().flatMap(l -> l.stream)
+//    }
 
 
     /**
@@ -197,6 +210,9 @@ public class StreamTest {
         Double[] doubles = {1.2, 3.1, 4.3, 6.7};
         Optional<Double> maxDouble = Arrays.stream(doubles).reduce(Double::max);
         System.out.println("最大值是：" + maxDouble.get());
+
+        Optional<Double> sumDouble = Arrays.stream(doubles).reduce(Double::sum);
+        System.out.println("所有元素的和为：" + sumDouble.get());
 
         Optional<Integer> maxSalary = personList.stream().map(Person::getSalary).reduce(Integer::max);
         System.out.print("最高工资是：" + maxSalary.get());
