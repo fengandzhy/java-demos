@@ -10,6 +10,8 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 public class LambdaExpressionTest {
     
@@ -86,5 +88,48 @@ public class LambdaExpressionTest {
             }
         }
         System.out.println(strings);
+    }
+    
+    /**
+     * 方法引用 实例::实例方法
+     * 意思是 supplier 接口里的 get方法的方法体, 由这个 emp1 的 getName 方法来实现
+     * 那具体的来说就是, 接口抽象方法的形参列表和返回值类型与方法引用的形参列表和返回值类型相同. 如果不同, 它就会编译报错, 
+     * 例如如下就会报错
+     * Supplier<String> supplier1 = emp1::getSalary;
+     * */
+    @Test
+    public void methodReferenceInstanceMethod1(){
+        Employee emp1 = new Employee(1001,"Tom1",23,5800);
+        Supplier<String> supplier = emp1::getName;
+        System.out.println(supplier.get());        
+    }
+    
+    
+
+    /**
+     * 方法引用 类::实例方法
+     * Comparator 这个接口的抽象方法有两个参数,一个返回值 int compare(T o1, T o2);
+     * String 这个类的实例方法只有一个参数, 一个返回值 int compareTo(String anotherString), str1.compareTo(str2);
+     * 所以当 String::compareTo 这样调用的时候 str1就相当于是上面的o1, str2就相当于上面的o2
+     * 就是说在这种情况下 类::实例方法 调用的情况下, 接口的形参只能比实例方法多一个.
+     * */
+    @Test
+    public void methodReferenceInstanceMethod2(){
+        Comparator<String> comparator = String::compareTo;
+        String[] strArray = new String[]{"Tom","Jim","Tim"};       
+        List<String> list = Arrays.stream(strArray).sorted(comparator).collect(Collectors.toList());
+        System.out.println(list);
+    }
+    
+    /**
+     * 方法引用 类::静态方法
+     * Comparator 的抽象方法 int compare(T o1, T o2); 
+     * Integer 的静态方法 int compare(int x, int y)
+     * 形参, 返回值想到
+     * */
+    @Test
+    public void methodReferenceStaticMethod(){
+        Comparator<Integer> comparator = Integer::compare;
+        System.out.println(comparator.compare(21,22));
     }
 }

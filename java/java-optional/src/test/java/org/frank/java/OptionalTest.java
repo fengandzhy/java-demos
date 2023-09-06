@@ -4,7 +4,7 @@ import org.frank.java.domain.*;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.zhouhy.java.domain.*;
+
 
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -20,8 +20,12 @@ public class OptionalTest {
     public void whenCreateEmptyOptional_thenNull(){
         Optional<User> emptyOpt = Optional.empty();
         emptyOpt.get();
+        System.out.println(emptyOpt.isPresent());
     }
 
+    /**
+     * 静态方法 of() 创建一个 Optional 对象, 但是这个只能是非空的值
+     * */
     @Test(expected = NullPointerException.class)
     public void whenCreateOfEmptyOptional_thenNullPointerException(){
         User user = null;
