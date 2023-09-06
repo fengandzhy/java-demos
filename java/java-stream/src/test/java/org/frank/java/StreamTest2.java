@@ -35,4 +35,15 @@ public class StreamTest2 {
         Stream<Double> DoubleStream = Stream.generate(Math::random).limit(3);
         DoubleStream.forEach(System.out::println);
     }
+    
+    /**
+     * forEach 方法 
+     * */
+    @Test
+    public void forEachTest(){
+        List<Integer> list = Arrays.asList(7, 6, 9, 3, 8, 2, 1);
+        list.stream().forEach(System.out::println);
+    }
+    
+    
 }

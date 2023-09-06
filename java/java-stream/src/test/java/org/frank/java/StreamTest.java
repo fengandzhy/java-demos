@@ -41,16 +41,26 @@ public class StreamTest {
         list.stream().filter(x -> x > 6).forEach(System.out::println);
     }
 
+    /**
+     * 注意这里 .orElseGet 里面是一个supplier, 就是说里面得是一个函数(确切的说是一个函数式接口的对象), 它返回的是这个函数的返回值
+     * */
     @Test
     public void findFirstTest() {
-        Optional<Integer> findFirst = list.stream().filter(x -> x > 6).findFirst();
-        System.out.println("匹配第一个值：" + findFirst.get());
+        Optional<Integer> findFirst = list.stream().filter(x -> x > 9).findFirst();
+        System.out.println("匹配第一个值：" + findFirst.orElseGet(() -> null));        
     }
 
+    /**
+     * 注意这里 .orElse 里面是需要返回的值, 在 parallelStream 上用 findAny 返回的是一个非固定的值
+     * 在 stream 上用 findAny 返回的永远都是一个固定值
+     * */
     @Test
     public void findAnyTest() {
-        Optional<Integer> findAny = list.parallelStream().filter(x -> x > 6).findFirst();
-        System.out.println("匹配任意一个值：" + findAny.get());
+        Optional<Integer> findAny = list.parallelStream().filter(x -> x > 6).findAny();
+        System.out.println("匹配任意一个值：" + findAny.orElse(null));
+
+        Optional<Integer> findAny1 = list.stream().filter(x -> x > 6).findAny();
+        System.out.println("匹配任意一个值：" + findAny1.orElse(null));
     }
 
 
