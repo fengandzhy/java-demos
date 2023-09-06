@@ -177,7 +177,7 @@ public class StreamTest {
      * Optional<T> reduce(BinaryOperator<T> accumulator);
      * 对Stream中的数据通过累加器accumulator迭代计算，最终得到一个Optional对象
      * 
-     * 
+     * BinaryOperator 是什么意思, 就是你需要有两个输入值, 一个输出值, 这个输入值和输出值是同一个类型的就行.
      */
     @Test
     public void reduceTestWithOneParameter() {
@@ -190,32 +190,7 @@ public class StreamTest {
             return acc;
         });
         System.out.println(accResult);
-    }
 
-
-    /**
-     * T reduce(T identity, BinaryOperator<T> accumulator);
-     * 提供一个跟Stream中数据同类型的初始值identity，
-     * 通过累加器accumulator迭代计算Stream中的数据，得到一个跟Stream中数据相同类型的最终结果
-     */
-    @Test
-    public void reduceTest2() {
-        int accResult = Stream.of(1, 2, 3, 4).reduce(0, (acc, item) -> {
-            acc += item;
-            return acc;
-        });
-        System.out.println(accResult);
-
-        int accResult1 = Stream.of(1, 2, 3, 4).reduce(0, Integer::max);
-        System.out.println(accResult1);
-
-//        List<Integer> numList = Arrays.asList(Integer.MAX_VALUE,Integer.MAX_VALUE);
-//        long result = numList.stream().reduce(0,(a,b) ->  a + b);
-//        System.out.println(result);
-    }
-
-    @Test
-    public void reduceTest3() {
         Double[] doubles = {1.2, 3.1, 4.3, 6.7};
         Optional<Double> maxDouble = Arrays.stream(doubles).reduce(Double::max);
         System.out.println("最大值是：" + maxDouble.get());
@@ -229,12 +204,36 @@ public class StreamTest {
 
 
     /**
+     * T reduce(T identity, BinaryOperator<T> accumulator);
+     * 提供一个跟Stream中数据同类型的初始值identity，
+     * 通过累加器accumulator迭代计算Stream中的数据，得到一个跟Stream中数据相同类型的最终结果
+     * 
+     * identity 是个初始值, accumulator 还是一样, 它是一个函数式接口的具体实现, 它需要两个输入参数, 一个返回值，输入参数和返回值需要同一类型, 并且和identity的类型相同
+     * 
+     */
+    @Test
+    public void reduceTestWithTwoParameters() {
+        int accResult = Stream.of(1, 2, 3, 4).reduce(0, (acc, item) -> {
+            acc += item;
+            return acc;
+        });
+        System.out.println(accResult);
+
+        int accResult1 = Stream.of(1, 2, 3, 4).reduce(0, Integer::max);
+        System.out.println(accResult1);
+    }
+    
+    /**
      * <U> U reduce(U identity, BiFunction<U, ? super T, U> accumulator, BinaryOperator<U> combiner);
      * 其中BinaryOperator<T> extends BiFunction<T,T,T>
      * BiFunction 是输入两个数返回第三个数
+     * 
+     * identity 这是个初始值, 
+     * accumulator 这是个二元操作, 跟之前一样, 用于将流中的元素逐个操作成一个中间结果 
+     * combiner 用于将多个中间结果合并成一个最终结果。这个形式的reduce方法允许在并行流中执行归约操作。
      */
     @Test
-    public void reduceTest4() {
+    public void reduceTestWithThreeParameters() {
         Integer maxSalary = personList.stream().reduce(0,
                 (max, p) -> max > p.getSalary() ? max : p.getSalary(),
                 (max1, max2) -> max1 > max2 ? max1 : max2);
