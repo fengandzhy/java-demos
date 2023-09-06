@@ -306,6 +306,10 @@ public class StreamTest {
         System.out.println("平均工资：" + collect.getAverage());
     }
 
+    /**
+     * 将stream按条件分为两个Map，比如员工按薪资是否高于8000分为两部分。
+     * 这个map 的 key 值只能是Boolean 
+     * */
     @Test
     public void partitioningByTest() {
         Map<Boolean, List<Person>> part = personList.stream()
