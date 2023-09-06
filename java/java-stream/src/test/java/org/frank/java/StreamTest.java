@@ -159,20 +159,6 @@ public class StreamTest {
         System.out.println("处理后的集合：" + list2);
     }
 
-//    @Test
-//    public void flatMapTest2() {
-//        List list1 = new ArrayList();
-//        list1.add(1);
-//        list1.add(2);
-//        List list2 = new ArrayList();
-//        list2.add(3);
-//        list2.add(4);
-//        list1.add(list2);
-//        
-//        list1.stream().flatMap(l -> l.stream)
-//    }
-
-
     /**
      * Optional<T> reduce(BinaryOperator<T> accumulator);
      * 对Stream中的数据通过累加器accumulator迭代计算，最终得到一个Optional对象
@@ -275,14 +261,17 @@ public class StreamTest {
 
     @Test
     public void countingTest() {
-        long count = personList.stream().collect(Collectors.counting());
-        System.out.println("员工总数：" + count);
+        long count1 = personList.stream().collect(Collectors.counting());
+        System.out.println("员工总数：" + count1);
+        
+        long count2 = personList.stream().count();
+        System.out.println("员工总数：" + count2);
     }
 
     @Test
     public void averageTest() {
         double average = personList.stream().collect(Collectors.averagingDouble(Person::getAge));
-        System.out.println("平均年龄：" + average);
+        System.out.println("平均年龄：" + average);       
     }
 
     @Test
