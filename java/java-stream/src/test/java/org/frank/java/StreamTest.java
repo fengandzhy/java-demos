@@ -93,6 +93,9 @@ public class StreamTest {
         System.out.println("工资大于8000个数：" + employeeCount);
     }
 
+    /**
+     * map 里面传入一个Function接口的实例, 该实例执行自己继承自函数式接口的方法后可以返回任意值
+     * */
     @Test
     public void mapTest() {
         List<String> strings = Arrays.stream(strArr).map(String::toUpperCase).collect(Collectors.toList());
@@ -109,15 +112,19 @@ public class StreamTest {
         newPersonList.stream().forEach(person -> {
             System.out.println(person.getName() + "-->" + person.getSalary());
         });
+        
         System.out.println("***********************************************************");
+        
         personList.stream().forEach(person -> {
             System.out.println(person.getName() + "-->" + person.getSalary());
         });
+        
+        personList.stream().map(Person::getName).forEach(System.out::println);
     }
 
 
     /**
-     * flatMap里面传的一定是一个stream
+     * flatMap 里面也传入一个Function接口的实例, 该实例执行自己继承自函数式接口的方法后必须返回stream
      */
     @Test
     public void flatMapTest() {
