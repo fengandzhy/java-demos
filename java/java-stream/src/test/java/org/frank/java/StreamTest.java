@@ -286,8 +286,11 @@ public class StreamTest {
 
     @Test
     public void sumTest() {
-        Integer sum = personList.stream().collect(Collectors.summingInt(Person::getSalary));
-        System.out.println("工资总和：" + sum);
+        Integer sum1 = personList.stream().collect(Collectors.summingInt(Person::getSalary));
+        System.out.println("工资总和：" + sum1);
+
+        Optional<Integer> sum2 = personList.stream().map(Person::getSalary).reduce(Integer::sum);
+        System.out.println("工资总和：" + sum2.get());
 
         DoubleSummaryStatistics collect = personList.stream().collect(Collectors.summarizingDouble(Person::getSalary));
         System.out.println("员工工资所有统计：" + collect);
