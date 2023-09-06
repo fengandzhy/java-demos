@@ -2,6 +2,7 @@ package org.frank.java.lambda;
 
 import org.frank.java.lambda.entity.Employee;
 import org.frank.java.lambda.interfaces.ConsumerInterfaceA;
+import org.frank.java.lambda.interfaces.Creator;
 import org.frank.java.lambda.interfaces.PredicateInterface;
 import org.junit.Test;
 
@@ -12,6 +13,7 @@ import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
+import org.frank.java.lambda.entity.Address;
 
 public class LambdaExpressionTest {
     
@@ -131,5 +133,16 @@ public class LambdaExpressionTest {
     public void methodReferenceStaticMethod(){
         Comparator<Integer> comparator = Integer::compare;
         System.out.println(comparator.compare(21,22));
+    }
+    
+    /**
+     * 构造器的形参列表和函数式接口抽象方法中的形参列表一致, 另外, 抽象方法的返回类型跟构造器创建的类型一致
+     * 类::new
+     * */
+    @Test
+    public void constructorReference(){
+        Creator<String,String,String,Address> creator = Address::new;
+        Address address = creator.create("甘肃", "兰州", "西固区");
+        System.out.println(address);
     }
 }

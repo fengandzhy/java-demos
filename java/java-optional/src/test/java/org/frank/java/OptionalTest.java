@@ -16,6 +16,9 @@ public class OptionalTest {
     private static final Logger logger = LoggerFactory.getLogger(OptionalTest.class);
     
     
+    /**
+     * empty 创建一个 空的 Optional
+     * */
     @Test(expected = NoSuchElementException.class)
     public void whenCreateEmptyOptional_thenNull(){
         Optional<User> emptyOpt = Optional.empty();
