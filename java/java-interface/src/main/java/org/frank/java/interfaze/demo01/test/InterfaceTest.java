@@ -1,4 +1,7 @@
-package org.frank.java.interfaze.demo01;
+package org.frank.java.interfaze.demo01.test;
+
+import org.frank.java.interfaze.demo01.CommonInterface1;
+import org.frank.java.interfaze.demo01.CommonInterfaceImpl;
 
 public class InterfaceTest {
     public static void main(String[] args) {
