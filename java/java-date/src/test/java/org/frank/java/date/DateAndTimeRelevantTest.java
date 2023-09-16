@@ -84,8 +84,6 @@ public class DateAndTimeRelevantTest {
         //创建一个代表2023年2月2日的Calendar对象
         Calendar c2 = Calendar.getInstance();
         c2.set(2023, 5-1, 2, 10,5,25);
-        System.out.println("c2="+c2);
-
-        
+        System.out.println("c2="+c2);        
     }
 }
