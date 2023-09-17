@@ -32,6 +32,7 @@
         <module>java-regular-expression</module>
         <module>java-resource</module>
         <module>java-interface</module>
+        <module>java-thread</module>
     </modules>
     <packaging>pom</packaging>
 
