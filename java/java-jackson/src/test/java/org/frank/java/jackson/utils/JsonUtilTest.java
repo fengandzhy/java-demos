@@ -25,7 +25,9 @@ public class JsonUtilTest {
         System.out.println(u2.equals(u3));        
     }
     
-    
+    /**
+     * 在Map 这里就体现出来了 TypeReference 的优势, Map.class 是一个Raw type 是要报警告的, new TypeReference<Map<String,Integer>>() 就不会
+     * */
     @Test    
     public void testMap(){
         Map<String,Integer> map1=new HashMap<>();
