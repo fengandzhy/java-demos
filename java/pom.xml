@@ -33,6 +33,7 @@
         <module>java-resource</module>
         <module>java-interface</module>
         <module>java-thread</module>
+        <module>java-interview</module>
     </modules>
     <packaging>pom</packaging>
 

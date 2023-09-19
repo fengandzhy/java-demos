@@ -1,4 +1,4 @@
-package org.zhouhy.basic.demo01;
+package org.frank.basic.demo01;
 
 public class CharTest {
     public static void main(String[] args) {
