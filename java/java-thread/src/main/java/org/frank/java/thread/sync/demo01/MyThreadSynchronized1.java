@@ -5,7 +5,8 @@ package org.frank.java.thread.sync.demo01;
  * 因为t2 也是需要 同一个 myThreadSynchronized 对象的 锁.
  * 
  * */
-public class MyThreadSynchronized implements Runnable{
+@SuppressWarnings("DuplicatedCode")
+public class MyThreadSynchronized1 implements Runnable{
 
     private static int count =0;
     

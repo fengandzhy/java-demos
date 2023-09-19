@@ -1,13 +1,12 @@
-package org.frank.java.thread.sync.demo01;
+package org.frank.java.thread.sync.demo02;
 
-public class Demo1Test {
 
-    
+public class Demo2Test {
     public static void main(String[] args) {
-        MyThreadSynchronized1 myThreadSynchronized = new MyThreadSynchronized1();
+        MyThreadSynchronized2 myThreadSynchronized = new MyThreadSynchronized2();
         Thread t1 = new Thread(myThreadSynchronized, "t1");
         Thread t2 = new Thread(myThreadSynchronized, "t2");
-        
+
         t1.start();
         t2.start();
     }
