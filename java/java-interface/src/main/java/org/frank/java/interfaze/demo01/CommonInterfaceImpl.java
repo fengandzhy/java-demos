@@ -24,7 +24,6 @@ public class CommonInterfaceImpl implements CommonInterface1, CommonInterface2{
         CommonInterface1.super.anotherDefaultMethod();
         CommonInterface2.super.anotherDefaultMethod();
         System.out.println("CommonInterfaceImpl.anotherDefaultMethod()-------------end");
-
-        
+        CommonInterface1.staticMethod();        
     }
 }
