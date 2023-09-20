@@ -86,4 +86,15 @@ public class DateAndTimeRelevantTest {
         c2.set(2023, 5-1, 2, 10,5,25);
         System.out.println("c2="+c2);        
     }
+    
+    @Test
+    public void getSystemTimeStamp(){        
+        Instant instant = Instant.now();
+        Date date = new Date();
+        Calendar calendar = Calendar.getInstance();
+        System.out.println(instant.toEpochMilli());
+        System.out.println(System.currentTimeMillis());
+        System.out.println(date.getTime());
+        System.out.println(calendar.getTimeInMillis());
+    }
 }
