@@ -2,6 +2,7 @@ package org.frank.collections.comparator.demo01;
 
 import org.junit.Test;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -27,5 +28,11 @@ public class ComparatorTest {
         System.out.println("反向排序后：");
         employeeList.stream().map(Employee::getName).forEach(System.out::println);
 
+        Collections.sort(employeeList, Comparator.comparing(Employee::getName));
+        System.out.println("用Collections排序后：");
+        employeeList.stream().map(Employee::getName).forEach(System.out::println);
+
+        System.out.println("用Stream反向排序后：");
+        employeeList.stream().sorted(Comparator.comparing(Employee::getName).reversed()).map(Employee::getName).forEach(System.out::println);
     }
 }
