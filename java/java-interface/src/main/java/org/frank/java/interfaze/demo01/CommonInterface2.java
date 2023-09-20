@@ -2,6 +2,8 @@ package org.frank.java.interfaze.demo01;
 
 public interface CommonInterface2 {
 
+    
+    String DEFAULT_NAME = "Unknown";
     //抽象方法
     public void doSomething();
 
