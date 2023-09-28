@@ -114,6 +114,8 @@ public class LambdaExpressionTest {
      * String 这个类的实例方法只有一个参数, 一个返回值 int compareTo(String anotherString), str1.compareTo(str2);
      * 所以当 String::compareTo 这样调用的时候 str1就相当于是上面的o1, str2就相当于上面的o2
      * 就是说在这种情况下 类::实例方法 调用的情况下, 接口的形参只能比实例方法多一个.
+     * 就是说这个是接口的方法, 有两个形参o1, o2  int compare(T o1, T o2); 这是实例方法 int compareTo(String anotherString)
+     * 只有一个形参 anotherString, 这种情况就属于接口的形参比实例方法多一个.
      * */
     @Test
     public void methodReferenceInstanceMethod2(){
