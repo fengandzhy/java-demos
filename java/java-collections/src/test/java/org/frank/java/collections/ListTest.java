@@ -3,8 +3,10 @@ package org.frank.java.collections;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ListTest {
 
@@ -65,6 +67,21 @@ public class ListTest {
         }
         System.out.println("新集合:" + list);
     }
-    
-    
+
+    @Test
+    public void removeDistinctTest3(){
+        List<Integer> list = new ArrayList<Integer>() {{
+            add(1);
+            add(3);
+            add(5);
+            add(2);
+            add(1);
+            add(3);
+            add(7);
+            add(2);
+        }};
+        System.out.println("原集合:" + list);
+        HashSet set = new HashSet(list);        
+        System.out.println("新集合:" + set.stream().collect(Collectors.toList()));
+    }
 }
