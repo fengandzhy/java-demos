@@ -106,4 +106,24 @@ public class ListTest {
         Set<Integer> set = new LinkedHashSet(list);
         System.out.println("新集合:" + set);
     }
+
+    /**
+     * TreeSet 也会自动排序
+     * */
+    @Test
+    public void removeDistinctTest5(){
+        List<Integer> list = new ArrayList<Integer>() {{
+            add(1);
+            add(3);
+            add(5);
+            add(2);
+            add(1);
+            add(3);
+            add(7);
+            add(2);
+        }};
+        System.out.println("原集合:" + list);
+        Set<Integer> set = new TreeSet<>(list);
+        System.out.println("新集合:" + set);        
+    }
 }
