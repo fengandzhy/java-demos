@@ -65,6 +65,9 @@ public class ListTest {
         System.out.println("新集合:" + list);
     }
 
+    /**
+     * 这里的HashSet会对原集合重新排序
+     * */
     @Test
     public void removeDistinctTest3(){
         List<Integer> list = new ArrayList<Integer>() {{
@@ -76,12 +79,17 @@ public class ListTest {
             add(3);
             add(7);
             add(2);
+            add(9);
+            add(8);
         }};
         System.out.println("原集合:" + list);
         Set<Integer> set = new HashSet(list);        
-        System.out.println("新集合:" + set.stream().collect(Collectors.toList()));
+        System.out.println("新集合:" + set);
     }
 
+    /**
+     * 这里的LinkedHashSet不会动原集合的顺序
+     * */
     @Test
     public void removeDistinctTest4(){
         List<Integer> list = new ArrayList<Integer>() {{
@@ -95,7 +103,7 @@ public class ListTest {
             add(2);
         }};
         System.out.println("原集合:" + list);
-        LinkedHashSet<Integer> set = new LinkedHashSet(list);
-        System.out.println("新集合:" + set.stream().collect(Collectors.toList()));
+        Set<Integer> set = new LinkedHashSet(list);
+        System.out.println("新集合:" + set);
     }
 }
