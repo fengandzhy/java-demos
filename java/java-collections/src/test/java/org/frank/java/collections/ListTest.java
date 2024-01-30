@@ -126,4 +126,20 @@ public class ListTest {
         Set<Integer> set = new TreeSet<>(list);
         System.out.println("新集合:" + set);        
     }
+
+    @Test
+    public void removeDistinctTest6(){
+        List<Integer> list = new ArrayList<Integer>() {{
+            add(1);
+            add(3);
+            add(5);
+            add(2);
+            add(1);
+            add(3);
+            add(7);
+            add(2);
+        }};
+        System.out.println("原集合:" + list);        
+        System.out.println("新集合:" + list.stream().distinct().collect(Collectors.toList()));
+    }
 }
