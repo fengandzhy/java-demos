@@ -35,6 +35,7 @@
         <module>java-thread</module>
         <module>java-interview</module>
         <module>java-clock</module>
+        <module>java-switch</module>
     </modules>
     <packaging>pom</packaging>
 
