@@ -14,4 +14,17 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version> <!-- 或更高，以确保完全支持Java 17 -->
+                <configuration>
+                    <release>17</release> <!-- 使用release标签确保对Java 17的兼容 -->
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>
