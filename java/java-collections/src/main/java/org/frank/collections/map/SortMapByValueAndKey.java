@@ -1,9 +1,6 @@
 package org.frank.collections.map;
 
-import java.util.LinkedHashMap;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class SortMapByValueAndKey {
@@ -16,9 +13,14 @@ public class SortMapByValueAndKey {
         map.put("Grape", 10);
 
 
+//        List<Map.Entry<String, Integer>> sortedEntries = map.entrySet().stream()
+//                .sorted(Map.Entry.<String, Integer>comparingByValue()
+//                        .thenComparing(Map.Entry.comparingByKey()))
+//                .collect(Collectors.toList());
+
         List<Map.Entry<String, Integer>> sortedEntries = map.entrySet().stream()
-                .sorted(Map.Entry.<String, Integer>comparingByValue()
-                        .thenComparing(Map.Entry.comparingByKey()))
+                .sorted(Comparator.<Map.Entry<String, Integer>, Integer>comparing(Map.Entry::getValue)
+                        .thenComparing(Map.Entry::getKey))
                 .collect(Collectors.toList());
         
         Map<String, Integer> sortedMap = new LinkedHashMap<>();
