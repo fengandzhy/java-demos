@@ -85,6 +85,10 @@ public class OptionalTest {
         userOptional.ifPresent(u->System.out.println("The email is "+u.getEmail()));
     }
 
+    /**
+     * orElse不论Optional是否有值，都会执行其参数；而orElseGet只有在Optional为空时，才会执行其参数。
+     * 
+     * */
     @Test
     public void whenEmptyValue_thenReturnDefault() {
         User user = null;
@@ -159,6 +163,22 @@ public class OptionalTest {
 
         assertEquals(result, "default");
     }
+
+//    @Test
+//    public void whenChaining_thenOk1() {
+//        Optional<String> optionalPresent = Optional.of("Hello");
+//        Optional<String> optionalEmpty = Optional.empty();
+//
+//        optionalPresent.ifPresentOrElse(
+//                value -> System.out.println("Value is present: " + value),
+//                () -> System.out.println("Value is not present.")
+//        );
+//
+//        optionalEmpty.ifPresentOrElse(
+//                value -> System.out.println("Value is present: " + value),
+//                () -> System.out.println("Value is not present.")
+//        );
+//    }
 
     private User createNewUser() {
         logger.info("Creating New User");
