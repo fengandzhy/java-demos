@@ -13,8 +13,6 @@ public class RecordExample {
         Person person = new Person("John", 35);
         System.out.println(person.name());
         System.out.println(person.age());
-        System.out.println(person);
-        
-        
+        System.out.println(person);      
     }
 }
