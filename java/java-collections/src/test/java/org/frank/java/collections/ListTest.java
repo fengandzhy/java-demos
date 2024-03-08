@@ -161,4 +161,46 @@ public class ListTest {
         Collections.sort(list,Collections.reverseOrder());
         System.out.println("按降序排序后的集合:" + list);
     }
+
+    @Test
+    public void sortListTest2(){
+        List<Integer> list = new ArrayList<Integer>() {{
+            add(1);
+            add(3);
+            add(5);
+            add(2);
+            add(1);
+            add(3);
+            add(7);
+            add(2);
+        }};
+        System.out.println("原集合:" + list);
+        list.sort((a,b) -> {
+            return a -b;
+        });
+        System.out.println("按升序排序后的集合:" + list);
+        list.sort((a,b) -> {
+            return b -a;
+        });
+        System.out.println("按降序排序后的集合:" + list);
+    }
+
+    @Test
+    public void sortListTest3(){
+        List<Integer> list = new ArrayList<Integer>() {{
+            add(1);
+            add(3);
+            add(5);
+            add(2);
+            add(1);
+            add(3);
+            add(7);
+            add(2);
+        }};
+        System.out.println("原集合:" + list);
+        list.sort(Comparator.comparing(Integer::intValue));
+        System.out.println("按升序排序后的集合:" + list);
+        list.sort(Comparator.comparing(Integer::intValue).reversed());
+        System.out.println("按降序排序后的集合:" + list);
+    }
 }
