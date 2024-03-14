@@ -27,6 +27,9 @@ public class ComparableTest {
         employeeList.stream().map(Employee::getName).forEach(System.out::println);
     }
 
+    /**
+     * 对于实现了 Comparable 接口的类来说, 加入到TreeSet 之后，自动排序
+     * */
     @Test
     @SuppressWarnings("DuplicatedCode")
     public void printSet() {
