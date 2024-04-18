@@ -1,6 +1,7 @@
 package org.frank.java.lambda;
 
 import org.frank.java.lambda.entity.Employee;
+import org.frank.java.lambda.entity.MethodReferenceExample;
 import org.frank.java.lambda.interfaces.ConsumerInterfaceA;
 import org.frank.java.lambda.interfaces.Creator;
 import org.frank.java.lambda.interfaces.PredicateInterface;
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.BiFunction;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
@@ -146,5 +148,13 @@ public class LambdaExpressionTest {
         Creator<String,String,String,Address> creator = Address::new;
         Address address = creator.create("甘肃", "兰州", "西固区");
         System.out.println(address);
+    }
+    
+    @Test
+    public void methodReferenceOverride(){
+        BiFunction<String, String, String> stringCombiner = MethodReferenceExample::combine;
+        BiFunction<Integer, Integer, String> integerCombiner = MethodReferenceExample::combine;
+        String str = stringCombiner.apply("a","b");
+        System.out.println(str);
     }
 }
