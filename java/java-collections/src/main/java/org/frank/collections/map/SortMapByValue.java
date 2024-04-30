@@ -15,6 +15,8 @@ public class SortMapByValue {
         map.put("Banana", 3);
         map.put("Peach", 7);
         map.put("Pear", 6);
+        
+        
 
         // 根据value 进行排序, 得到一个新的 Map.Entry<String,Integer> 类型的 list
         List<Map.Entry<String,Integer>> list = map.entrySet()
