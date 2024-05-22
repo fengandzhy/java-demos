@@ -9,7 +9,7 @@ public class InstanceofExample {
     public static void main(String[] args) {
         Object obj = "Hello,world";
         if(obj instanceof String str){
-            System.out.println(str);
+            System.out.println(str.charAt(1000));
         }
     }
 }
